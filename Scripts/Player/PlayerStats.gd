@@ -11,13 +11,7 @@ var health : Health
 @export var atk_range : float
 @export var amount: int
 
-var stats = {
-	"speed" : speed,
-	"attack_speed" : attack_speed,
-	"power" : power,
-	"atk_range" : atk_range,
-	"amount" : amount
-}
+var stats : Dictionary
 
 #region leveling value
 var level = 1
@@ -30,6 +24,19 @@ var current_xp = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = Health.new(initial_health)
+	stats = {
+		"speed" : speed,
+		"attack_speed" : attack_speed,
+		"power" : power,
+		"atk_range" : atk_range,
+		"amount" : amount
+}
+
+
+func _process(delta):
+	if Input.is_action_pressed("test_action"):
+		increase_stat("speed", 10)
+		print("speed has been increase by 10, total value : ", get_stat_value("speed"))
 
 
 func get_xp(xp : int):
@@ -56,4 +63,5 @@ func increase_stat(stat_name : String, value):
 
 
 func get_stat_value(stat_name : String):
-	return stats.has(stat_name)
+	if stats.has(stat_name):
+		return stats[stat_name]

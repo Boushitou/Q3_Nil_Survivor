@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0jg0mtojp1l8"]
+[gd_scene load_steps=7 format=3 uid="uid://d0jg0mtojp1l8"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_pnww8"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_ckwua"]
 [ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="3_qyfac"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerStats.gd" id="4_nvw7y"]
+[ext_resource type="Script" path="res://Scripts/Systems/CameraFollow.gd" id="5_7a8cg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
 
@@ -26,4 +27,12 @@ shape = SubResource("RectangleShape2D_rexpl")
 script = ExtResource("4_nvw7y")
 speed = 1000.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("5_7a8cg")
+target = NodePath("../Controller/Player")
+speed = 15.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-341, -11)
+scale = Vector2(-0.180349, 0.139784)
+texture = ExtResource("3_qyfac")

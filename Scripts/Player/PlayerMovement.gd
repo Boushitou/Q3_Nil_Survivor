@@ -5,7 +5,6 @@ extends Node2D
 enum Movement_State {IDLE, MOVING, DASHING}
 
 var player_stats
-var speed : float
 
 #region dash values
 @export var DASH_FORCE : float
@@ -22,7 +21,6 @@ var state : Movement_State = Movement_State.IDLE
 
 func _ready():
 	player_stats = $PlayerStats
-	speed = player_stats.speed
 
 
 func _process(delta):
@@ -35,7 +33,7 @@ func initiate_move(direction):
 		dash_direction = direction
 	
 	if state != Movement_State.DASHING:
-		movement = direction * speed
+		movement = direction * player_stats.get_stat_value("speed")
 		
 		if movement == Vector2():
 			state = Movement_State.IDLE
@@ -58,7 +56,7 @@ func initiate_dash(direction):
 
 func dashing(delta):
 	if state == Movement_State.DASHING:
-		position += movement * delta
+		position += delta * movement
 		
 		dash_timer -= delta
 		
