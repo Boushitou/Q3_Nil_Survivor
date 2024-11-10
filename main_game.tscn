@@ -1,24 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0jg0mtojp1l8"]
+[gd_scene load_steps=6 format=3 uid="uid://d0jg0mtojp1l8"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_opi1k"]
-[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="2_xjtl8"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_pnww8"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_ckwua"]
 [ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="3_qyfac"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerStats.gd" id="4_nvw7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
 
 [node name="MainGame" type="Node2D"]
 
 [node name="Controller" type="Node" parent="."]
-script = ExtResource("2_xjtl8")
+script = ExtResource("1_pnww8")
 
 [node name="Player" type="CharacterBody2D" parent="Controller"]
-script = ExtResource("1_opi1k")
-speed = 500.0
+script = ExtResource("2_ckwua")
+DASH_FORCE = 3000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Controller/Player"]
 texture = ExtResource("3_qyfac")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Controller/Player"]
 shape = SubResource("RectangleShape2D_rexpl")
+
+[node name="PlayerStats" type="Node" parent="Controller/Player"]
+script = ExtResource("4_nvw7y")
+speed = 1000.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
