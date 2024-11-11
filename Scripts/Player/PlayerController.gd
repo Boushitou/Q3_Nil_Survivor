@@ -2,7 +2,7 @@ class_name PlayerController
 
 extends Node
 
-var player_movement
+var player_movement : PlayerMovement
 var direction = Vector2(0, 0)
 
 

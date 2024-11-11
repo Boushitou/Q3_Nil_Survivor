@@ -25,14 +25,14 @@ shape = SubResource("RectangleShape2D_rexpl")
 
 [node name="PlayerStats" type="Node" parent="Controller/Player"]
 script = ExtResource("4_nvw7y")
-speed = 200.0
+speed = 500.0
+
+[node name="Camera2D" type="Camera2D" parent="Controller/Player"]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("5_7a8cg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-341, -11)
 scale = Vector2(-0.180349, 0.139784)
 texture = ExtResource("3_qyfac")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("5_7a8cg")
-smooth_factor = 5.0
-distance_scale = 2.0

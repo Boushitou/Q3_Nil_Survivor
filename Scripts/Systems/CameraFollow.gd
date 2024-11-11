@@ -1,16 +1,34 @@
+class_name CameraFollow
+
 extends Camera2D
 
-@export var target : Node2D
-@export var speed : float
+@export var smooth_factor : float
+var target : Node2D
+var old_target_pos : Vector2
+
+@export_range(1, 10) var distance_scale : float
 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	follow_target(delta)
-
-
-func follow_target(delta):
+func _ready():
+	target = $"../Controller/Player"
 	if target != null:
-		var direction = (target.position - position).normalized()
-		position = lerp(position, target.position, delta * speed)
+		old_target_pos = target.position
+
+
+func _process(delta):
+	smooth_follow(delta)
+
+
+func smooth_follow(delta):
+	var distance = old_target_pos.distance_to(target.position)
+
+	old_target_pos = target.position
+	
+	var dynamic_smooth_factor = smooth_factor + (distance * distance_scale)
+	print(dynamic_smooth_factor)
+	
+	position = exp_decay(position, target.position, dynamic_smooth_factor, delta)
+
+
+func exp_decay(a, b, decay, delta):
+	return b + (a - b) * exp(-decay * delta)
