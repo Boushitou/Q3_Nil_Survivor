@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Nil_Survivor"
-run/main_scene="res://main_game.tscn"
+run/main_scene="res://Scenes/main_game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Utils="res://Scripts/Utils/Utilities.gd"
 
 [input]
 

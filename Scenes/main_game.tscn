@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0jg0mtojp1l8"]
+
+[ext_resource type="PackedScene" uid="uid://ddcgvg5rx8u17" path="res://Scenes/controller.tscn" id="1_o57fh"]
+[ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="3_xo0ds"]
+[ext_resource type="Script" path="res://Scripts/Systems/CameraFollow.gd" id="5_mlmmy"]
+[ext_resource type="Script" path="res://Scripts/FpsCounter.gd" id="6_ius5g"]
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemiesManager.gd" id="6_ql5bx"]
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemySpawner.gd" id="7_dhjye"]
+
+[node name="MainGame" type="Node2D"]
+
+[node name="Controller" parent="." instance=ExtResource("1_o57fh")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-341, -11)
+scale = Vector2(-0.180349, 0.139784)
+texture = ExtResource("3_xo0ds")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("5_mlmmy")
+smooth_factor = 5.0
+distance_scale = 2.0
+
+[node name="EnemiesManager" type="Node" parent="."]
+script = ExtResource("6_ql5bx")
+
+[node name="EnemySpawner" type="Node" parent="EnemiesManager"]
+script = ExtResource("7_dhjye")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 100.0
+offset_bottom = 28.0
+text = "Fps : 45452"
+script = ExtResource("6_ius5g")

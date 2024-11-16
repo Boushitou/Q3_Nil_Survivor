@@ -25,10 +25,5 @@ func smooth_follow(delta):
 	old_target_pos = target.position
 	
 	var dynamic_smooth_factor = smooth_factor + (distance * distance_scale)
-	print(dynamic_smooth_factor)
 	
-	position = exp_decay(position, target.position, dynamic_smooth_factor, delta)
-
-
-func exp_decay(a, b, decay, delta):
-	return b + (a - b) * exp(-decay * delta)
+	position = Utilities.exp_decay(position, target.position, dynamic_smooth_factor, delta)

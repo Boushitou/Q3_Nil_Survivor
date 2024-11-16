@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddcgvg5rx8u17"]
+
+[ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_d1yww"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_jhwxv"]
+[ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="3_dh2ju"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerStats.gd" id="4_jjtk5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
+
+[node name="Controller" type="Node"]
+script = ExtResource("1_d1yww")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("2_jhwxv")
+DASH_FORCE = 3000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("3_dh2ju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_rexpl")
+
+[node name="PlayerStats" type="Node" parent="Player"]
+script = ExtResource("4_jjtk5")
+speed = 200.0

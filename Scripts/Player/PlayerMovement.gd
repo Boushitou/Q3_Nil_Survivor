@@ -33,7 +33,7 @@ func initiate_move(direction):
 		dash_direction = direction
 	
 	if state != Movement_State.DASHING:
-		movement = direction * player_stats.get_stat_value("speed")
+		movement = player_stats.get_stat_value("speed") * direction
 		
 		if movement == Vector2():
 			state = Movement_State.IDLE
