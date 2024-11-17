@@ -7,7 +7,7 @@ var enemies_manager : EnemiesManager
 
 var enemyScene = load("res://Scenes/enemy.tscn")
 
-var enemy_frequency = 0.5
+var enemy_frequency = 0.001
 var time_since_last_spawn = 0.0
 
 const max_total_enemies = 300
