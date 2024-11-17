@@ -44,12 +44,8 @@ func follow_player(delta):
 	time_since_last_update += delta
 
 	if time_since_last_update >= update_frequency:
-		var neighbors = enemies_manager.get_nearby_enemies(last_cell)
-		var neighbor_position = []
-		for neighbor in neighbors:
-			neighbor_position.append(neighbor.global_position)
-			
-		separation_force = get_separation_force(global_position, neighbor_position)
+		var neighbors_positions = get_neighbors_positions()
+		separation_force = get_separation_force(global_position, neighbors_positions)
 		time_since_last_update = 0.0
 	
 	var movement = (direction + separation_force * separation_weight).normalized()
@@ -95,3 +91,13 @@ func update_grid_position():
 			enemies_manager.update_enemy_position(self, last_cell, current_cell)
 		
 		last_cell = current_cell
+
+
+func get_neighbors_positions() -> Array:
+	var neighbors = enemies_manager.get_nearby_enemies(last_cell)
+	var neighbor_position = []
+	for neighbor in neighbors:
+		neighbor_position.append(neighbor.global_position)
+		
+	return neighbor_position
+	
