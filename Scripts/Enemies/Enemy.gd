@@ -44,7 +44,12 @@ func follow_player(delta):
 	time_since_last_update += delta
 
 	if time_since_last_update >= update_frequency:
-		separation_force = get_separation_force()
+		var neighbors = enemies_manager.get_nearby_enemies(last_cell)
+		var neighbor_position = []
+		for neighbor in neighbors:
+			neighbor_position.append(neighbor.global_position)
+			
+		separation_force = get_separation_force(global_position, neighbor_position)
 		time_since_last_update = 0.0
 	
 	var movement = (direction + separation_force * separation_weight).normalized()
@@ -53,19 +58,15 @@ func follow_player(delta):
 
 
 #make enemies avoid each other
-func get_separation_force():
+func get_separation_force(current_position : Vector2, neighbor_positions : Array) -> Vector2:
 	var force = Vector2.ZERO
-	var neighbors = enemies_manager.get_nearby_enemies(last_cell)
 	
-	for neighbor in neighbors:
-		if neighbor == self:
-			continue
-		
-		var distance = global_position.distance_squared_to(neighbor.global_position)
+	for neighbor_position in neighbor_positions:
+		var distance = current_position.distance_squared_to(neighbor_position)
 		if distance < separation_radius * separation_radius:
-			var push_direction = (global_position - neighbor.global_position).normalized()
+			var push_direction = (current_position - neighbor_position).normalized()
 			
-			if push_direction.length() == 0:  # Special case where positions are identical
+			if push_direction.length() == 0:
 				push_direction = Vector2(randf() - 0.5, randf() - 0.5).normalized()
 			else:
 				force += push_direction / sqrt(distance)
