@@ -19,8 +19,6 @@ func spawn_enemies_test():
 	var rng = RandomNumberGenerator.new()
 	var dist = 800.0
 	for i in max_total_enemies :
-		var enemy = enemyScene.instantiate()
-		add_child(enemy)
 		var pos = Vector2(rng.randf_range(-dist, dist), rng.randf_range(-dist, dist))
-		enemy.global_position = pos
+		var enemy = PoolSystem.instantiate_object("enemy", enemyScene, pos, 0.0, self)
 		enemy.set_references(playerNode, enemies_manager)

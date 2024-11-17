@@ -15,9 +15,9 @@ func take_damage(amount : float):
 		return
 	
 	current_health -= amount
-	current_health = 0 if current_health < 0 else current_health
 	
-	if current_health < 0:
+	if current_health <= 0:
+		current_health = 0
 		death()
 
 

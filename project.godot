@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Utils="res://Scripts/Utils/Utilities.gd"
+Pool="res://Scripts/Systems/Pooling/PoolSystem.gd"
 
 [input]
 
