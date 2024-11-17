@@ -8,7 +8,7 @@ radius = 32.0156
 
 [node name="Enemy" type="Area2D"]
 script = ExtResource("1_6noeu")
-separation_weight = 100.0
+separation_weight = 500.0
 
 [node name="Body" type="Sprite2D" parent="."]
 modulate = Color(0.982764, 0.287645, 0.33786, 1)
