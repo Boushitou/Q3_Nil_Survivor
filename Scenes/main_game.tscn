@@ -11,7 +11,7 @@
 
 [node name="Controller" parent="." instance=ExtResource("1_o57fh")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="TestSprite" type="Sprite2D" parent="."]
 position = Vector2(-341, -11)
 scale = Vector2(-0.180349, 0.139784)
 texture = ExtResource("3_xo0ds")

@@ -36,3 +36,19 @@ func get_nearby_enemies(cell: Vector2) -> Array:
 			nearby_enemies += get_enemies_in_cell(neighbor_cell)
 			
 	return nearby_enemies
+
+
+func remove_enemy(enemy: Node, cell: Vector2):
+	var cell_enemies = enemy_grid.get(cell, [])
+	cell_enemies.erase(enemy)
+	enemy_grid[cell] = cell_enemies
+	PoolSystem.pool_object("enemy", enemy)
+
+
+func get_enemy_count() -> int:
+	var count = 0
+	
+	for cell_enemies in enemy_grid.values():
+		count += cell_enemies.size()
+	
+	return count

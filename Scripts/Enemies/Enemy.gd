@@ -97,7 +97,11 @@ func get_neighbors_positions() -> Array:
 	var neighbors = enemies_manager.get_nearby_enemies(last_cell)
 	var neighbor_position = []
 	for neighbor in neighbors:
-		neighbor_position.append(neighbor.global_position)
+		if is_instance_valid(neighbor):
+			neighbor_position.append(neighbor.global_position)
 		
 	return neighbor_position
-	
+
+
+func _on_mouse_entered():
+	enemies_manager.remove_enemy(self, last_cell)

@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerStats.gd" id="4_jjtk5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
+size = Vector2(118, 119)
 
 [node name="Controller" type="Node"]
 script = ExtResource("1_d1yww")
@@ -18,6 +19,7 @@ DASH_FORCE = 3000.0
 texture = ExtResource("3_dh2ju")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_rexpl")
 
 [node name="PlayerStats" type="Node" parent="Player"]
