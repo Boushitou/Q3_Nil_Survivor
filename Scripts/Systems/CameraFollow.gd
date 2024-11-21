@@ -10,7 +10,7 @@ var old_target_pos : Vector2
 
 
 func _ready():
-	target = $"../Controller/Player"
+	target = $"../Controller/Body"
 	if target != null:
 		old_target_pos = target.position
 

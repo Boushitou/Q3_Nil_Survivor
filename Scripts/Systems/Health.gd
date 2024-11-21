@@ -1,13 +1,13 @@
 class_name Health
 
-var total_health : float
-var current_health : float
-var is_dead : bool
+extends Node
 
-func _init(health):
-	total_health = health
+@export var total_health : float
+var current_health : float
+var is_dead : bool = false
+
+func _ready():
 	current_health = total_health
-	is_dead = false
 
 
 func take_damage(amount : float):
@@ -15,6 +15,7 @@ func take_damage(amount : float):
 		return
 	
 	current_health -= amount
+	print("Player has been hit, current health : ", current_health)
 	
 	if current_health <= 0:
 		current_health = 0
@@ -35,4 +36,5 @@ func upgrade_health(amount : float):
 
 func death():
 	is_dead = true
+	print("You are dead.")
 	#death event for player ?

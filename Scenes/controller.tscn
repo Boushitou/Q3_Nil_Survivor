@@ -1,27 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddcgvg5rx8u17"]
+[gd_scene load_steps=8 format=3 uid="uid://ddcgvg5rx8u17"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_d1yww"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_jhwxv"]
 [ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="3_dh2ju"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerStats.gd" id="4_jjtk5"]
+[ext_resource type="Script" path="res://Scripts/Systems/Collisions.gd" id="5_tmekf"]
+[ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="6_lf85x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
 size = Vector2(118, 119)
 
-[node name="Controller" type="Node"]
+[node name="Player" type="Node" node_paths=PackedStringArray("player_movement")]
 script = ExtResource("1_d1yww")
+player_movement = NodePath("Body")
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Body" type="Area2D" parent="."]
 script = ExtResource("2_jhwxv")
 DASH_FORCE = 3000.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="PlayerStats" type="Node" parent="Body" node_paths=PackedStringArray("health")]
+script = ExtResource("4_jjtk5")
+health = NodePath("../Health")
+speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
 texture = ExtResource("3_dh2ju")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body" node_paths=PackedStringArray("health")]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_rexpl")
+script = ExtResource("5_tmekf")
+health = NodePath("../Health")
+group_name = "enemies"
 
-[node name="PlayerStats" type="Node" parent="Player"]
-script = ExtResource("4_jjtk5")
-speed = 200.0
+[node name="Health" type="Node" parent="Body"]
+script = ExtResource("6_lf85x")
+total_health = 100.0
+
+[connection signal="area_entered" from="Body" to="Body/CollisionShape2D" method="_on_body_area_entered"]
+[connection signal="area_exited" from="Body" to="Body/CollisionShape2D" method="_on_body_area_exited"]

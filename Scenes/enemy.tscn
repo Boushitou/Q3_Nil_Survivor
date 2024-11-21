@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bym5pcg3yn5ja"]
+[gd_scene load_steps=5 format=3 uid="uid://bym5pcg3yn5ja"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Enemy.gd" id="1_6noeu"]
 [ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="2_us1bj"]
+[ext_resource type="Script" path="res://Scripts/Systems/Stats.gd" id="3_0op4a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yqw5"]
 radius = 32.0156
 
 [node name="Enemy" type="Area2D"]
 script = ExtResource("1_6noeu")
-separation_weight = 500.0
+separation_weight = 200.0
 
 [node name="Body" type="Sprite2D" parent="."]
 modulate = Color(0.982764, 0.287645, 0.33786, 1)
@@ -17,5 +18,8 @@ texture = ExtResource("2_us1bj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3yqw5")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("3_0op4a")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -8,7 +8,7 @@ var spawner : EnemySpawner
 var enemy_grid : Dictionary = {}
 
 func _ready():
-	player_pos = $"../Controller/Player"
+	player_pos = $"../Controller/Body"
 	spawner = $EnemySpawner
 	spawner.set_references(player_pos, self)
 	spawner.spawn_enemies_test()
