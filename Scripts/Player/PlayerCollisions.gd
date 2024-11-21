@@ -1,9 +1,8 @@
-class_name Collisions
+class_name PlayerCollisions
 
 extends Node
 
 @export var health : Health
-@export var group_name : String
 
 var areas_in_range : Array = []
 const i_frame = 0.5
@@ -18,15 +17,16 @@ func _process(delta):
 
 
 func _on_body_area_entered(area):
-	if area.is_in_group(group_name):
+	if area.is_in_group("enemies"):
 		areas_in_range.append(area)
 		
 
 func _on_body_area_exited(area):
-	if area.is_in_group(group_name):
+	if area.is_in_group("enemies"):
 		areas_in_range.erase(area)
 
 
 func apply_damage():
 	for area in areas_in_range:
-		health.take_damage(1.0)
+		var damage = area.get_damage()
+		health.take_damage(damage)

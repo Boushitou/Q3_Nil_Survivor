@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_jhwxv"]
 [ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="3_dh2ju"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerStats.gd" id="4_jjtk5"]
-[ext_resource type="Script" path="res://Scripts/Systems/Collisions.gd" id="5_tmekf"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerCollisions.gd" id="5_b0aba"]
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="6_lf85x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
@@ -15,6 +15,7 @@ script = ExtResource("1_d1yww")
 player_movement = NodePath("Body")
 
 [node name="Body" type="Area2D" parent="."]
+collision_mask = 2
 script = ExtResource("2_jhwxv")
 DASH_FORCE = 3000.0
 
@@ -29,13 +30,12 @@ texture = ExtResource("3_dh2ju")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body" node_paths=PackedStringArray("health")]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_rexpl")
-script = ExtResource("5_tmekf")
+script = ExtResource("5_b0aba")
 health = NodePath("../Health")
-group_name = "enemies"
 
 [node name="Health" type="Node" parent="Body"]
 script = ExtResource("6_lf85x")
-total_health = 100.0
+total_health = 100
 
 [connection signal="area_entered" from="Body" to="Body/CollisionShape2D" method="_on_body_area_entered"]
 [connection signal="area_exited" from="Body" to="Body/CollisionShape2D" method="_on_body_area_exited"]

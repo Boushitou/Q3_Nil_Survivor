@@ -2,8 +2,8 @@ class_name Health
 
 extends Node
 
-@export var total_health : float
-var current_health : float
+@export var total_health : int
+var current_health : int
 var is_dead : bool = false
 
 func _ready():
@@ -22,7 +22,7 @@ func take_damage(amount : float):
 		death()
 
 
-func heal(amount : float):
+func heal(amount : int):
 	if is_dead:
 		return
 	
@@ -30,7 +30,7 @@ func heal(amount : float):
 	current_health = total_health if current_health > total_health else current_health
 
 
-func upgrade_health(amount : float):
+func upgrade_health(amount : int):
 	total_health += amount
 
 

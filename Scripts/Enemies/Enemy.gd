@@ -5,10 +5,11 @@ extends Area2D
 var enemies_manager : EnemiesManager
 
 var playerNode : Node2D
-var speed = 50
 var separation_radius : float
 var separation_force : Vector2 = Vector2.ZERO
+
 @export var separation_weight : float
+@export var stats : Stats
 
 var collider : CollisionShape2D
 
@@ -50,7 +51,7 @@ func follow_player(delta):
 	
 	var movement = (direction + separation_force * separation_weight).normalized()
 	
-	position += (speed * delta) * movement
+	position += (stats.speed * delta) * movement
 
 
 #make enemies avoid each other
@@ -101,6 +102,10 @@ func get_neighbors_positions() -> Array:
 			neighbor_position.append(neighbor.global_position)
 		
 	return neighbor_position
+
+
+func get_damage():
+	return stats.power
 
 
 func _on_mouse_entered():

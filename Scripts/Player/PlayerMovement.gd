@@ -21,6 +21,7 @@ var state : Movement_State = Movement_State.IDLE
 
 func _ready():
 	player_stats = $PlayerStats
+	add_to_group("player")
 
 
 func _process(delta):
