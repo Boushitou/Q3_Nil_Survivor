@@ -37,6 +37,12 @@ func _process(delta):
 func set_references(player : Node2D, manager: EnemiesManager):
 	playerNode = player
 	enemies_manager = manager
+	
+	
+func setup_stats(enemy_stat):
+	stats.health.total_health = enemy_stat["total_health"]
+	stats.power = enemy_stat["power"]
+	stats.speed = enemy_stat["speed"]
 
 
 func follow_player(delta):
