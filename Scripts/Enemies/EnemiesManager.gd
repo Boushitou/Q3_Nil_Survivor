@@ -7,11 +7,12 @@ var spawner : EnemySpawner
 
 var enemy_grid : Dictionary = {}
 
+signal enemy_died_signal
+
 func _ready():
 	player_pos = $"../Controller/Body"
 	spawner = $EnemySpawner
 	spawner.set_references(player_pos, self)
-	spawner.spawn_enemies_test()
 
 
 func update_enemy_position(enemy: Node, old_cell: Vector2, new_cell: Vector2):
@@ -43,6 +44,7 @@ func remove_enemy(enemy: Node, cell: Vector2):
 	cell_enemies.erase(enemy)
 	enemy_grid[cell] = cell_enemies
 	PoolSystem.pool_object("enemy", enemy)
+	emit_signal("enemy_died_signal")
 
 
 func get_enemy_count() -> int:

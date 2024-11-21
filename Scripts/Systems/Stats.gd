@@ -8,7 +8,7 @@ extends Node
 
 var level = 1
 
-func increase_hp(value : float):
+func increase_hp(value : int):
 	health.upgrade_health(value)
 
 
