@@ -92,10 +92,8 @@ func spawn_enemies():
 		return
 	if camera == null:
 		return
-		
-	var screen_size = camera.get_viewport_rect().size
-	var spawn_distance = screen_size.length() * 0.5 + camera_buffer
 	
+	var spawn_distance = get_spawn_distance()
 	var enemies_to_spawn = max_wave_enemies - current_enemies_nb
 	
 	for i in enemies_to_spawn:
@@ -120,7 +118,15 @@ func pick_enemy_type() -> String:
 	return enemy_type[rng.randi_range(0, enemy_type.size() - 1)]["type"]
 
 
-func get_spawn_position(spawn_distance) -> Vector2:
+func get_spawn_distance() -> float:
+	if camera == null:
+		return 0.0
+		
+	var screen_size = camera.get_viewport_rect().size
+	return screen_size.length() * 0.5 + camera_buffer
+
+
+func get_spawn_position(spawn_distance : float) -> Vector2:
 	var angle = randf() * TAU
 	var spawn_offset = Vector2(cos(angle), sin(angle)) * spawn_distance
 	var spawn_position = player_node.global_position + spawn_offset
