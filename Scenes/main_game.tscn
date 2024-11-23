@@ -23,6 +23,7 @@ smooth_factor = 5.0
 distance_scale = 2.0
 
 [node name="EnemiesManager" type="Node" parent="."]
+process_mode = 4
 script = ExtResource("6_ql5bx")
 
 [node name="EnemySpawner" type="Node" parent="EnemiesManager" node_paths=PackedStringArray("timer_survival")]
@@ -31,7 +32,7 @@ timer_survival = NodePath("../../Timer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="FpsLabel" type="Label" parent="CanvasLayer"]
 offset_right = 100.0
 offset_bottom = 28.0
 text = "Fps : 45452"
@@ -47,6 +48,7 @@ offset_right = 46.0
 offset_bottom = 23.0
 grow_horizontal = 2
 text = "Time : 00:00"
+horizontal_alignment = 1
 
 [node name="Timer" type="Node" parent="." node_paths=PackedStringArray("timer_label")]
 script = ExtResource("7_s0p6n")

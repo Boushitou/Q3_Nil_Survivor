@@ -1,0 +1,22 @@
+﻿{
+  "winged_scarab": {
+    "name": "Winged Scarab",
+    "sprite": "winged_scarab",
+    "effects": [
+      [
+        {"stat": "speed", "factor": 1.1, "description": "Increases speed by 10%"},
+        {"stat": "speed", "factor": 1.2, "description": "Increases speed by 10%"},
+        {"stat": "speed", "factor": 1.3, "description": "Increases speed by 10%"},
+        {"stat": "speed", "factor": 1.4, "description": "Increases speed by 10%"},
+        {"stat": "speed", "factor": 1.5, "description": "Increases speed by 10%"}
+      ],
+      [
+        {"stat": "health", "factor": 1.1, "description": "Increases health by 10%"},
+        {"stat": "health", "factor": 1.2, "description": "Increases health by 10%"},
+        {"stat": "health", "factor": 1.3, "description": "Increases health by 10%"},
+        {"stat": "health", "factor": 1.4, "description": "Increases health by 10%"},
+        {"stat": "health", "factor": 1.5, "description": "Increases health by 10%"}
+      ]
+    ]
+  }
+}
