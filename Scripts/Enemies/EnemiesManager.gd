@@ -69,4 +69,4 @@ func respawn_enemies():
 			if distance_to_player > distance_respawn * distance_respawn + 300:
 				var new_pos = spawner.get_spawn_position(distance_respawn)
 				enemy.global_position = new_pos
-				print("enemy has be rellocated !")
+				#print("enemy has be rellocated !")

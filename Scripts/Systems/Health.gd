@@ -6,14 +6,22 @@ extends Node
 var current_health : int
 var is_dead : bool = false
 
+signal has_died
+
 func _ready():
 	current_health = total_health
 
 
-func take_damage(amount : float):
+func init_health():
+	current_health = total_health
+	is_dead = false
+
+
+func take_damage(amount : int):
 	if is_dead:
 		return
 	
+	#print("current health: ", current_health)
 	current_health -= amount
 	
 	if current_health <= 0:
@@ -35,4 +43,4 @@ func upgrade_health(amount : int):
 
 func death():
 	is_dead = true
-	#death event for player ?
+	emit_signal("has_died")

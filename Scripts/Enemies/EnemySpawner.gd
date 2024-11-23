@@ -2,7 +2,7 @@ class_name EnemySpawner
 
 extends Node
 
-@export var camera_buffer : int = 100
+@export var camera_buffer : int = 50
 
 @export var timer_survival : TimerSurvival
 var player_node : Node2D

@@ -41,8 +41,11 @@ func set_references(player : Node2D, manager: EnemiesManager):
 	
 func setup_stats(enemy_stat):
 	stats.health.total_health = enemy_stat["total_health"]
+	stats.health.init_health()
 	stats.power = enemy_stat["power"]
 	stats.speed = enemy_stat["speed"]
+	
+	stats.health.connect("has_died", _on_enemy_died)
 
 
 func follow_player(delta):
@@ -115,4 +118,10 @@ func get_damage():
 
 
 func _on_mouse_entered():
+	stats.health.take_damage(1)
+	#print("inflicted damage !")
+	
+
+func _on_enemy_died():
+	stats.health.disconnect("has_died", _on_enemy_died)
 	enemies_manager.remove_enemy(self, last_cell)
