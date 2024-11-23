@@ -118,7 +118,7 @@ func get_damage():
 
 
 func _on_mouse_entered():
-	stats.health.take_damage(1)
+	stats.health.take_damage(10)
 	#print("inflicted damage !")
 	
 

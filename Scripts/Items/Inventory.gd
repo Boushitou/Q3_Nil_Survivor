@@ -23,8 +23,13 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("add_item_test"):
-		var new_passive = PassiveItem.new(passives_data["winged_scarab"], player_stats)
-		select_passive_item(new_passive)
+		var passive_name = "winged_scarab"
+		
+		if passives_data.has(passive_name):
+			var new_passive = PassiveItem.new(passives_data[passive_name], player_stats)
+			select_passive_item(new_passive)
+		else:
+			print("passive item not found")
 		
 
 

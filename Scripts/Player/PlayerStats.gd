@@ -22,7 +22,9 @@ func _ready():
 		"attack_speed" : attack_speed,
 		"power" : power,
 		"atk_range" : atk_range,
-		"amount" : amount
+		"amount" : amount,
+		"health" : health.total_health,
+		"health_regeneration" : health.health_regeneration
 }
 
 
@@ -47,9 +49,11 @@ func level_up():
 
 func increase_stat(stat_name : String, value):
 	if stats.has(stat_name):
-		stats[stat_name] += value
-		stats[stat_name] = 0 if stats[stat_name] < 0 else stats[stat_name]
-
+			stats[stat_name] = value
+			stats[stat_name] = 0 if stats[stat_name] < 0 else stats[stat_name]
+			
+			if stat_name == "health" or stat_name == "health_regeneration":
+				update_health_values()
 
 func get_stat_value(stat_name : String):
 	if stats.has(stat_name):
@@ -57,3 +61,8 @@ func get_stat_value(stat_name : String):
 	else:
 		print("stat not found : ", stat_name)
 		return 0
+
+
+func update_health_values():
+	health.total_health = get_stat_value("health")
+	health.health_regeneration = get_stat_value("health_regeneration")

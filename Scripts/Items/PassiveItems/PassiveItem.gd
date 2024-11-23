@@ -3,6 +3,7 @@ class_name PassiveItem
 var level = 1
 var passive_name = ""
 var effects = []
+var is_multiplicator = false
 var player_stats : PlayerStats
 
 func _init(passive: Dictionary, stats: PlayerStats):
@@ -27,19 +28,26 @@ func apply_effects():
 		var factor = effect["factor"]
 		var stat_value = player_stats.get_stat_value(stat_name)
 		
-		var increased_value = stat_value * (factor - 1)
+		var increased_value = 0
+		
+		if is_multiplicator:
+			increased_value = stat_value * (factor - 1)
+			increased_value += stat_value
+		else:
+			increased_value = stat_value + factor
+				
 		player_stats.increase_stat(stat_name, increased_value)
 		
-		print("increased value for ", stat_name, " : ", stat_value + increased_value)
+		print("increased value for ", stat_name, " : ",  increased_value)
 		
 		
 func set_passive_effects(passive: Dictionary):
 	effects = passive["effects"]
 	passive_name = passive["name"]
+	is_multiplicator = passive["multiplicator"]
 	
 	
 func get_effect_description(index: int) -> String:
-	var description = ""
-	description = effects[index]["description"]
+	var description = effects[index]["description"]
 	print("item description :", description)
 	return description

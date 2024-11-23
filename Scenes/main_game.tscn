@@ -23,7 +23,6 @@ smooth_factor = 5.0
 distance_scale = 2.0
 
 [node name="EnemiesManager" type="Node" parent="."]
-process_mode = 4
 script = ExtResource("6_ql5bx")
 
 [node name="EnemySpawner" type="Node" parent="EnemiesManager" node_paths=PackedStringArray("timer_survival")]

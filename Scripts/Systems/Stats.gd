@@ -8,9 +8,5 @@ extends Node
 
 var level = 1
 
-func increase_hp(value : int):
-	health.upgrade_health(value)
-
-
 func get_damage() -> int:
 	return power
