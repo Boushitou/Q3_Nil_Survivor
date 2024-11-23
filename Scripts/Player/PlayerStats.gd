@@ -54,3 +54,6 @@ func increase_stat(stat_name : String, value):
 func get_stat_value(stat_name : String):
 	if stats.has(stat_name):
 		return stats[stat_name]
+	else:
+		print("stat not found : ", stat_name)
+		return 0

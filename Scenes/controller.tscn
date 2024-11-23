@@ -24,6 +24,7 @@ DASH_FORCE = 3000.0
 script = ExtResource("4_jjtk5")
 health = NodePath("../Health")
 speed = 200.0
+power = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
 texture = ExtResource("3_dh2ju")
@@ -38,8 +39,9 @@ health = NodePath("../Health")
 script = ExtResource("6_lf85x")
 total_health = 100
 
-[node name="Inventory" type="Node" parent="Body"]
+[node name="Inventory" type="Node" parent="Body" node_paths=PackedStringArray("player_stats")]
 script = ExtResource("7_mn01f")
+player_stats = NodePath("../PlayerStats")
 
 [connection signal="area_entered" from="Body" to="Body/CollisionShape2D" method="_on_body_area_entered"]
 [connection signal="area_exited" from="Body" to="Body/CollisionShape2D" method="_on_body_area_exited"]

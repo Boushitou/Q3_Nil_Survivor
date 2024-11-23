@@ -10,6 +10,23 @@ var weapons = []
 var max_passives = 3
 var max_weapons = 3
 
+var passives_data = {}
+
+
+func _ready():
+	var passives_file = FileAccess.open("res://Data/Items/PassiveItems.json", FileAccess.READ)
+	
+	if passives_file:
+		passives_data = JSON.parse_string(passives_file.get_as_text())
+		passives_file.close()
+
+
+func _process(_delta):
+	if Input.is_action_just_pressed("add_item_test"):
+		var new_passive = PassiveItem.new(passives_data["winged_scarab"], player_stats)
+		select_passive_item(new_passive)
+		
+
 
 func select_passive_item(passive: PassiveItem):
 	if passives_items.size() >= max_passives:
@@ -40,8 +57,14 @@ func add_passive_item(passive: PassiveItem):
 	
 
 func level_up_passive_item(passive: PassiveItem):
-	var item = passives_items.find(passive)
+	var item = null
+	for passive_item in passives_items:
+		if passive.passive_name == passive_item.passive_name:
+			item = passive_item
+			break
+			
+	if item == null:
+		print("passive item not found")
+		return
+		
 	item.level_up()
-	print("passive item leveled up : ", item.passive_name)
-	print("level : ", item.passive_name)
-	passive.free()

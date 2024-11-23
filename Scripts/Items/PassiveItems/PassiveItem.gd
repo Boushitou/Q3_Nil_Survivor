@@ -11,20 +11,26 @@ func _init(passive: Dictionary, stats: PlayerStats):
 
 
 func level_up():
+	if level + 1 > 5:
+		print("This passive can't level up anymore !")
+		return
+		
 	level += 1
 	apply_effects()
+	print("passive leveled up : ", passive_name, " level : ", level)
 
 
 func apply_effects():
-	for effect in effects:
-		var stat_name = effect["stat"][level - 1]
-		var factor = effect["factor"][level - 1]
+	for effect_list in effects:
+		var effect = effect_list[level - 1]
+		var stat_name = effect["stat"]
+		var factor = effect["factor"]
 		var stat_value = player_stats.get_stat_value(stat_name)
 		
 		var increased_value = stat_value * (factor - 1)
 		player_stats.increase_stat(stat_name, increased_value)
 		
-		print("increased value for ", stat_name, " : ", increased_value)
+		print("increased value for ", stat_name, " : ", stat_value + increased_value)
 		
 		
 func set_passive_effects(passive: Dictionary):
