@@ -33,14 +33,16 @@ func _process(_delta):
 		
 
 
-func select_passive_item(passive: PassiveItem):
-	if passives_items.size() >= max_passives:
-		print("passive item list is full")
-		return
-		
+func select_passive_item(passive_name: String):
+	var passive = PassiveItem.new(passives_data[passive_name], player_stats)
+	
 	if is_item_in_inventory(passive):
 		level_up_passive_item(passive)
 	else:
+		if passives_items.size() >= max_passives:
+			print("passive item list is full")
+			return
+			
 		add_passive_item(passive)
 	
 

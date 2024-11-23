@@ -22,6 +22,7 @@ DASH_FORCE = 3000.0
 
 [node name="PlayerStats" type="Node" parent="Body" node_paths=PackedStringArray("health")]
 script = ExtResource("4_jjtk5")
+attack_speed = 1.0
 health = NodePath("../Health")
 speed = 200.0
 power = 10

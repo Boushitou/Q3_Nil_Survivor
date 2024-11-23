@@ -10,7 +10,7 @@ var enemy_grid : Dictionary = {}
 signal enemy_died_signal
 
 func _ready():
-	player_node = $"../Controller/Body"
+	player_node = $"../Player/Body"
 	spawner = $EnemySpawner
 	spawner.set_references(player_node, self)
 	

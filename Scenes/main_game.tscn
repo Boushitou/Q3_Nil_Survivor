@@ -1,16 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0jg0mtojp1l8"]
+[gd_scene load_steps=9 format=3 uid="uid://d0jg0mtojp1l8"]
 
-[ext_resource type="PackedScene" uid="uid://ddcgvg5rx8u17" path="res://Scenes/controller.tscn" id="1_o57fh"]
+[ext_resource type="Script" path="res://Scripts/Systems/GameManager.gd" id="1_grhj2"]
+[ext_resource type="PackedScene" uid="uid://ddcgvg5rx8u17" path="res://Scenes/Player.tscn" id="1_o57fh"]
 [ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="3_xo0ds"]
 [ext_resource type="Script" path="res://Scripts/Systems/CameraFollow.gd" id="5_mlmmy"]
-[ext_resource type="Script" path="res://Scripts/FpsCounter.gd" id="6_ius5g"]
+[ext_resource type="PackedScene" uid="uid://cjegdqifbh18b" path="res://Scenes/GameCanvas.tscn" id="6_blb7o"]
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemiesManager.gd" id="6_ql5bx"]
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemySpawner.gd" id="7_dhjye"]
 [ext_resource type="Script" path="res://Scripts/Systems/Timer.gd" id="7_s0p6n"]
 
 [node name="MainGame" type="Node2D"]
+script = ExtResource("1_grhj2")
 
-[node name="Controller" parent="." instance=ExtResource("1_o57fh")]
+[node name="Player" parent="." instance=ExtResource("1_o57fh")]
 
 [node name="TestSprite" type="Sprite2D" parent="."]
 position = Vector2(-341, -11)
@@ -29,15 +31,15 @@ script = ExtResource("6_ql5bx")
 script = ExtResource("7_dhjye")
 timer_survival = NodePath("../../Timer")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GameCanvas" parent="." instance=ExtResource("6_blb7o")]
 
-[node name="FpsLabel" type="Label" parent="CanvasLayer"]
-offset_right = 100.0
-offset_bottom = 28.0
-text = "Fps : 45452"
-script = ExtResource("6_ius5g")
+[node name="Timer" type="Node" parent="." node_paths=PackedStringArray("timer_label")]
+script = ExtResource("7_s0p6n")
+timer_label = NodePath("CanvasLayer/TimerLabel")
 
-[node name="TimerLabel" type="Label" parent="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Timer"]
+
+[node name="TimerLabel" type="Label" parent="Timer/CanvasLayer"]
 clip_contents = true
 anchors_preset = 5
 anchor_left = 0.5
@@ -48,7 +50,3 @@ offset_bottom = 23.0
 grow_horizontal = 2
 text = "Time : 00:00"
 horizontal_alignment = 1
-
-[node name="Timer" type="Node" parent="." node_paths=PackedStringArray("timer_label")]
-script = ExtResource("7_s0p6n")
-timer_label = NodePath("../CanvasLayer/TimerLabel")
