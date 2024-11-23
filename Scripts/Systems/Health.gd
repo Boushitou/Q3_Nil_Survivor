@@ -15,7 +15,6 @@ func take_damage(amount : float):
 		return
 	
 	current_health -= amount
-	print("Player has been hit, current health : ", current_health)
 	
 	if current_health <= 0:
 		current_health = 0
@@ -36,5 +35,4 @@ func upgrade_health(amount : int):
 
 func death():
 	is_dead = true
-	print("You are dead.")
 	#death event for player ?
