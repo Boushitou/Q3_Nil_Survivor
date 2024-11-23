@@ -2,9 +2,12 @@ class_name EnemySpawner
 
 extends Node
 
+@export var camera_buffer : int = 100
+
 @export var timer_survival : TimerSurvival
-var playerNode : Node2D
+var player_node : Node2D
 var enemies_manager : EnemiesManager
+var camera : Camera2D
 
 var enemy_scene = preload("res://Scenes/enemy.tscn")
 var enemy_data = {}
@@ -55,7 +58,8 @@ func _process(delta):
 
 
 func set_references(player : Node2D, manager: EnemiesManager):
-	playerNode = player 
+	player_node = player 
+	camera = player_node.get_viewport().get_camera_2d()
 	enemies_manager = manager
 	enemies_manager.connect("enemy_died_signal", _on_enemy_died)
 	can_spawn = true
@@ -86,19 +90,21 @@ func spawn_enemies():
 	if current_enemies_nb >= max_wave_enemies:
 		#print("can't spawn more enemies !")
 		return
+	if camera == null:
+		return
+		
+	var screen_size = camera.get_viewport_rect().size
+	var spawn_distance = screen_size.length() * 0.5 + camera_buffer
 	
 	var enemies_to_spawn = max_wave_enemies - current_enemies_nb
 	
 	for i in enemies_to_spawn:
-		var dist = 800.0
-		var pos = Vector2(rng.randf_range(-dist, dist), rng.randf_range(-dist, dist))
-		
 		var enemy_type = pick_enemy_type()
 		if enemy_type == "":
 			return #fail safe
 			
-		var enemy = PoolSystem.instantiate_object("enemy", enemy_scene, pos, 0.0, self)
-		enemy.set_references(playerNode, enemies_manager)
+		var enemy = PoolSystem.instantiate_object("enemy", enemy_scene, get_spawn_position(spawn_distance), 0.0, self)
+		enemy.set_references(player_node, enemies_manager)
 		enemy.setup_stats(enemy_data[enemy_type])
 		
 		current_enemies_nb += 1
@@ -112,6 +118,14 @@ func pick_enemy_type() -> String:
 		return ""
 	
 	return enemy_type[rng.randi_range(0, enemy_type.size() - 1)]["type"]
+
+
+func get_spawn_position(spawn_distance) -> Vector2:
+	var angle = randf() * TAU
+	var spawn_offset = Vector2(cos(angle), sin(angle)) * spawn_distance
+	var spawn_position = player_node.global_position + spawn_offset
+	
+	return spawn_position
 
 
 func _on_enemy_died():

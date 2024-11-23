@@ -4,7 +4,7 @@
       "wave_number": 1,
       "enemies_frequency": 1,
       "enemies": [
-        {"type": "beetle", "count": 5}
+        {"type": "beetle", "count": 50}
       ]
     },
     {
