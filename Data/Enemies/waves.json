@@ -4,34 +4,22 @@
       "wave_number": 1,
       "enemies_frequency": 1,
       "enemies": [
-        {
-          "type": "beetle",
-          "count": 5
-        }
+        {"type": "beetle", "count": 5}
       ]
     },
     {
       "wave_number": 2,
       "enemies_frequency": 0.5,
       "enemies": [
-        {
-          "type": "mummy",
-          "count": 5
-        }
+        {"type": "mummy", "count": 5}
       ]
     },
     {
       "wave_number": 3,
       "enemies_frequency": 0.3,
       "enemies": [
-        {
-          "type": "beetle",
-          "count": 5
-        },
-        {
-          "type": "mummy",
-          "count": 5
-        }
+        {"type": "beetle", "count": 5},
+        {"type": "mummy", "count": 5}
       ]
     }
   ]

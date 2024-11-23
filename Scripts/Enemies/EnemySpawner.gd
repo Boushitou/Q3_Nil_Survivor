@@ -13,12 +13,12 @@ var waves_data = {}
 var enemy_frequency = 0.001
 var time_since_last_spawn = 0.0
 
-var current_wave_nb = 0
+var current_wave_nb = -1
 var current_enemies_nb = 0
 var current_wave = {}
 var max_wave_enemies = 0
 
-var can_spawn = true
+var can_spawn = false
 
 var rng = RandomNumberGenerator.new()
 
@@ -39,6 +39,8 @@ func _ready():
 	enemy_frequency = current_wave["enemies_frequency"]
 	timer_survival.connect("time_over", _on_time_over)
 	timer_survival.connect("minute_passed", _on_minute_passed)
+	
+	start_next_wave()
 
 
 func _process(delta):
@@ -56,12 +58,17 @@ func set_references(player : Node2D, manager: EnemiesManager):
 	playerNode = player 
 	enemies_manager = manager
 	enemies_manager.connect("enemy_died_signal", _on_enemy_died)
+	can_spawn = true
 	
 
 func start_next_wave():
+	current_wave_nb += 1
+	
 	if current_wave_nb >= waves_data["waves"].size():
 		return
+		
 	current_wave = waves_data["waves"][current_wave_nb]
+	
 	max_wave_enemies = calculate_max_enemies(current_wave)
 	enemy_frequency = current_wave["enemies_frequency"]
 	
@@ -85,13 +92,26 @@ func spawn_enemies():
 	for i in enemies_to_spawn:
 		var dist = 800.0
 		var pos = Vector2(rng.randf_range(-dist, dist), rng.randf_range(-dist, dist))
+		
+		var enemy_type = pick_enemy_type()
+		if enemy_type == "":
+			return #fail safe
+			
 		var enemy = PoolSystem.instantiate_object("enemy", enemy_scene, pos, 0.0, self)
 		enemy.set_references(playerNode, enemies_manager)
-		
-		var enemy_type = current_wave["enemies"][0]["type"]
 		enemy.setup_stats(enemy_data[enemy_type])
+		
 		current_enemies_nb += 1
 		#print("spawning ennemies !")
+
+
+func pick_enemy_type() -> String:
+	var enemy_type = current_wave["enemies"]
+	
+	if enemy_type.size() == 0:
+		return ""
+	
+	return enemy_type[rng.randi_range(0, enemy_type.size() - 1)]["type"]
 
 
 func _on_enemy_died():
@@ -105,6 +125,5 @@ func _on_time_over():
 
 
 func _on_minute_passed():
-	current_wave_nb += 1
 	start_next_wave()
 	print("Next wave !")
