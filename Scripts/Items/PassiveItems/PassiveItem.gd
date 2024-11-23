@@ -1,7 +1,5 @@
 class_name PassiveItem
 
-extends Node
-
 var level = 1
 var passive_name = ""
 var effects = []
@@ -14,6 +12,7 @@ func _init(passive: Dictionary, stats: PlayerStats):
 
 func level_up():
 	level += 1
+	apply_effects()
 
 
 func apply_effects():
@@ -38,7 +37,3 @@ func get_effect_description(index: int) -> String:
 	description = effects[index]["description"]
 	print("item description :", description)
 	return description
-
-
-func get_item_name() -> String:
-	return effects["name"]

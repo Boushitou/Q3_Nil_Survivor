@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddcgvg5rx8u17"]
+[gd_scene load_steps=9 format=3 uid="uid://ddcgvg5rx8u17"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_d1yww"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_jhwxv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerStats.gd" id="4_jjtk5"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCollisions.gd" id="5_b0aba"]
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="6_lf85x"]
+[ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="7_mn01f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
 size = Vector2(118, 119)
@@ -36,6 +37,9 @@ health = NodePath("../Health")
 [node name="Health" type="Node" parent="Body"]
 script = ExtResource("6_lf85x")
 total_health = 100
+
+[node name="Inventory" type="Node" parent="Body"]
+script = ExtResource("7_mn01f")
 
 [connection signal="area_entered" from="Body" to="Body/CollisionShape2D" method="_on_body_area_entered"]
 [connection signal="area_exited" from="Body" to="Body/CollisionShape2D" method="_on_body_area_exited"]
