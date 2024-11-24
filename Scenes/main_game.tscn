@@ -25,6 +25,7 @@ smooth_factor = 5.0
 distance_scale = 2.0
 
 [node name="EnemiesManager" type="Node" parent="."]
+process_mode = 4
 script = ExtResource("6_ql5bx")
 
 [node name="EnemySpawner" type="Node" parent="EnemiesManager" node_paths=PackedStringArray("timer_survival")]
@@ -44,9 +45,10 @@ clip_contents = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -46.0
-offset_right = 46.0
-offset_bottom = 23.0
+offset_left = -48.0
+offset_top = 64.0
+offset_right = 44.0
+offset_bottom = 87.0
 grow_horizontal = 2
 text = "Time : 00:00"
 horizontal_alignment = 1

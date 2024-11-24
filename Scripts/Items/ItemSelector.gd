@@ -27,20 +27,11 @@ func _ready():
 
 	inventory = get_tree().get_nodes_in_group("player")[0].get_node("Inventory")
 	player_stats = inventory.player_stats
+	player_stats.connect("level_up_signal",make_parent_visible)
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("test_action"):
-		for child in get_children():
-			child.disconnect("item_selected_signal", set_item_in_inventory)
-			child.queue_free()
-		
-		items_to_display = get_random_item()
-		if items_to_display.size() > 0:
-			display_items()
-		else:
-			print("No items to display !")
-
+	pass
 
 func set_items_data(path : String) -> Dictionary:
 	var file = FileAccess.open(path, FileAccess.READ)
@@ -92,6 +83,7 @@ func display_items():
 
 		item_instance.set_item_data(items_data[item], player_stats, item_level, first_time)
 		item_instance.connect("item_selected_signal", set_item_in_inventory)
+		item_instance.connect("item_selected_signal", make_parent_not_visible)
 
 
 func set_item_in_inventory(added_item : Items):
@@ -128,5 +120,29 @@ func get_available_items() -> Array:
 	return available_items
 
 
+func prepare_items_to_display():
+	for child in get_children():
+		child.disconnect("item_selected_signal", set_item_in_inventory)
+		child.disconnect("item_selected_signal", make_parent_not_visible)
+		child.queue_free()
+	
+	items_to_display = get_random_item()
+	if items_to_display.size() > 0:
+		display_items()
+	else:
+		print("No items to display !")
+
+
+func make_parent_visible():
+	get_parent().visible = true
+
+
+func make_parent_not_visible(_added_item : Items):
+	get_parent().visible = false
+
+
 func _on_visibility_changed():
-	pass # Replace with function body.
+	if not inventory:
+		return
+	if get_parent().is_visible_in_tree():
+		prepare_items_to_display()

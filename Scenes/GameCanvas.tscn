@@ -8,12 +8,14 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="FpsLabel" type="Label" parent="."]
+offset_top = 64.0
 offset_right = 100.0
-offset_bottom = 28.0
+offset_bottom = 92.0
 text = "Fps : 45452"
 script = ExtResource("1_j1xen")
 
 [node name="Background" type="NinePatchRect" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -27,7 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_uty8b")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background"]
+[node name="ItemSelector" type="HBoxContainer" parent="Background"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 24.0
@@ -35,4 +37,4 @@ offset_right = 744.0
 offset_bottom = 360.0
 script = ExtResource("2_kiayn")
 
-[connection signal="visibility_changed" from="Background/HBoxContainer" to="Background/HBoxContainer" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Background/ItemSelector" to="Background/ItemSelector" method="_on_visibility_changed"]

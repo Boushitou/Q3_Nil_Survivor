@@ -10,10 +10,12 @@ extends Stats
 var stats : Dictionary
 
 #region leveling value
-const BASE_XP = 50
+const BASE_XP = 5
 const GROWTH_FACTOR = 1.2
 var next_xp : int = BASE_XP
 var current_xp = 0
+
+signal level_up_signal()
 #endregion
 
 # Called when the node enters the scene tree for the first time.
@@ -30,17 +32,25 @@ func _ready():
 }
 
 
-func get_xp(xp : int):
+func _process(_delta):
+	if Input.is_action_just_pressed("test_action"):
+		add_xp(1)
+		print("current xp : ", current_xp, " / ", next_xp)
+		print("level : ", level)
+
+
+func add_xp(xp : int):
 	current_xp += xp
 	
-	if current_xp > next_xp:
+	if current_xp >= next_xp:
+		current_xp -= next_xp
 		level_up()
 
 
 func level_up():
 	level += 1
-	current_xp = 0
 	next_xp = BASE_XP * pow(GROWTH_FACTOR, level - 1)
+	level_up_signal.emit()
 
 
 func increase_stat(stat_name : String, value):
