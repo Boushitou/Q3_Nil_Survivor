@@ -38,14 +38,14 @@ func level_up_item(item: Items):
 	correct_item.level_up()
 
 
-func already_has_item(item : Items) ->bool:
+func get_item_by_name(item_name : String) -> Items:
 	var items = passives_items + weapons
 	
 	for i in items:
-		if i.item_name == item.item_name:
-			return true
+		if i.item_name == item_name:
+			return i
 	
-	return false
+	return null
 
 
 func weapons_slots_full() -> bool:

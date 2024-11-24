@@ -82,12 +82,21 @@ func display_items():
 		var item_instance = item_choice.instantiate()
 		add_child(item_instance)
 
-		item_instance.set_item_data(items_data[item], player_stats)
+		var item_level = 1
+		var player_item = inventory.get_item_by_name(items_data[item]["name"])
+		var first_time = true
+		if player_item:
+			item_level = player_item.level + 1
+			first_time = false
+			print("item level : ", item_level)
+
+		item_instance.set_item_data(items_data[item], player_stats, item_level, first_time)
 		item_instance.connect("item_selected_signal", set_item_in_inventory)
 
 
 func set_item_in_inventory(added_item : Items):
-	if not inventory.already_has_item(added_item):
+	var player_item = inventory.get_item_by_name(items_data[item_name_to_key[added_item.item_name]]["name"])
+	if not player_item:
 		inventory.add_item(added_item)
 	else:
 		inventory.level_up_item(added_item)
