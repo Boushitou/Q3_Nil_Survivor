@@ -2,7 +2,7 @@
   "thot_amulet": {
     "name": "Thot Amulet",
     "sprite": "",
-    "multiplicator": true,
+    "multiplicative": true,
     "effects": [
       [
         {"stat": "attack_speed", "factor": 1.08, "description": "Increases attack_speed by 8%"},
@@ -16,7 +16,7 @@
   "winged_scarab": {
     "name": "Winged Scarab",
     "sprite": "winged_scarab",
-    "multiplicator": true,
+    "multiplicative": true,
     "effects": [
       [
         {"stat": "speed", "factor": 1.1, "description": "Increases speed by 10%"},
@@ -30,7 +30,7 @@
   "wedjat_eye": {
     "name": "Wedjat Eye",
     "sprite": "",
-    "multiplicator": false,
+    "multiplicative": false,
     "effects": [
       [
         {"stat": "health_regeneration", "factor": 1.0, "description": "Increases health regeneration by 1 hp / sec"},
@@ -44,7 +44,7 @@
   "heart_amulet": {
     "name": "Heart Amulet",
     "sprite": "",
-    "multiplicator": true,
+    "multiplicative": true,
     "effects": [
       [
         {"stat": "health", "factor": 1.1, "description": "Increases health by 10%"},

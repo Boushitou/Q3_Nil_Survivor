@@ -4,7 +4,7 @@ extends Node2D
 
 enum Movement_State {IDLE, MOVING, DASHING}
 
-var player_stats
+@export var player_stats : PlayerStats
 
 #region dash values
 @export var DASH_FORCE : float
@@ -20,7 +20,6 @@ var state : Movement_State = Movement_State.IDLE
 
 
 func _ready():
-	player_stats = $PlayerStats
 	add_to_group("player")
 
 

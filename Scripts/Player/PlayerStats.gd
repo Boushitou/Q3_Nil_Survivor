@@ -28,12 +28,6 @@ func _ready():
 }
 
 
-func _process(_delta):
-	if Input.is_action_pressed("test_action"):
-		increase_stat("speed", 10)
-		print("speed has been increase by 10, total value : ", get_stat_value("speed"))
-
-
 func get_xp(xp : int):
 	current_xp += xp
 	

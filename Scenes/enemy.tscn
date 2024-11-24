@@ -8,11 +8,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yqw5"]
 radius = 32.0156
 
-[node name="Enemy" type="Area2D" node_paths=PackedStringArray("stats")]
+[node name="Enemy" type="Area2D" node_paths=PackedStringArray("stats", "collider")]
 collision_layer = 2
 script = ExtResource("1_6noeu")
 separation_weight = 200.0
 stats = NodePath("Stats")
+collider = NodePath("CollisionShape2D")
 
 [node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("3_0op4a")
@@ -30,5 +31,6 @@ shape = SubResource("CircleShape2D_3yqw5")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("4_021do")
+total_health = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

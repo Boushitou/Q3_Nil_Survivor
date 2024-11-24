@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 Utils="res://Scripts/Utils/Utilities.gd"
 Pool="res://Scripts/Systems/Pooling/PoolSystem.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [input]
 
 move_left={

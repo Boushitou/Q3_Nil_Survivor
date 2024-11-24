@@ -11,7 +11,7 @@ var separation_force : Vector2 = Vector2.ZERO
 @export var separation_weight : float
 @export var stats : Stats
 
-var collider : CollisionShape2D
+@export var collider : CollisionShape2D
 
 var grid_size = 50
 var last_cell : Vector2 = Vector2(-1, 1)
@@ -21,7 +21,6 @@ var time_since_last_update = 0.0
 
 func _ready():
 	add_to_group("enemies")
-	collider = $CollisionShape2D
 	
 	set_separation_radius()
 

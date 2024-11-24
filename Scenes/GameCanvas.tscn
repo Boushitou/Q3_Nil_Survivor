@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjegdqifbh18b"]
+[gd_scene load_steps=4 format=3 uid="uid://cjegdqifbh18b"]
 
 [ext_resource type="Script" path="res://Scripts/FpsCounter.gd" id="1_j1xen"]
 [ext_resource type="Script" path="res://Scripts/Items/ItemSelector.gd" id="2_kiayn"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_uty8b"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -11,46 +13,26 @@ offset_bottom = 28.0
 text = "Fps : 45452"
 script = ExtResource("1_j1xen")
 
-[node name="ItemSelector" type="ColorRect" parent="."]
-anchors_preset = 6
-anchor_left = 1.0
+[node name="Background" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -228.0
-offset_top = -208.0
-offset_right = -27.0
-offset_bottom = 209.0
-grow_horizontal = 0
+offset_left = -384.0
+offset_top = -196.0
+offset_right = 384.0
+offset_bottom = 188.0
+grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("CanvasTexture_uty8b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 744.0
+offset_bottom = 360.0
 script = ExtResource("2_kiayn")
 
-[node name="Button" type="Button" parent="ItemSelector"]
-layout_mode = 2
-offset_left = 19.0
-offset_top = 27.0
-offset_right = 186.0
-offset_bottom = 74.0
-
-[node name="Button2" type="Button" parent="ItemSelector"]
-offset_left = 15.0
-offset_top = 109.0
-offset_right = 182.0
-offset_bottom = 156.0
-
-[node name="Button3" type="Button" parent="ItemSelector"]
-offset_left = 16.0
-offset_top = 196.0
-offset_right = 183.0
-offset_bottom = 243.0
-
-[node name="Button4" type="Button" parent="ItemSelector"]
-offset_left = 12.0
-offset_top = 281.0
-offset_right = 179.0
-offset_bottom = 328.0
-
-[connection signal="button_up" from="ItemSelector/Button" to="ItemSelector" method="_on_button_button_up"]
-[connection signal="button_up" from="ItemSelector/Button2" to="ItemSelector" method="_on_button_2_button_up"]
-[connection signal="button_up" from="ItemSelector/Button3" to="ItemSelector" method="_on_button_3_button_up"]
-[connection signal="button_up" from="ItemSelector/Button4" to="ItemSelector" method="_on_button_4_button_up"]
+[connection signal="visibility_changed" from="Background/HBoxContainer" to="Background/HBoxContainer" method="_on_visibility_changed"]
