@@ -37,7 +37,7 @@ func level_up():
 		
 	level += 1
 	apply_effects()
-	print("passive leveled up : ", item_name, " level : ", level)
+	print("item leveled up : ", item_name, " level : ", level)
 	
 	
 func apply_effects():

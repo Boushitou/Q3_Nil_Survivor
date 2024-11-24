@@ -7,8 +7,9 @@ var item_choice = preload("res://Scenes/item_choice.tscn")
 var inventory : Inventory
 var player_stats : PlayerStats
 
-var items_data = {}
+var passives_data = {}
 var weapons_data = {}
+var items_data = {}
 var items_to_display = []
 var item_name_to_key = {}
 
@@ -16,15 +17,13 @@ const MAX_ITEMS = 3
 
 
 func _ready():
-	var passives_file = FileAccess.open("res://Data/Items/PassiveItems.json", FileAccess.READ)
-	
-	if passives_file:
-		items_data = JSON.parse_string(passives_file.get_as_text())
-		passives_file.close()
+	passives_data = set_items_data("res://Data/Items/PassiveItems.json")
+	weapons_data = set_items_data("res://Data/Items/Weapons.json")
+	items_data = passives_data.duplicate()
+	items_data.merge(weapons_data)
 
-	for key in items_data.keys():
-		var item = items_data[key]
-		item_name_to_key[item["name"]] = key
+	set_keys_name(passives_data)
+	set_keys_name(weapons_data)
 
 	inventory = get_tree().get_nodes_in_group("player")[0].get_node("Inventory")
 	player_stats = inventory.player_stats
@@ -41,6 +40,25 @@ func _process(_delta):
 			display_items()
 		else:
 			print("No items to display !")
+
+
+func set_items_data(path : String) -> Dictionary:
+	var file = FileAccess.open(path, FileAccess.READ)
+	var data = {}
+	
+	if file:
+		data = JSON.parse_string(file.get_as_text())
+		file.close()
+	else:
+		print("Error while opening file : ", path)
+	
+	return data
+
+
+func set_keys_name(data : Dictionary):
+	for key in data.keys():
+		var item = data[key]
+		item_name_to_key[item["name"]] = key
 
 
 func get_random_item() -> Array:
@@ -76,7 +94,7 @@ func set_item_in_inventory(added_item : Items):
 
 
 func get_available_items() -> Array:
-	var total_passive_items = items_data.keys()
+	var total_passive_items = passives_data.keys()
 	var total_weapons = weapons_data.keys()
 	var player_passives = inventory.passives_items #array of PassiveItem
 	var player_weapons = inventory.weapons #array of WeaponItem
@@ -97,8 +115,7 @@ func get_available_items() -> Array:
 				available_items.append(key)
 	else:
 		available_items.append_array(total_weapons)
-		
-		
+				
 	return available_items
 
 

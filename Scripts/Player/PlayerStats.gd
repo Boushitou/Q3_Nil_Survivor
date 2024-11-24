@@ -5,6 +5,7 @@ extends Stats
 @export var attack_speed : float
 @export var atk_range : float
 @export var amount: int
+@export var projectile_speed : float
 
 var stats : Dictionary
 
@@ -23,6 +24,7 @@ func _ready():
 		"power" : power,
 		"atk_range" : atk_range,
 		"amount" : amount,
+		"projectile_speed" : projectile_speed,
 		"health" : health.total_health,
 		"health_regeneration" : health.health_regeneration
 }

@@ -58,6 +58,65 @@
         {"stat": "health", "factor": 1.5, "description": "Increases health by 10%"}
       ]
     ]
+  },
+  "sekhmet_amulet": {
+    "type": "passive",
+    "name": "Sekhmet Amulet",
+    "sprite": "",
+    "multiplicative": true,
+    "effects": [
+      [
+        {"stat": "power", "factor": 1.1, "description": "Increases damage by 10%"},
+        {"stat": "power", "factor": 1.2, "description": "Increases damage by 10%"},
+        {"stat": "power", "factor": 1.3, "description": "Increases damage by 10%"},
+        {"stat": "power", "factor": 1.4, "description": "Increases damage by 10%"},
+        {"stat": "power", "factor": 1.5, "description": "Increases damage by 10%"}
+      ]
+    ]
+  },
+  "djed_pillar": {
+    "type": "passive",
+    "name": "Djed Pillar",
+    "sprite": "",
+    "multiplicative": true,
+    "effects": [
+      [
+        {"stat": "atk_range", "factor": 1.1, "description": "Increases the attack range by 10%"},
+        {"stat": "atk_range", "factor": 1.2, "description": "Increases the attack range by 10%"},
+        {"stat": "atk_range", "factor": 1.3, "description": "Increases the attack range by 10%"},
+        {"stat": "atk_range", "factor": 1.4, "description": "Increases the attack range by 10%"},
+        {"stat": "atk_range", "factor": 1.5, "description": "Increases the attack range by 10%"}
+      ]
+    ]
+  },
+  "fly_amulet": {
+    "type": "passive",
+    "name": "Fly Amulet",
+    "sprite": "",
+    "multiplicative": true,
+    "effects": [
+      [
+        {"stat": "projectile_speed", "factor": 1.1, "description": "Increases projectiles speed by 10%"},
+        {"stat": "projectile_speed", "factor": 1.2, "description": "Increases projectiles speed by 10%"},
+        {"stat": "projectile_speed", "factor": 1.3, "description": "Increases projectiles speed by 10%"},
+        {"stat": "projectile_speed", "factor": 1.4, "description": "Increases projectiles speed by 10%"},
+        {"stat": "projectile_speed", "factor": 1.5, "description": "Increases projectiles speed by 10%"}
+      ]
+    ]
+  },
+  "two_finger_amulet": {
+    "type": "passive",
+    "name": "Two-finger Amulet",
+    "sprite": "",
+    "multiplicative": false,
+    "effects": [
+      [
+        {"stat": "amount", "factor": 1.0, "description": "Increases the amount of attacks by 1"},
+        {"stat": "amount", "factor": 1.0, "description": "Increases the amount of attacks by 1"},
+        {"stat": "amount", "factor": 1.0, "description": "Increases the amount of attacks by 1"},
+        {"stat": "amount", "factor": 1.0, "description": "Increases the amount of attacks by 1"},
+        {"stat": "amount", "factor": 1.0, "description": "Increases the amount of attacks by 1"}
+      ]
+    ]
   }
-
 }

@@ -18,6 +18,8 @@ func _ready():
 func set_item_data(item: Dictionary, player_stats: PlayerStats):
 	if item["type"] == "passive":
 		item_data = PassiveItem.new(item, player_stats)
+	elif item["type"] == "weapon":
+		item_data = Weapon.new(item, player_stats)
 	else:
 		item_data = Items.new(item, player_stats)
 	

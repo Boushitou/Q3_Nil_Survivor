@@ -8,26 +8,14 @@ var passives_items = []
 var weapons = []
 
 var max_passives = 3
-var max_weapons = 3
-
-var passives_data = {}
-
-
-func _ready():
-	var passives_file = FileAccess.open("res://Data/Items/PassiveItems.json", FileAccess.READ)
-	
-	if passives_file:
-		passives_data = JSON.parse_string(passives_file.get_as_text())
-		passives_file.close()
-
+var max_weapons = 2
 	
 
 func add_item(item: Items):
 	if item is PassiveItem:
 		passives_items.append(item)
 	else:
-		#add_weapon(item)
-		pass
+		weapons.append(item)
 
 	item.apply_effects()
 	print("passive item added : ", item.item_name)

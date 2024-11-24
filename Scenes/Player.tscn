@@ -33,6 +33,8 @@ texture = ExtResource("3_dh2ju")
 [node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("4_jjtk5")
 attack_speed = 1.0
+atk_range = 20.0
+amount = 1
 health = NodePath("../Health")
 speed = 200.0
 power = 10
