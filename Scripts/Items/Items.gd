@@ -31,8 +31,8 @@ func get_effect_description(index: int) -> String:
 
 
 func level_up():
-	if level + 1 > 5:
-		print("This passive can't level up anymore !")
+	if level + 1 > max_level:
+		print("This item can't level up anymore !")
 		return
 		
 	level += 1
@@ -41,4 +41,4 @@ func level_up():
 	
 	
 func apply_effects():
-	pass
+	print("A simple Item has no effects !")

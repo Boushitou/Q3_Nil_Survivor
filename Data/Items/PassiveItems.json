@@ -1,5 +1,6 @@
 ﻿{
   "thot_amulet": {
+    "type": "passive",
     "name": "Thot Amulet",
     "sprite": "",
     "multiplicative": true,
@@ -14,6 +15,7 @@
     ]
   },
   "winged_scarab": {
+    "type": "passive",
     "name": "Winged Scarab",
     "sprite": "winged_scarab",
     "multiplicative": true,
@@ -28,6 +30,7 @@
     ]
   },
   "wedjat_eye": {
+    "type": "passive",
     "name": "Wedjat Eye",
     "sprite": "",
     "multiplicative": false,
@@ -42,6 +45,7 @@
     ]
   },
   "heart_amulet": {
+    "type": "passive",
     "name": "Heart Amulet",
     "sprite": "",
     "multiplicative": true,
