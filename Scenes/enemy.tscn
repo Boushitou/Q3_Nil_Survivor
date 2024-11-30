@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Enemy.gd" id="1_6noeu"]
 [ext_resource type="Script" path="res://Scripts/Systems/Stats.gd" id="3_0op4a"]
-[ext_resource type="Texture2D" uid="uid://c7rkp5g828x3f" path="res://Assets/Enemies/Temporary/snake.png" id="3_xok7r"]
+[ext_resource type="Texture2D" uid="uid://blhpy3xxif3m1" path="res://Assets/Enemies/Temporary/rabbit.png" id="3_3d46h"]
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="4_021do"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3yqw5"]
-radius = 32.0156
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lggj"]
+size = Vector2(47.4175, 47)
 
 [node name="Enemy" type="Area2D" node_paths=PackedStringArray("stats", "collider", "sprite")]
 collision_layer = 2
@@ -24,10 +24,11 @@ power = 10
 
 [node name="Body" type="Sprite2D" parent="."]
 scale = Vector2(0.168168, 0.162791)
-texture = ExtResource("3_xok7r")
+texture = ExtResource("3_3d46h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_3yqw5")
+position = Vector2(0.29125, -0.5)
+shape = SubResource("RectangleShape2D_2lggj")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("4_021do")

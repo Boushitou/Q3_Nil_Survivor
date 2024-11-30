@@ -23,6 +23,7 @@ var time_since_last_update = 0.0
 func _ready():
 	add_to_group("enemies")
 	
+	set_collider_bounds()
 	set_separation_radius()
 
 
@@ -81,6 +82,23 @@ func get_separation_force(current_position : Vector2, neighbor_positions : Array
 	return force
 
 
+func set_collider_bounds():
+	if !sprite or !collider:
+		return
+	
+	var texture_size = sprite.texture.get_size() * sprite.scale
+	var shape = collider.get_shape()
+	
+	if shape is CircleShape2D:
+		var circle_shape = shape as CircleShape2D
+		circle_shape.radius = max(texture_size.x, texture_size.y) * 0.5
+	elif shape is RectangleShape2D:
+		var rect_shape = shape as RectangleShape2D
+		rect_shape.size = texture_size
+	else:
+		print("Set a circle or rectangle shape for the enemy !")
+
+		
 func set_separation_radius():
 	if !collider:
 		return
