@@ -5,6 +5,8 @@ extends Node
 @export var camera_buffer : int = 50
 
 @export var timer_survival : TimerSurvival
+@export var waves = []
+
 var player_node : Node2D
 var enemies_manager : EnemiesManager
 var camera : Camera2D

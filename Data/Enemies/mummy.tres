@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://cm3hry1mlptl6"]
+
+[ext_resource type="Script" path="res://Data/EnemyData.gd" id="1_r8prr"]
+
+[resource]
+script = ExtResource("1_r8prr")
+name = "Mummy"
+max_health = 20
+power = 5
+speed = 10.0

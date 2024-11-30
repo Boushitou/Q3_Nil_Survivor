@@ -1,26 +1,26 @@
-﻿{
+{
   "waves": [
-    {
-      "wave_number": 1,
-      "enemies_frequency": 1,
-      "enemies": [
-        {"type": "beetle", "count": 5}
-      ]
-    },
-    {
-      "wave_number": 2,
-      "enemies_frequency": 0.9,
-      "enemies": [
-        {"type": "mummy", "count": 7}
-      ]
-    },
-    {
-      "wave_number": 3,
-      "enemies_frequency": 0.8,
-      "enemies": [
-        {"type": "beetle", "count": 8},
-        {"type": "mummy", "count": 5}
-      ]
-    }
+	{
+	  "wave_number": 1,
+	  "enemies_frequency": 1,
+	  "enemies": [
+		{"type": "beetle", "count": 5}
+	  ]
+	},
+	{
+	  "wave_number": 2,
+	  "enemies_frequency": 0.9,
+	  "enemies": [
+		{"type": "mummy", "count": 7}
+	  ]
+	},
+	{
+	  "wave_number": 3,
+	  "enemies_frequency": 0.8,
+	  "enemies": [
+		{"type": "beetle", "count": 8},
+		{"type": "mummy", "count": 5}
+	  ]
+	}
   ]
 }

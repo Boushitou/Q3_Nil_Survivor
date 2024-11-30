@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://dhtrl42tt5ogm"]
+
+[ext_resource type="Script" path="res://Data/EnemyData.gd" id="1_hn2cu"]
+
+[resource]
+script = ExtResource("1_hn2cu")
+name = "Beetle"
+max_health = 10
+power = 2
+speed = 70.0

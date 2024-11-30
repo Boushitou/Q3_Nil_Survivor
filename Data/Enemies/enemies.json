@@ -1,16 +1,16 @@
-﻿{
+{
   "beetle": {
-    "name": "Beetle",
-    "total_health": 10,
-    "power": 2,
-    "speed": 70.0,
-    "sprite": ""
+	"name": "Beetle",
+	"total_health": 10,
+	"power": 2,
+	"speed": 70.0,
+	"sprite": ""
   },
   "mummy": {
-    "name": "Mummy",
-    "total_health": 20,
-    "power": 5,
-    "speed": 10.0,
-    "sprite": ""
+	"name": "Mummy",
+	"total_health": 20,
+	"power": 5,
+	"speed": 10.0,
+	"sprite": ""
   }
 }

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=2 format=3 uid="uid://bwhux13w4ad2p"]
+
+[ext_resource type="Script" path="res://Data/WaveData.gd" id="1_65xdq"]
+
+[resource]
+script = ExtResource("1_65xdq")
+wave_nb = 1
+enemy_frequency = 1.0
+enemy_data = [{
+"count": 5,
+"type": "beetle"
+}]
