@@ -8,9 +8,13 @@ extends "res://Data/Item.gd"
 
 #basic passive item are multiplicative
 func apply_effect(player_stats: PlayerStats, level: int):
-	for effect in stats_upgraded[level]:
-		var stat_name = effect["stat"]
-		var factor = effect["factor"]
+	if level >= stats_upgraded.size():
+		return;
+	
+	var effects = stats_upgraded[level]
+	
+	for stat_name in effects.keys():
+		var factor = effects[stat_name]
 
 		var increased_value = 0	
 		var stat_value = player_stats.get_stat_value(stat_name)

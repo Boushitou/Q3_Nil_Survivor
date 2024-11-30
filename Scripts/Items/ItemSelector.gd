@@ -10,6 +10,7 @@ var item_choice = preload("res://Scenes/item_choice.tscn")
 var inventory : Inventory
 var player_stats : PlayerStats
 
+var total_items : Array[Item]
 var items_to_display : Array[Item]
 
 const MAX_ITEMS = 3
@@ -18,6 +19,8 @@ func _ready():
 	inventory = get_tree().get_nodes_in_group("player")[0].get_node("Inventory")
 	player_stats = inventory.player_stats
 	player_stats.connect("level_up_signal", make_parent_visible)
+
+	total_items.append_array(passive_items)
 
 
 func prepare_items_to_display():
@@ -32,6 +35,7 @@ func prepare_items_to_display():
 		display_items()
 		pass
 	else:
+		make_parent_not_visible(null)
 		print("No items to display !")
 		
 		
@@ -47,6 +51,9 @@ func display_items():
 		
 		if player_item:
 			item_level = player_item.level + 1
+			if item_level >= player_item.item.max_level:
+				remove_item(item)
+				
 			first_time = false
 			print("Item level: ", item_level)
 		
@@ -65,18 +72,21 @@ func set_item_in_inventory(added_item : Items):
 	
 
 func get_available_items() -> Array[Item]:
+	if total_items.size() == 0:
+		return []
+	
 	var player_passives = inventory.passives_items
 	#var player_weapons = inventory.weapons
 	
 	var available_items : Array[Item]
-	
+
 	if inventory.passives_slots_full():
 		for passive in player_passives:
 			if not inventory.item_is_level_max(passive):
 				var key = passive.ID
-				available_items.append(key)
+				available_items.append(passive.item)
 	else:
-		available_items.append_array(passive_items)
+		available_items.append_array(total_items)
 	
 #	if inventory.weapons_slots_full():
 #		for weapon in player_weapons:
@@ -91,7 +101,7 @@ func get_available_items() -> Array[Item]:
 
 func get_random_items() -> Array[Item]:
 	var available_items = get_available_items()
-	var selected = []
+	var selected : Array[Item]
 	
 	while available_items.size() > 0 and selected.size() < MAX_ITEMS:
 		var index = randi() % available_items.size();
@@ -102,9 +112,20 @@ func get_random_items() -> Array[Item]:
 			
 		available_items.remove_at(index)	
 	
-	return available_items	
+	return selected	
 	
 	
+func remove_item(item_to_remove : Item):
+	var index = 0
+	
+	for item in total_items:
+		if item.ID == item_to_remove.ID:
+			break
+		index += 1
+		
+	total_items.remove_at(index)	
+
+
 func make_parent_visible():
 	get_parent().visible = true
 

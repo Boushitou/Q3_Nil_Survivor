@@ -8,5 +8,5 @@ extends Resource
 @export var max_level : int = 8
 @export var sprite : Texture2D
 
-func apply_effect(player_stats: PlayerStats, level: int):
+func apply_effect(_player_stats: PlayerStats, _level: int):
 	print("A simple Item has no effects !")
