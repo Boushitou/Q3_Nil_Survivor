@@ -16,7 +16,7 @@ script = ExtResource("1_d1yww")
 player_movement = NodePath("Body")
 
 [node name="Body" type="Area2D" parent="." node_paths=PackedStringArray("player_stats")]
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("2_jhwxv")
 player_stats = NodePath("../PlayerStats")
 DASH_FORCE = 3000.0

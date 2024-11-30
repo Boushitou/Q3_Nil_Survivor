@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="PassiveItem" load_steps=2 format=3 uid="uid://c4217x5uvoog0"]
 
-[ext_resource type="Script" path="res://Data/PassiveItem.gd" id="1_en6gk"]
+[ext_resource type="Script" path="res://Data/PassiveItem.gd" id="1_kdnse"]
 
 [resource]
-script = ExtResource("1_en6gk")
+script = ExtResource("1_kdnse")
 stats_upgraded = Array[Dictionary]([{
 "attack_speed": 1.08
 }, {

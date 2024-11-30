@@ -7,8 +7,8 @@ var ID = -1
 var player_stats : PlayerStats
 
 
-func _init(item: Item, stats: PlayerStats):
-	self.item = item
+func _init(item_type: Item, stats: PlayerStats):
+	item = item_type
 	ID = item.ID
 	player_stats = stats
 	

@@ -5,7 +5,7 @@ extends Node
 @export var player_stats : PlayerStats
 
 var passives_items : Array[Items]
-#var weapons = Array[Items]
+var weapons : Array[Items]
 
 var max_passives = 3
 var max_weapons = 2
@@ -14,18 +14,17 @@ var max_weapons = 2
 func add_item(item: Items):
 	if item.item is PassiveItem:
 		passives_items.append(item)
-	#elif item.item is Weapon:
-		#weapons.append(item)
+	elif item.item is Weapon:
+		weapons.append(item)
 
 	item.apply_effects()
-	print("passive item added : ", item.item.name)
 	
 
 
 func level_up_item(item: Items):
 	var items : Array[Items]
 	
-	items = passives_items# + weapons
+	items = passives_items + weapons
 	var correct_item = null
 	
 	for i in items:
@@ -42,7 +41,7 @@ func level_up_item(item: Items):
 
 func get_item_by_ID(item_ID : int) -> Items:
 	var items : Array[Items]
-	items = passives_items# + weapons
+	items = passives_items + weapons
 	
 	for i in items:
 		if i.ID == item_ID:
@@ -52,8 +51,7 @@ func get_item_by_ID(item_ID : int) -> Items:
 
 
 func weapons_slots_full() -> bool:
-	return false
-	#return weapons.size() >= max_weapons
+	return weapons.size() >= max_weapons
 
 
 func passives_slots_full() -> bool:

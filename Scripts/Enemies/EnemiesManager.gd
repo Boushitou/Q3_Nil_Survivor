@@ -7,7 +7,7 @@ var spawner : EnemySpawner
 
 var enemy_grid : Dictionary = {}
 
-signal enemy_died_signal
+signal enemy_died_signal(position : Vector2)
 
 func _ready():
 	player_node = $"../Player/Body"
@@ -43,12 +43,13 @@ func get_nearby_enemies(cell: Vector2) -> Array:
 	return nearby_enemies
 
 
-func remove_enemy(enemy: Node, cell: Vector2):
+func remove_enemy(enemy: Node2D, cell: Vector2):
 	var cell_enemies = enemy_grid.get(cell, [])
+	var enemy_pos = enemy.global_position
 	cell_enemies.erase(enemy)
 	enemy_grid[cell] = cell_enemies
 	PoolSystem.pool_object("enemy", enemy)
-	emit_signal("enemy_died_signal")
+	emit_signal("enemy_died_signal", enemy_pos)
 
 
 func get_enemy_count() -> int:

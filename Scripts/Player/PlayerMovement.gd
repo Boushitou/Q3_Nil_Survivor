@@ -47,7 +47,7 @@ func move(delta):
 		position += movement * delta
 
 
-func initiate_dash(direction):
+func initiate_dash(_direction):
 	if cooldown_timer <= 0 && state != Movement_State.DASHING:
 		state = Movement_State.DASHING
 		dash_timer = dash_duration

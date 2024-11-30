@@ -19,7 +19,8 @@ func _process(delta):
 func _on_body_area_entered(area):
 	if area.is_in_group("enemies"):
 		areas_in_range.append(area)
-		
+	elif area is Experience:
+		SignalBus.gaining_xp.emit(1)
 
 func _on_body_area_exited(area):
 	if area.is_in_group("enemies"):

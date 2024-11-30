@@ -127,7 +127,7 @@ func get_spawn_position(spawn_distance : float) -> Vector2:
 	return spawn_position
 
 
-func _on_enemy_died():
+func _on_enemy_died(_position : Vector2):
 	current_enemies_nb -= 1
 	#print("number of enemies: ", current_enemies_nb)
 

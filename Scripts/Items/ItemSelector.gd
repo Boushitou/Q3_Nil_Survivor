@@ -3,7 +3,7 @@ class_name ItemSelector
 extends Node
 
 @export var passive_items : Array[PassiveItem]
-@export var weapons : Array[Item]
+@export var weapons : Array[Weapon]
 
 var item_choice = preload("res://Scenes/item_choice.tscn")
 
@@ -21,6 +21,7 @@ func _ready():
 	player_stats.connect("level_up_signal", make_parent_visible)
 
 	total_items.append_array(passive_items)
+	total_items.append_array(weapons)
 
 
 func prepare_items_to_display():
@@ -76,32 +77,30 @@ func get_available_items() -> Array[Item]:
 		return []
 	
 	var player_passives = inventory.passives_items
-	#var player_weapons = inventory.weapons
+	var player_weapons = inventory.weapons
 	
-	var available_items : Array[Item]
+	var available_items : Array[Item] = []
 
 	if inventory.passives_slots_full():
 		for passive in player_passives:
 			if not inventory.item_is_level_max(passive):
-				var key = passive.ID
 				available_items.append(passive.item)
 	else:
 		available_items.append_array(total_items)
 	
-#	if inventory.weapons_slots_full():
-#		for weapon in player_weapons:
-#			if not inventory.item_is_level_max(weapon):
-#				var key = weapon.ID
-#				available_items.append(key)
-#	else:
-#		available_items.append_array(weapons)
+	if inventory.weapons_slots_full():
+		for weapon in player_weapons:
+			if not inventory.item_is_level_max(weapon):
+				available_items.append(weapon.item)
+	else:
+		available_items.append_array(weapons)
 	
 	return available_items
 	
 
 func get_random_items() -> Array[Item]:
 	var available_items = get_available_items()
-	var selected : Array[Item]
+	var selected : Array[Item] = []
 	
 	while available_items.size() > 0 and selected.size() < MAX_ITEMS:
 		var index = randi() % available_items.size();
