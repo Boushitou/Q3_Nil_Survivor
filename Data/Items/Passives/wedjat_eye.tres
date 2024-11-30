@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="PassiveItem" load_steps=2 format=3 uid="uid://b4kxu121xwyeg"]
+
+[ext_resource type="Script" path="res://Data/PassiveItem.gd" id="1_a2ebr"]
+
+[resource]
+script = ExtResource("1_a2ebr")
+stats_upgraded = Array[Dictionary]([{
+"health_regeneration": 1
+}, {
+"health_regeneration": 1
+}, {
+"health_regeneration": 1
+}, {
+"health_regeneration": 1
+}, {
+"health_regeneration": 1
+}])
+is_multiplicative = true
+ID = 2
+name = "Wedjat Eye"
+descriptions = Array[String](["Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec"])
+max_level = 5

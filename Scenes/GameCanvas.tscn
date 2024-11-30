@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjegdqifbh18b"]
+[gd_scene load_steps=5 format=3 uid="uid://cjegdqifbh18b"]
 
 [ext_resource type="Script" path="res://Scripts/FpsCounter.gd" id="1_j1xen"]
 [ext_resource type="Script" path="res://Scripts/Items/ItemSelector.gd" id="2_kiayn"]
+[ext_resource type="Resource" uid="uid://c4217x5uvoog0" path="res://Data/Items/Passives/thot_amulet.tres" id="3_36w7f"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_uty8b"]
 
@@ -36,5 +37,6 @@ offset_top = 24.0
 offset_right = 744.0
 offset_bottom = 360.0
 script = ExtResource("2_kiayn")
+passive_items = Array[Resource("res://Data/PassiveItem.gd")]([ExtResource("3_36w7f")])
 
 [connection signal="visibility_changed" from="Background/ItemSelector" to="Background/ItemSelector" method="_on_visibility_changed"]

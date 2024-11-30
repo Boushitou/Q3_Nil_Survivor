@@ -4,30 +4,32 @@ extends Node
 
 @export var player_stats : PlayerStats
 
-var passives_items = []
-var weapons = []
+var passives_items : Array[Items]
+#var weapons = Array[Items]
 
 var max_passives = 3
 var max_weapons = 2
 	
 
 func add_item(item: Items):
-	if item is PassiveItem:
+	if item.item is PassiveItem:
 		passives_items.append(item)
-	else:
-		weapons.append(item)
+	#elif item.item is Weapon:
+		#weapons.append(item)
 
 	item.apply_effects()
-	print("passive item added : ", item.item_name)
+	print("passive item added : ", item.item.name)
 	
 
 
 func level_up_item(item: Items):
-	var items = passives_items + weapons
+	var items : Array[Items]
+	
+	items = passives_items# + weapons
 	var correct_item = null
 	
 	for i in items:
-		if i.item_name == item.item_name:
+		if i.ID == item.ID:
 			correct_item = i
 			break
 			
@@ -38,18 +40,20 @@ func level_up_item(item: Items):
 	correct_item.level_up()
 
 
-func get_item_by_name(item_name : String) -> Items:
-	var items = passives_items + weapons
+func get_item_by_ID(item_ID : int) -> Items:
+	var items : Array[Items]
+	items = passives_items# + weapons
 	
 	for i in items:
-		if i.item_name == item_name:
+		if i.ID == item_ID:
 			return i
 	
 	return null
 
 
 func weapons_slots_full() -> bool:
-	return weapons.size() >= max_weapons
+	return false
+	#return weapons.size() >= max_weapons
 
 
 func passives_slots_full() -> bool:
@@ -57,7 +61,7 @@ func passives_slots_full() -> bool:
 
 
 func item_is_level_max(item : Items) -> bool:
-	return item.level >= item.max_level
+	return item.level >= item.item.max_level
 
 func get_player_stats():
 	return player_stats

@@ -6,7 +6,7 @@ extends Node
 
 @export var timer_survival : TimerSurvival
 @export var waves : Array[WaveData] = []
-#The enemy type is defined by an ID, to know the correspondance go to: Data\Enemies\ID_helper.txt
+#The enemy type is defined by an ID, to know the correspondance go to: Data\Enemies\ID_enemies_helper.txt
 @export var enemies_data : Array[EnemyData] = []
 
 var player_node : Node2D

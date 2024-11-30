@@ -16,15 +16,10 @@ func _ready():
 	button_up.connect(_on_item_selected.bind())
 
 
-func set_item_data(item: Dictionary, player_stats: PlayerStats, level : int, first_time: bool):
-	if item["type"] == "passive":
-		item_data = PassiveItem.new(item, player_stats)
-	elif item["type"] == "weapon":
-		item_data = Weapon.new(item, player_stats)
-	else:
-		item_data = Items.new(item, player_stats)
+func set_item_data(item: Item, player_stats: PlayerStats, level : int, first_time: bool):
+	item_data = Items.new(item, player_stats)
 	
-	item_name.text = item_data.item_name
+	item_name.text = item_data.item.name
 	
 	if first_time:
 		item_level.text = "NEW !"

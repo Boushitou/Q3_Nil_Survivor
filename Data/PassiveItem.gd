@@ -1,0 +1,24 @@
+class_name PassiveItem
+
+extends "res://Data/Item.gd"
+
+
+@export var stats_upgraded : Array[Dictionary] #[stat_name : String, factor : float]
+@export var is_multiplicative : bool = true
+
+#basic passive item are multiplicative
+func apply_effect(player_stats: PlayerStats, level: int):
+	for effect in stats_upgraded[level]:
+		var stat_name = effect["stat"]
+		var factor = effect["factor"]
+
+		var increased_value = 0	
+		var stat_value = player_stats.get_stat_value(stat_name)
+		
+		if is_multiplicative:
+			increased_value = (stat_value * (factor - 1)) + stat_value
+		else:
+			increased_value = stat_value + factor
+
+		player_stats.increase_stat(stat_name, increased_value)
+		print("increased value for ", stat_name, " : ",  increased_value)
