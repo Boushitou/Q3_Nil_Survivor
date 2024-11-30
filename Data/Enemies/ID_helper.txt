@@ -1,0 +1,4 @@
+Here is the list of enemies by ID:
+
+0: "beetle"
+1: "mummy"

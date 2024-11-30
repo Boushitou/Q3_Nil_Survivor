@@ -1,19 +1,20 @@
 [gd_scene load_steps=6 format=3 uid="uid://bym5pcg3yn5ja"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Enemy.gd" id="1_6noeu"]
-[ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="2_us1bj"]
 [ext_resource type="Script" path="res://Scripts/Systems/Stats.gd" id="3_0op4a"]
+[ext_resource type="Texture2D" uid="uid://c7rkp5g828x3f" path="res://Assets/Enemies/Temporary/snake.png" id="3_xok7r"]
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="4_021do"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yqw5"]
 radius = 32.0156
 
-[node name="Enemy" type="Area2D" node_paths=PackedStringArray("stats", "collider")]
+[node name="Enemy" type="Area2D" node_paths=PackedStringArray("stats", "collider", "sprite")]
 collision_layer = 2
 script = ExtResource("1_6noeu")
-separation_weight = 200.0
+separation_weight = 50.0
 stats = NodePath("Stats")
 collider = NodePath("CollisionShape2D")
+sprite = NodePath("Body")
 
 [node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("3_0op4a")
@@ -22,9 +23,8 @@ speed = 50.0
 power = 10
 
 [node name="Body" type="Sprite2D" parent="."]
-modulate = Color(0.982764, 0.287645, 0.33786, 1)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_us1bj")
+scale = Vector2(0.168168, 0.162791)
+texture = ExtResource("3_xok7r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3yqw5")

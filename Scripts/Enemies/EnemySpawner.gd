@@ -5,22 +5,23 @@ extends Node
 @export var camera_buffer : int = 50
 
 @export var timer_survival : TimerSurvival
-@export var waves = []
+@export var waves : Array[WaveData] = []
+#The enemy type is defined by an ID, to know the correspondance go to: Data\Enemies\ID_helper.txt
+@export var enemies_data : Array[EnemyData] = []
 
 var player_node : Node2D
 var enemies_manager : EnemiesManager
 var camera : Camera2D
 
 var enemy_scene = preload("res://Scenes/enemy.tscn")
-var enemy_data = {}
-var waves_data = {}
 
 var enemy_frequency = 0.001
 var time_since_last_spawn = 0.0
 
+var enemies = {}
 var current_wave_nb = -1
 var current_enemies_nb = 0
-var current_wave = {}
+var current_wave : WaveData
 var max_wave_enemies = 0
 
 var can_spawn = false
@@ -29,22 +30,12 @@ var rng = RandomNumberGenerator.new()
 
 
 func _ready():
-	var enemies_file = FileAccess.open("res://Data/Enemies/enemies.json", FileAccess.READ)
-	if enemies_file:
-		enemy_data = JSON.parse_string(enemies_file.get_as_text())
-		enemies_file.close()
-	
-	var waves_file = FileAccess.open("res://Data/Enemies/waves.json", FileAccess.READ)
-	if waves_file:
-		waves_data = JSON.parse_string(waves_file.get_as_text())
-		waves_file.close()
-	
-	current_wave = waves_data["waves"][current_wave_nb]
-	max_wave_enemies = calculate_max_enemies(current_wave)
-	enemy_frequency = current_wave["enemies_frequency"]
 	timer_survival.connect("time_over", _on_time_over)
 	timer_survival.connect("minute_passed", _on_minute_passed)
 	
+	for enemy_data in enemies_data:
+		enemies[enemy_data.ID] = enemy_data
+
 	start_next_wave()
 
 
@@ -70,19 +61,19 @@ func set_references(player : Node2D, manager: EnemiesManager):
 func start_next_wave():
 	current_wave_nb += 1
 	
-	if current_wave_nb >= waves_data["waves"].size():
+	if current_wave_nb >= waves.size():
 		return
 		
-	current_wave = waves_data["waves"][current_wave_nb]
+	current_wave = waves[current_wave_nb]
 	
 	max_wave_enemies = calculate_max_enemies(current_wave)
-	enemy_frequency = current_wave["enemies_frequency"]
+	enemy_frequency = waves[current_wave_nb].enemy_frequency
 	
 
-func calculate_max_enemies(wave_data) -> int:
+func calculate_max_enemies(wave_data : WaveData) -> int:
 	var max_enemies = 0
 	
-	for enemy in wave_data["enemies"]:
+	for enemy in wave_data.enemy_data:
 		max_enemies += enemy["count"]
 		
 	return max_enemies
@@ -99,25 +90,25 @@ func spawn_enemies():
 	var enemies_to_spawn = max_wave_enemies - current_enemies_nb
 	
 	for i in enemies_to_spawn:
-		var enemy_type = pick_enemy_type()
-		if enemy_type == "":
+		var enemy_ID = pick_enemy_type()
+		if enemy_ID == -1:
 			return #fail safe
 			
 		var enemy = PoolSystem.instantiate_object("enemy", enemy_scene, get_spawn_position(spawn_distance), 0.0, self)
 		enemy.set_references(player_node, enemies_manager)
-		enemy.setup_stats(enemy_data[enemy_type])
+		enemy.setup_stats(enemies[enemy_ID])
 		
 		current_enemies_nb += 1
 		#print("spawning ennemies !")
 
 
-func pick_enemy_type() -> String:
-	var enemy_type = current_wave["enemies"]
+func pick_enemy_type() -> int:
+	var enemies_type = current_wave.enemy_data
 	
-	if enemy_type.size() == 0:
-		return ""
+	if enemies_type.size() == 0:
+		return -1
 	
-	return enemy_type[rng.randi_range(0, enemy_type.size() - 1)]["type"]
+	return enemies_type[rng.randi_range(0, enemies_type.size() - 1)]["type"]
 
 
 func get_spawn_distance() -> float:

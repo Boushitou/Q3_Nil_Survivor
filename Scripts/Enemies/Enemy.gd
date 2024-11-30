@@ -12,6 +12,7 @@ var separation_force : Vector2 = Vector2.ZERO
 @export var stats : Stats
 
 @export var collider : CollisionShape2D
+@export var sprite : Sprite2D
 
 var grid_size = 50
 var last_cell : Vector2 = Vector2(-1, 1)
@@ -38,11 +39,12 @@ func set_references(player : Node2D, manager: EnemiesManager):
 	enemies_manager = manager
 	
 	
-func setup_stats(enemy_stat):
-	stats.health.total_health = enemy_stat["total_health"]
+func setup_stats(enemy_stat : EnemyData):
+	stats.health.total_health = enemy_stat.max_health
 	stats.health.init_health()
-	stats.power = enemy_stat["power"]
-	stats.speed = enemy_stat["speed"]
+	stats.power = enemy_stat.power
+	stats.speed = enemy_stat.speed
+	sprite.texture = enemy_stat.sprite
 	
 	stats.health.connect("has_died", _on_enemy_died)
 
@@ -88,10 +90,13 @@ func set_separation_radius():
 	if shape is CircleShape2D:
 		var circle_shape = shape as CircleShape2D
 		separation_radius = circle_shape.radius * 2
+	elif shape is RectangleShape2D:
+		var rect_shape = shape as RectangleShape2D
+		separation_radius = sqrt(pow(rect_shape.extents.x * 2, 2) + pow(rect_shape.extents.y * 2, 2))
 	else:
-		print("Set a circle shape for this node !")
-
-
+		print("Set a circle or rectangle shape for the enemy !")
+		
+		
 func update_grid_position():
 	var current_cell = Vector2(int(global_position.x / grid_size), int(global_position.y / grid_size))
 	

@@ -6,10 +6,10 @@
 script = ExtResource("1_61a0j")
 wave_nb = 2
 enemy_frequency = 0.5
-enemy_data = [{
+enemy_data = Array[Dictionary]([{
 "count": 8,
-"type": "beetle"
+"type": 0
 }, {
 "count": 5,
-"type": "mummy"
-}]
+"type": 1
+}])
