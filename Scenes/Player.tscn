@@ -28,7 +28,7 @@ script = ExtResource("5_b0aba")
 health = NodePath("../../Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
-z_index = 9
+z_index = 10
 texture = ExtResource("3_dh2ju")
 
 [node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("health")]

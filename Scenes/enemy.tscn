@@ -23,7 +23,7 @@ speed = 50.0
 power = 10
 
 [node name="Body" type="Sprite2D" parent="."]
-z_index = 10
+z_index = 9
 scale = Vector2(0.168168, 0.162791)
 texture = ExtResource("3_3d46h")
 

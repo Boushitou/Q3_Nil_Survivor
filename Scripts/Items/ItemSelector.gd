@@ -34,6 +34,7 @@ func prepare_items_to_display():
 	
 	if items_to_display.size() > 0:
 		display_items()
+		get_tree().paused = true
 		pass
 	else:
 		make_parent_not_visible(null)
@@ -126,6 +127,7 @@ func make_parent_visible():
 
 func make_parent_not_visible(_added_item : Items):
 	get_parent().visible = false
+	get_tree().paused = false
 
 
 func _on_visibility_changed():

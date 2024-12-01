@@ -10,10 +10,11 @@ extends Stats
 var stats : Dictionary
 
 #region leveling value
-const BASE_XP = 5
+const BASE_XP = 1
 const GROWTH_FACTOR = 1.2
 var next_xp : int = BASE_XP
 var current_xp = 0
+var level_up_queue = 0 #if the player level up too many times at once
 
 signal level_up_signal()
 #endregion
@@ -39,18 +40,25 @@ func _process(_delta):
 		print("current xp : ", current_xp, " / ", next_xp)
 		print("level : ", level)
 
+	if level_up_queue > 0:
+		level_up()
 
 func add_xp(xp : int):
 	current_xp += xp
 	
-	if current_xp >= next_xp:
+	while current_xp >= next_xp:
 		current_xp -= next_xp
-		level_up()
+		level_up_queue += 1
 
 
 func level_up():
 	level += 1
 	next_xp = BASE_XP * pow(GROWTH_FACTOR, level - 1)
+	level_up_queue -= 1
+	
+	if level_up_queue < 0:
+		level_up_queue = 0
+
 	level_up_signal.emit()
 
 
@@ -62,6 +70,7 @@ func increase_stat(stat_name : String, value):
 			if stat_name == "health" or stat_name == "health_regeneration":
 				update_health_values()
 
+				
 func get_stat_value(stat_name : String):
 	if stats.has(stat_name):
 		return stats[stat_name]

@@ -14,6 +14,7 @@
 [sub_resource type="CanvasTexture" id="CanvasTexture_uty8b"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
 
 [node name="FpsLabel" type="Label" parent="."]
 offset_top = 64.0
