@@ -134,12 +134,17 @@ func get_neighbors_positions() -> Array:
 	return neighbor_position
 
 
+func take_damage(amount : int):
+	stats.health.take_damage(amount)
+
+
 func get_damage():
 	return stats.power
 
 
 func _on_mouse_entered():
 	stats.health.take_damage(10)
+	#pass
 	#print("inflicted damage !")
 	
 

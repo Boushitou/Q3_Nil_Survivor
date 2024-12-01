@@ -8,3 +8,4 @@ Here is the list of items (both passives and weapons) by ID:
 5: djed_pillar
 6: fly_amulet
 7: two_finger_amulet
+8: kopesh

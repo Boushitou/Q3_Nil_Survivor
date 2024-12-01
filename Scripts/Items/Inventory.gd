@@ -9,6 +9,9 @@ var weapons : Array[Items]
 var max_passives = 3
 var max_weapons = 2
 
+func _ready() -> void:
+	pass
+
 
 func add_item(item: Items):
 	if item.item is PassiveItem:

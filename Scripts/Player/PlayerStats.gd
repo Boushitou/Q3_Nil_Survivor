@@ -9,7 +9,7 @@ class_name PlayerStats
 var stats : Dictionary
 
 #region leveling value
-const BASE_XP = 500
+const BASE_XP = 5
 const GROWTH_FACTOR = 1.2
 var next_xp : int = BASE_XP
 var current_xp = 0
