@@ -7,6 +7,6 @@ script = ExtResource("1_65xdq")
 wave_nb = 1
 enemy_frequency = 1.0
 enemy_data = Array[Dictionary]([{
-"count": 5,
+"count": 300,
 "type": 0
 }])

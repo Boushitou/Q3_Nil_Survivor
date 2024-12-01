@@ -4,6 +4,7 @@ extends Node
 
 var player_node : Node2D
 var spawner : EnemySpawner
+var camera : Camera2D
 
 var enemy_grid : Dictionary = {}
 
@@ -12,6 +13,7 @@ signal enemy_died_signal(position : Vector2)
 func _ready():
 	player_node = $"../Player/Body"
 	spawner = $EnemySpawner
+	camera = player_node.get_viewport().get_camera_2d()
 	spawner.set_references(player_node, self)
 	
 	
@@ -65,9 +67,9 @@ func respawn_enemies():
 	for cells in enemy_grid.values():
 		for enemy in cells:
 			var distance_to_player = enemy.global_position.distance_squared_to(player_node.global_position)
-			var distance_respawn = spawner.get_spawn_distance()
+			var distance_respawn = camera.get_spawn_distance(50)
 			
 			if distance_to_player > distance_respawn * distance_respawn + 300:
-				var new_pos = spawner.get_spawn_position(distance_respawn)
+				var new_pos = camera.get_spawn_position(distance_respawn)
 				enemy.global_position = new_pos
 				#print("enemy has be rellocated !")

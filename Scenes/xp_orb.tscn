@@ -19,5 +19,4 @@ texture = ExtResource("1_k3oth")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tdkdf")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="hidden" from="." to="." method="_on_hidden"]

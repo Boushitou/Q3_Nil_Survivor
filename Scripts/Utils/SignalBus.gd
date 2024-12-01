@@ -1,6 +1,7 @@
-class_name SignalBus
+#class name hides singleton ???
+#but it's fine if there is static method and variables ??
+#class_name SignalBus
 
 extends Node
 
-signal gaining_xp(amount : int)
-static var what = 1
+signal gain_xp(amount : int)

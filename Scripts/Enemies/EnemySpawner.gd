@@ -51,9 +51,9 @@ func _process(delta):
 
 
 func set_references(player : Node2D, manager: EnemiesManager):
-	player_node = player 
-	camera = player_node.get_viewport().get_camera_2d()
+	player_node = player
 	enemies_manager = manager
+	camera = enemies_manager.camera
 	enemies_manager.connect("enemy_died_signal", _on_enemy_died)
 	can_spawn = true
 	
@@ -86,7 +86,7 @@ func spawn_enemies():
 	if camera == null:
 		return
 	
-	var spawn_distance = get_spawn_distance()
+	var spawn_distance = camera.get_spawn_distance(camera_buffer)
 	var enemies_to_spawn = max_wave_enemies - current_enemies_nb
 	
 	for i in enemies_to_spawn:
@@ -94,7 +94,7 @@ func spawn_enemies():
 		if enemy_ID == -1:
 			return #fail safe
 			
-		var enemy = PoolSystem.instantiate_object("enemy", enemy_scene, get_spawn_position(spawn_distance), 0.0, self)
+		var enemy = PoolSystem.instantiate_object("enemy", enemy_scene, camera.get_spawn_position(spawn_distance), 0.0, self)
 		enemy.set_references(player_node, enemies_manager)
 		enemy.setup_stats(enemies[enemy_ID])
 		
@@ -109,22 +109,6 @@ func pick_enemy_type() -> int:
 		return -1
 	
 	return enemies_type[rng.randi_range(0, enemies_type.size() - 1)]["type"]
-
-
-func get_spawn_distance() -> float:
-	if camera == null:
-		return 0.0
-		
-	var screen_size = camera.get_viewport_rect().size
-	return screen_size.length() * 0.5 + camera_buffer
-
-
-func get_spawn_position(spawn_distance : float) -> Vector2:
-	var angle = randf() * TAU
-	var spawn_offset = Vector2(cos(angle), sin(angle)) * spawn_distance
-	var spawn_position = player_node.global_position + spawn_offset
-	
-	return spawn_position
 
 
 func _on_enemy_died(_position : Vector2):

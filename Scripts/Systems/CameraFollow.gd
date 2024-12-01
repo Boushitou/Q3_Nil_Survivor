@@ -27,3 +27,16 @@ func smooth_follow(delta):
 	var dynamic_smooth_factor = smooth_factor + (distance * distance_scale)
 	
 	position = Utilities.exp_decay(position, target.position, dynamic_smooth_factor, delta)
+
+
+func get_spawn_distance(camera_buffer : int) -> float:
+	var screen_size = get_viewport_rect().size
+	return screen_size.length() * 0.5 + camera_buffer
+
+
+func get_spawn_position(spawn_distance : float) -> Vector2:
+	var angle = randf() * TAU
+	var spawn_offset = Vector2(cos(angle), sin(angle)) * spawn_distance
+	var spawn_position = target.global_position + spawn_offset
+
+	return spawn_position

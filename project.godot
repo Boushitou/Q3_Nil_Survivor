@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Utils="res://Scripts/Utils/Utilities.gd"
 Pool="res://Scripts/Systems/Pooling/PoolSystem.gd"
-SignalsBuses="*res://Scripts/Utils/SignalBus.gd"
+SignalBus="*res://Scripts/Utils/SignalBus.gd"
 
 [display]
 

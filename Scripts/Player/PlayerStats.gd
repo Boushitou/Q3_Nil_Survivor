@@ -21,15 +21,16 @@ signal level_up_signal()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stats = {
-		"speed" : speed,
-		"attack_speed" : attack_speed,
-		"power" : power,
-		"atk_range" : atk_range,
-		"amount" : amount,
-		"projectile_speed" : projectile_speed,
-		"health" : health.total_health,
-		"health_regeneration" : health.health_regeneration
-}
+		"speed": speed,
+		"attack_speed": attack_speed,
+		"power": power,
+		"atk_range": atk_range,
+		"amount": amount,
+		"projectile_speed": projectile_speed,
+		"health": health.total_health,
+		"health_regeneration": health.health_regeneration
+	}
+	SignalBus.connect("gain_xp", add_xp)
 
 
 func _process(_delta):

@@ -8,6 +8,7 @@ var areas_in_range : Array = []
 const i_frame = 0.5
 var i_frame_timer = 0.0
 
+
 func _process(delta):
 	i_frame_timer += delta
 
@@ -20,8 +21,10 @@ func _on_body_area_entered(area):
 	if area.is_in_group("enemies"):
 		areas_in_range.append(area)
 	elif area is Experience:
-		SignalBus.gaining_xp.emit(1)
+		SignalBus.gain_xp.emit(area.value)
+		PoolSystem.pool_object("xp_orb", area)
 
+		
 func _on_body_area_exited(area):
 	if area.is_in_group("enemies"):
 		areas_in_range.erase(area)
