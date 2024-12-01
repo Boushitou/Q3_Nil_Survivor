@@ -115,14 +115,9 @@ func get_random_items() -> Array[Item]:
 	
 	
 func remove_item(item_to_remove : Item):
-	var index = 0
-	
-	for item in total_items:
-		if item.ID == item_to_remove.ID:
-			break
-		index += 1
-		
-	total_items.remove_at(index)	
+	var index = total_items.find(item_to_remove)
+	if index != -1:
+		total_items.remove_at(index)
 
 
 func make_parent_visible():
