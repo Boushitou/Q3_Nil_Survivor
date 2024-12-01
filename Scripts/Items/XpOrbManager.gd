@@ -10,7 +10,7 @@ var enemies_manager : EnemiesManager
 
 var player_node : Node2D
 var camera : Camera2D
-var max_distance : Vector2
+var max_distance = 500
 
 var orbs : Array[Experience]
 
@@ -58,7 +58,7 @@ func relocate_orbs():
 		var distance_to_player = o.global_position.distance_squared_to(player_node.global_position)
 		var distance_respawn = camera.get_spawn_distance(50)
 
-		if distance_to_player > distance_respawn * distance_respawn + 500:
+		if distance_to_player > distance_respawn * distance_respawn + max_distance:
 			var new_pos = camera.get_spawn_position(distance_respawn)
 			o.global_position = new_pos
 

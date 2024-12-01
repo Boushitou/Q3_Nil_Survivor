@@ -1,15 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddcgvg5rx8u17"]
+[gd_scene load_steps=11 format=3 uid="uid://ddcgvg5rx8u17"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_d1yww"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_jhwxv"]
 [ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="3_dh2ju"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerStats.gd" id="4_jjtk5"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCollisions.gd" id="5_b0aba"]
+[ext_resource type="Script" path="res://Scripts/Player/XPCollision.gd" id="5_e4ahy"]
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="6_lf85x"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="7_mn01f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
-size = Vector2(118, 119)
+size = Vector2(48, 119)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2iisx"]
+radius = 126.0
 
 [node name="Player" type="Node" node_paths=PackedStringArray("player_movement") groups=["player"]]
 script = ExtResource("1_d1yww")
@@ -29,7 +33,17 @@ health = NodePath("../../Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
 z_index = 10
+position = Vector2(-2.38419e-07, 0)
+scale = Vector2(0.375, 1)
 texture = ExtResource("3_dh2ju")
+
+[node name="XpArea" type="Area2D" parent="Body"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("5_e4ahy")
+
+[node name="XpOrbDetector" type="CollisionShape2D" parent="Body/XpArea"]
+shape = SubResource("CircleShape2D_2iisx")
 
 [node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("4_jjtk5")
@@ -50,3 +64,4 @@ player_stats = NodePath("../PlayerStats")
 
 [connection signal="area_entered" from="Body" to="Body/BodyCollision" method="_on_body_area_entered"]
 [connection signal="area_exited" from="Body" to="Body/BodyCollision" method="_on_body_area_exited"]
+[connection signal="area_entered" from="Body/XpArea" to="Body/XpArea" method="_on_area_entered"]

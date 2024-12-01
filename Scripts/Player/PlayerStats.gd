@@ -10,7 +10,7 @@ extends Stats
 var stats : Dictionary
 
 #region leveling value
-const BASE_XP = 1
+const BASE_XP = 500
 const GROWTH_FACTOR = 1.2
 var next_xp : int = BASE_XP
 var current_xp = 0
@@ -35,14 +35,10 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("test_action"):
-		add_xp(1)
-		print("current xp : ", current_xp, " / ", next_xp)
-		print("level : ", level)
-
 	if level_up_queue > 0:
 		level_up()
 
+		
 func add_xp(xp : int):
 	current_xp += xp
 	
