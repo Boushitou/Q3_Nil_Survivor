@@ -1,6 +1,5 @@
-class_name XPCollision
-
 extends Area2D
+class_name XPCollision
 
 func _on_area_entered(area):
 	if area is Experience:

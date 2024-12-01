@@ -1,6 +1,5 @@
-class_name CameraFollow
-
 extends Camera2D
+class_name CameraFollow
 
 @export var smooth_factor : float
 var target : Node2D

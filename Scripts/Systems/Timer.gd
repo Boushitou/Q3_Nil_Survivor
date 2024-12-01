@@ -1,6 +1,5 @@
-class_name TimerSurvival
-
 extends Node
+class_name TimerSurvival
 
 var max_time = 1800.0 #30 minutes
 var elapsed_time = 0.0 #To check every minutes

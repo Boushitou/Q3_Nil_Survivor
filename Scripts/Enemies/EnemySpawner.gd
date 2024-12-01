@@ -1,6 +1,5 @@
-class_name EnemySpawner
-
 extends Node
+class_name EnemySpawner
 
 @export var camera_buffer : int = 50
 

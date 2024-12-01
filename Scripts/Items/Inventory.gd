@@ -1,6 +1,5 @@
-class_name Inventory
-
 extends Node
+class_name Inventory
 
 @export var player_stats : PlayerStats
 
@@ -9,7 +8,7 @@ var weapons : Array[Items]
 
 var max_passives = 3
 var max_weapons = 2
-	
+
 
 func add_item(item: Items):
 	if item.item is PassiveItem:
@@ -19,7 +18,6 @@ func add_item(item: Items):
 
 	item.apply_effects()
 	
-
 
 func level_up_item(item: Items):
 	var items : Array[Items]

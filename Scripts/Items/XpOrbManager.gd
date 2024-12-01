@@ -1,6 +1,5 @@
-class_name XpOrbManager
-
 extends Node
+class_name XpOrbManager
 
 var orb = preload("res://Scenes/xp_orb.tscn")
 

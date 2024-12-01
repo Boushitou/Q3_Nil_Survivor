@@ -1,6 +1,5 @@
-class_name EnemiesManager
-
 extends Node
+class_name EnemiesManager
 
 var player_node : Node2D
 var spawner : EnemySpawner

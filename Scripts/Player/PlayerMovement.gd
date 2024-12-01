@@ -1,6 +1,5 @@
-class_name PlayerMovement
-
 extends Node2D
+class_name PlayerMovement
 
 enum Movement_State {IDLE, MOVING, DASHING}
 

@@ -1,6 +1,5 @@
-class_name Experience
-
 extends Area2D
+class_name Experience
 
 @export var smooth_factor : float
 @export_range(0.1, 10) var distance_scale : float

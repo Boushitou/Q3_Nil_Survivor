@@ -1,6 +1,5 @@
-class_name Stats
-
 extends Node
+class_name Stats
 
 @export var health : Health
 @export var speed : float

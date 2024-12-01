@@ -1,6 +1,5 @@
-class_name PlayerCollisions
-
 extends Node
+class_name PlayerCollisions
 
 @export var health : Health
 

@@ -1,6 +1,5 @@
-class_name PlayerStats
-
 extends Stats
+class_name PlayerStats
 
 @export var attack_speed : float
 @export var atk_range : float

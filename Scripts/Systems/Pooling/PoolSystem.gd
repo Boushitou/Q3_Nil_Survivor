@@ -1,6 +1,5 @@
-class_name PoolSystem
-
 extends Node
+class_name PoolSystem
 
 static var pool_objects : Array = []
 

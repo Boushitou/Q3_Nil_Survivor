@@ -1,6 +1,5 @@
-class_name PoolInfoHolder
-
 extends Node
+class_name PoolInfoHolder
 
 var object_name : String
 var inactive_object : Array

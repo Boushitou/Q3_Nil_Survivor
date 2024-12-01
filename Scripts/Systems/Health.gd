@@ -1,6 +1,5 @@
-class_name Health
-
 extends Node
+class_name Health
 
 @export var total_health : int
 @export var health_regeneration : int

@@ -1,6 +1,5 @@
-class_name Enemy
-
 extends Area2D
+class_name Enemy
 
 var enemies_manager : EnemiesManager
 

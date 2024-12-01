@@ -1,6 +1,5 @@
-class_name ItemDisplay
-
 extends Button
+class_name ItemDisplay
 
 @export var item_name : Label
 @export var item_description : Label

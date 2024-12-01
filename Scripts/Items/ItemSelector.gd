@@ -1,6 +1,5 @@
-class_name ItemSelector
-
 extends Node
+class_name ItemSelector
 
 @export var passive_items : Array[PassiveItem]
 @export var weapons : Array[Weapon]

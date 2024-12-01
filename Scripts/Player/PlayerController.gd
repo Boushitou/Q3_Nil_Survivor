@@ -1,6 +1,5 @@
-class_name PlayerController
-
 extends Node
+class_name PlayerController
 
 @export var player_movement : PlayerMovement
 var direction = Vector2(0, 0)
