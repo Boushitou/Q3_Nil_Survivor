@@ -18,5 +18,5 @@ stats_upgraded = Array[Dictionary]([{
 is_multiplicative = true
 ID = 0
 name = "Thot Amulet"
-descriptions = Array[String](["Increases attack_speed by 8%", "Increases attack_speed by 8%", "Increases attack_speed by 8%", "Increases attack_speed by 8%", "Increases attack_speed by 8%"])
+descriptions = Array[String](["Increases attack speed by 8%", "Increases attack speed by 8%", "Increases attack speed by 8%", "Increases attack speed by 8%", "Increases attack speed by 8%"])
 max_level = 5

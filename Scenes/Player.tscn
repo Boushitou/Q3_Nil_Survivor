@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddcgvg5rx8u17"]
+[gd_scene load_steps=13 format=3 uid="uid://ddcgvg5rx8u17"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_d1yww"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_jhwxv"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://Scripts/Player/XPCollision.gd" id="5_e4ahy"]
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="6_lf85x"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="7_mn01f"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerAttack.gd" id="9_4gebf"]
+[ext_resource type="Resource" uid="uid://by4bo0u7m53yo" path="res://Data/Items/Weapons/8_kopesh.tres" id="9_t2vcd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
 size = Vector2(48, 119)
@@ -60,6 +62,12 @@ total_health = 100
 
 [node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("player_stats")]
 script = ExtResource("7_mn01f")
+player_stats = NodePath("../PlayerStats")
+starting_weapon_data = ExtResource("9_t2vcd")
+
+[node name="PlayerAttack" type="Node" parent="." node_paths=PackedStringArray("inventory", "player_stats")]
+script = ExtResource("9_4gebf")
+inventory = NodePath("../Inventory")
 player_stats = NodePath("../PlayerStats")
 
 [connection signal="area_entered" from="Body" to="Body/BodyCollision" method="_on_body_area_entered"]

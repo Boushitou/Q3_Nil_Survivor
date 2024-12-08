@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource("1_eet8q")
 damage = Array[int]([5, 5, 5])
-atk_speed = Array[float]([1.0, 1.0, 1.0])
+atk_speed = Array[float]([1.0, 0.8, 0.6])
 area = Array[Vector2]([Vector2(20, 5), Vector2(20, 5), Vector2(20, 5)])
 projectile_speed = Array[float]([0.0, 0.0, 0.0])
 hit_delay = Array[float]([10.0, 10.0, 10.0])
-duration = Array[float]([1.0, 1.0, 1.0])
+duration = Array[float]([1.0, 0.5, 0.2])
 ID = 8
 name = "Kopesh"
 descriptions = Array[String](["fezfze", "hgthtrh", "fefreg"])

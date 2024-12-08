@@ -5,3 +5,4 @@
 extends Node
 
 signal gain_xp(amount : int)
+signal get_new_weapon(weapon : Weapon)

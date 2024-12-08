@@ -12,6 +12,7 @@ func update_collider(size: Vector2, sprite : Sprite2D):
 
 	update_sprite(collider_size, sprite)	
 		
+	
 func update_sprite(size: Vector2, sprite: Sprite2D):
 	var texture_size = sprite.texture.get_size()
 	
