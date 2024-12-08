@@ -64,7 +64,7 @@ power = 10
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("6_lf85x")
-total_health = 100
+total_health = 10
 
 [node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("player_stats")]
 process_priority = -1

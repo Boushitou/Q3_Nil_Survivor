@@ -3,7 +3,7 @@ class_name Enemy
 
 var enemies_manager : EnemiesManager
 
-var playerNode : Node2D
+var player_node : Node2D
 var separation_radius : float
 var separation_force : Vector2 = Vector2.ZERO
 
@@ -27,7 +27,7 @@ func _ready():
 
 
 func _process(delta):
-	if !enemies_manager:
+	if !enemies_manager || player_node == null:
 		return
 	
 	update_grid_position()
@@ -35,7 +35,7 @@ func _process(delta):
 
 
 func set_references(player : Node2D, manager: EnemiesManager):
-	playerNode = player
+	player_node = player
 	enemies_manager = manager
 	
 	
@@ -50,7 +50,7 @@ func setup_stats(enemy_stat : EnemyData):
 
 
 func follow_player(delta):
-	var direction = (playerNode.global_position - global_position).normalized()
+	var direction = (player_node.global_position - global_position).normalized()
 	
 	time_since_last_update += delta
 
@@ -143,8 +143,8 @@ func get_damage():
 
 
 func _on_mouse_entered():
+	return
 	stats.health.take_damage(10)
-	#pass
 	#print("inflicted damage !")
 	
 

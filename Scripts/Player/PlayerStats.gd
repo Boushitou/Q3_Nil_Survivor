@@ -31,6 +31,7 @@ func _ready():
 		"health_regeneration": health.health_regeneration
 	}
 	SignalBus.connect("gain_xp", add_xp)
+	health.connect("has_died", player_death)
 
 
 func _process(_delta):
@@ -77,3 +78,7 @@ func get_stat_value(stat_name : String):
 func update_health_values():
 	health.total_health = get_stat_value("health")
 	health.health_regeneration = get_stat_value("health_regeneration")
+
+	
+func player_death():
+	get_parent().queue_free()

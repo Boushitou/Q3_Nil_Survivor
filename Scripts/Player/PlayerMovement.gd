@@ -29,8 +29,7 @@ func initiate_move(direction):
 			current_attack_direction.y = direction.y
 			
 		state = Movement_State.MOVING
-			
-
+		
 
 func move(delta):
 	if state == Movement_State.MOVING:

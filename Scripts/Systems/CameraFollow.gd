@@ -15,7 +15,8 @@ func _ready():
 
 
 func _process(delta):
-	smooth_follow(delta)
+	if target != null:
+		smooth_follow(delta)
 
 
 func smooth_follow(delta):

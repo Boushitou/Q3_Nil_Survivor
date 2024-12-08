@@ -17,7 +17,8 @@ func _ready():
 	
 	
 func _process(_delta):
-	respawn_enemies()
+	if player_node != null:
+		respawn_enemies()
 
 
 func update_enemy_position(enemy: Node, old_cell: Vector2, new_cell: Vector2):
