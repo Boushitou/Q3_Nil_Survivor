@@ -39,7 +39,7 @@ func _ready():
 
 
 func _process(delta):
-	if !can_spawn:
+	if !can_spawn or player_node == null:
 		return
 		
 	time_since_last_spawn += delta

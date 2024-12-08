@@ -35,6 +35,9 @@ func get_spawn_distance(camera_buffer : int) -> float:
 
 
 func get_spawn_position(spawn_distance : float) -> Vector2:
+	if target == null:
+		return Vector2.ZERO
+		
 	var angle = randf() * TAU
 	var spawn_offset = Vector2(cos(angle), sin(angle)) * spawn_distance
 	var spawn_position = target.global_position + spawn_offset

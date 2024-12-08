@@ -1,6 +1,5 @@
-class_name Utilities
-
 extends Node
+class_name Utilities
 
 #optimized lerp by Freya Holmer
 static func exp_decay(a, b, decay, delta):

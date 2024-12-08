@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddcgvg5rx8u17"]
+[gd_scene load_steps=15 format=3 uid="uid://ddcgvg5rx8u17"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_d1yww"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_jhwxv"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCollisions.gd" id="5_b0aba"]
 [ext_resource type="Script" path="res://Scripts/Player/XPCollision.gd" id="5_e4ahy"]
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="6_lf85x"]
+[ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Square.png" id="7_77ed3"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="7_mn01f"]
+[ext_resource type="Script" path="res://Scripts/Systems/HealthBar.gd" id="8_y1rp1"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAttack.gd" id="9_4gebf"]
 [ext_resource type="Resource" uid="uid://c7p64if204yio" path="res://Data/Items/Weapons/8_kopesh.tres" id="10_3t0p2"]
 
@@ -25,7 +27,6 @@ player_movement = NodePath("Body")
 collision_mask = 6
 script = ExtResource("2_jhwxv")
 player_stats = NodePath("../PlayerStats")
-DASH_FORCE = 3000.0
 
 [node name="BodyCollision" type="CollisionShape2D" parent="Body" node_paths=PackedStringArray("health")]
 position = Vector2(0, -0.5)
@@ -45,6 +46,7 @@ collision_mask = 4
 script = ExtResource("5_e4ahy")
 
 [node name="XpOrbDetector" type="CollisionShape2D" parent="Body/XpArea"]
+position = Vector2(8, 0)
 shape = SubResource("CircleShape2D_2iisx")
 
 [node name="PlayerAttack" type="Node" parent="Body" node_paths=PackedStringArray("inventory", "player_movement", "player_stats")]
@@ -52,6 +54,30 @@ script = ExtResource("9_4gebf")
 inventory = NodePath("../../Inventory")
 player_movement = NodePath("..")
 player_stats = NodePath("../../PlayerStats")
+
+[node name="Control" type="Control" parent="Body"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -24.0
+offset_top = 64.0
+offset_right = 24.0
+offset_bottom = 112.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Body/Control" node_paths=PackedStringArray("health")]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 16.0
+mouse_filter = 2
+value = 60.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_77ed3")
+texture_progress = ExtResource("7_77ed3")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.756863, 0, 0, 1)
+script = ExtResource("8_y1rp1")
+health = NodePath("../../../Health")
 
 [node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("4_jjtk5")
@@ -64,7 +90,7 @@ power = 10
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("6_lf85x")
-total_health = 10
+total_health = 30
 
 [node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("player_stats")]
 process_priority = -1

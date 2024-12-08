@@ -15,7 +15,7 @@ stats_upgraded = Array[Dictionary]([{
 }, {
 "health_regeneration": 1
 }])
-is_multiplicative = true
+is_multiplicative = false
 ID = 2
 name = "Wedjat Eye"
 descriptions = Array[String](["Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec"])

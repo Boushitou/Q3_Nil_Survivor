@@ -63,8 +63,10 @@ func increase_stat(stat_name : String, value):
 			stats[stat_name] = value
 			stats[stat_name] = 0 if stats[stat_name] < 0 else stats[stat_name]
 			
-			if stat_name == "health" or stat_name == "health_regeneration":
-				update_health_values()
+			if stat_name == "health":
+				health.upgrade_health(value)
+			elif stat_name == "health_regeneration":
+				health.upgrate_health_regeneration(value)
 
 				
 func get_stat_value(stat_name : String):
@@ -73,11 +75,6 @@ func get_stat_value(stat_name : String):
 	else:
 		print("stat not found : ", stat_name)
 		return 0
-
-
-func update_health_values():
-	health.total_health = get_stat_value("health")
-	health.health_regeneration = get_stat_value("health_regeneration")
 
 	
 func player_death():

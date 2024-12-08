@@ -22,6 +22,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not is_absorbed:
 		return
+		
 	move_toward_player(delta)
 		
 	
@@ -41,7 +42,7 @@ func start_moving(target_pos : Node2D):
 	
 	
 func move_toward_player(delta : float):
-	if not target:
+	if target == null:
 		return
 
 	var distance = old_target_pos.distance_to(target.global_position)

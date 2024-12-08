@@ -53,6 +53,9 @@ func remove_orb(orb_to_remove : Experience):
 
 #if the orbs are too far away we get them closer to the player
 func relocate_orbs():
+	if player_node == null:
+		return
+		
 	for o in orbs:
 		var distance_to_player = o.global_position.distance_squared_to(player_node.global_position)
 		var distance_respawn = camera.get_spawn_distance(50)

@@ -140,14 +140,9 @@ func take_damage(amount : int):
 
 func get_damage():
 	return stats.power
-
-
-func _on_mouse_entered():
-	return
-	stats.health.take_damage(10)
-	#print("inflicted damage !")
 	
 
 func _on_enemy_died():
 	stats.health.disconnect("has_died", _on_enemy_died)
 	enemies_manager.remove_enemy(self, last_cell)
+	print("enemy died.")
