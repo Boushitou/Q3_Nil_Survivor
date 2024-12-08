@@ -2,6 +2,7 @@ extends Node
 class_name PlayerAttack
 
 @export var inventory : Inventory
+@export var player_movement : PlayerMovement
 @export var player_stats : PlayerStats
 
 var weapons : Array[Items]
@@ -32,7 +33,7 @@ func attack() -> void:
 		if weapons_cooldown[w.ID] <= 0.0:
 			print("attacking !")
 			var player : Node2D = get_parent()
-			w.attack(player.global_position)
+			w.attack(player.global_position, player_movement.current_attack_direction)
 			weapons_cooldown[w.ID] = w.item.atk_speed[w.level - 1]
 			
 			

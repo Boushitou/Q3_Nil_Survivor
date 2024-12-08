@@ -6,10 +6,10 @@
 script = ExtResource("1_xw7h2")
 damage = Array[int]([10, 10, 10])
 atk_speed = Array[float]([1.0, 0.8, 0.6])
-area = Array[Vector2]([Vector2(100, 20), Vector2(100, 20), Vector2(500, 40)])
+area = Array[Vector2]([Vector2(100, 20), Vector2(200, 30), Vector2(300, 40)])
 projectile_speed = Array[float]([0.0, 0.0, 0.0])
 hit_delay = Array[float]([10.0, 10.0, 10.0])
-duration = Array[float]([0.5, 0.5, 0.5])
+duration = Array[float]([0.1, 0.1, 0.1])
 ID = 8
 name = "Kopesh"
 descriptions = Array[String](["First description", "Second description", "Third description"])

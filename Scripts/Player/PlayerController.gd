@@ -11,7 +11,6 @@ func _process(_delta):
 
 func handle_inputs():
 	movement_input()
-	dash_input()
 
 
 func movement_input():
@@ -37,8 +36,3 @@ func movement_input():
 
 func apply_direction():
 	player_movement.initiate_move(direction)
-
-
-func dash_input():
-	if Input.is_action_just_pressed("dash"):
-		player_movement.initiate_dash(direction)

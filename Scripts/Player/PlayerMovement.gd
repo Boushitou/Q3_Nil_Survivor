@@ -1,22 +1,13 @@
 extends Node2D
 class_name PlayerMovement
 
-enum Movement_State {IDLE, MOVING, DASHING}
+enum Movement_State {IDLE, MOVING}
 
 @export var player_stats : PlayerStats
 
-#region dash values
-@export var DASH_FORCE : float
-var dash_duration = 0.05
-var dash_cooldown = 3.0
-var dash_timer = 0.0
-var cooldown_timer = 0.0
-var dash_direction = Vector2(0, 0)
-#endregion
-
 var movement = Vector2(0, 0)
 var state : Movement_State = Movement_State.IDLE
-
+var current_attack_direction : Vector2 = Vector2(1, 0)  #game starts facing right for weapon and sprite
 
 func _ready():
 	add_to_group("player")
@@ -24,44 +15,23 @@ func _ready():
 
 func _process(delta):
 	move(delta)
-	dashing(delta)
-
+	
 
 func initiate_move(direction):
-	if direction != Vector2():
-		dash_direction = direction
-	
-	if state != Movement_State.DASHING:
-		movement = player_stats.get_stat_value("speed") * direction
+	movement = player_stats.get_stat_value("speed") * direction
 		
-		if movement == Vector2():
-			state = Movement_State.IDLE
-		else:
-			state = Movement_State.MOVING
+	if movement == Vector2():
+		state = Movement_State.IDLE
+	else:
+		if direction.x != 0:
+			current_attack_direction.x = direction.x
+		if direction.y != 0:
+			current_attack_direction.y = direction.y
+			
+		state = Movement_State.MOVING
 			
 
 
 func move(delta):
 	if state == Movement_State.MOVING:
 		position += movement * delta
-
-
-func initiate_dash(_direction):
-	if cooldown_timer <= 0 && state != Movement_State.DASHING:
-		state = Movement_State.DASHING
-		dash_timer = dash_duration
-		movement = dash_direction * DASH_FORCE
-
-
-func dashing(delta):
-	if state == Movement_State.DASHING:
-		position += delta * movement
-		
-		dash_timer -= delta
-		
-		if dash_timer <= 0:
-			state = Movement_State.IDLE
-			cooldown_timer = dash_cooldown
-			
-	if dash_cooldown > 0:
-		cooldown_timer -= delta

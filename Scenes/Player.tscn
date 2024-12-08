@@ -47,9 +47,10 @@ script = ExtResource("5_e4ahy")
 [node name="XpOrbDetector" type="CollisionShape2D" parent="Body/XpArea"]
 shape = SubResource("CircleShape2D_2iisx")
 
-[node name="PlayerAttack" type="Node" parent="Body" node_paths=PackedStringArray("inventory", "player_stats")]
+[node name="PlayerAttack" type="Node" parent="Body" node_paths=PackedStringArray("inventory", "player_movement", "player_stats")]
 script = ExtResource("9_4gebf")
 inventory = NodePath("../../Inventory")
+player_movement = NodePath("..")
 player_stats = NodePath("../../PlayerStats")
 
 [node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("health")]

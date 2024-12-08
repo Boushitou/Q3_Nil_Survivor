@@ -17,19 +17,16 @@ weapon_area = NodePath("WeaponBody")
 weapon_timer = NodePath("Timer")
 
 [node name="WeaponBody" type="Area2D" parent="." node_paths=PackedStringArray("collider")]
-position = Vector2(16, 0)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_f66n7")
 collider = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="WeaponBody"]
-position = Vector2(47.5, 0)
 scale = Vector2(0.97, 0.2)
 texture = ExtResource("2_3fhjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponBody"]
-position = Vector2(47.5, 0)
 shape = SubResource("RectangleShape2D_faxja")
 debug_color = Color(0.996078, 0, 0.180392, 0.32549)
 script = ExtResource("2_22q47")
