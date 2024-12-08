@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="6_lf85x"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="7_mn01f"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAttack.gd" id="9_4gebf"]
-[ext_resource type="Resource" uid="uid://by4bo0u7m53yo" path="res://Data/Items/Weapons/8_kopesh.tres" id="9_t2vcd"]
+[ext_resource type="Resource" uid="uid://c7p64if204yio" path="res://Data/Items/Weapons/8_kopesh.tres" id="10_3t0p2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
 size = Vector2(48, 119)
@@ -47,6 +47,11 @@ script = ExtResource("5_e4ahy")
 [node name="XpOrbDetector" type="CollisionShape2D" parent="Body/XpArea"]
 shape = SubResource("CircleShape2D_2iisx")
 
+[node name="PlayerAttack" type="Node" parent="Body" node_paths=PackedStringArray("inventory", "player_stats")]
+script = ExtResource("9_4gebf")
+inventory = NodePath("../../Inventory")
+player_stats = NodePath("../../PlayerStats")
+
 [node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("4_jjtk5")
 attack_speed = 1.0
@@ -61,14 +66,10 @@ script = ExtResource("6_lf85x")
 total_health = 100
 
 [node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("player_stats")]
+process_priority = -1
 script = ExtResource("7_mn01f")
 player_stats = NodePath("../PlayerStats")
-starting_weapon_data = ExtResource("9_t2vcd")
-
-[node name="PlayerAttack" type="Node" parent="." node_paths=PackedStringArray("inventory", "player_stats")]
-script = ExtResource("9_4gebf")
-inventory = NodePath("../Inventory")
-player_stats = NodePath("../PlayerStats")
+starting_weapon_data = ExtResource("10_3t0p2")
 
 [connection signal="area_entered" from="Body" to="Body/BodyCollision" method="_on_body_area_entered"]
 [connection signal="area_exited" from="Body" to="Body/BodyCollision" method="_on_body_area_exited"]

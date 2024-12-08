@@ -2,15 +2,18 @@ extends Node
 class_name Inventory
 
 @export var player_stats : PlayerStats
-@export var starting_weapon_data : Weapon
+@export var starting_weapon_data : Resource
 
 var passives_items : Array[Items]
 var weapons : Array[Items]
 
 var max_passives = 3
-var max_weapons = 2
+var max_weapons = 1
 
 func _ready() -> void:
+	pass
+
+func add_start_weapon():
 	if starting_weapon_data:
 		var starting_weapon = Items.new(starting_weapon_data, player_stats)
 		add_item(starting_weapon)
@@ -21,7 +24,7 @@ func add_item(item: Items):
 		passives_items.append(item)
 	elif item.item is Weapon:
 		weapons.append(item)
-		SignalBus.get_new_weapon.emit(item.item)
+		SignalBus.get_new_weapon.emit(item)
 
 	item.apply_effects()
 	

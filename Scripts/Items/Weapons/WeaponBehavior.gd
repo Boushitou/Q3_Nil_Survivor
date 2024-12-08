@@ -15,9 +15,8 @@ func initialize_weapon(weapon_data : Items):
 	weapon = weapon_data
 	
 	weapon_area.set_weapon(weapon_data)
-	collider.update_collider(weapon.item.area[weapon_data.level], sprite)
-	weapon_timer.set_duration(weapon.item.duration[weapon_data.level])
+	collider.update_collider(weapon.item.area[weapon_data.level - 1], sprite)
+	weapon_timer.set_duration(weapon.item.duration[weapon_data.level - 1])
 
 func _on_timer_timeout():
-	#PoolSystem.pool_object(weapon.item.name, self)
-	queue_free()
+	PoolSystem.pool_object(weapon.item.name, self)

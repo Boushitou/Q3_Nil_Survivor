@@ -10,3 +10,5 @@ extends Resource
 
 func apply_effect(_player_stats: PlayerStats, _level: int):
 	print("A simple Item has no effects !")
+	
+	

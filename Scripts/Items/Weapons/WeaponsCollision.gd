@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 
 
 func set_weapon(weapon_data : Items):
-	damage = weapon_data.item.get_damage(weapon_data.level)
+	damage = weapon_data.item.get_damage(weapon_data.level - 1)
 	
 
 func _on_area_entered(area):

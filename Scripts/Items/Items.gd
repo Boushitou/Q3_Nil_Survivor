@@ -28,3 +28,11 @@ func level_up():
 	
 func apply_effects():
 	item.apply_effect(player_stats, level)
+	
+	
+func attack(position : Vector2):
+	var weapon_atk : WeaponBehavior = item.create_attack(player_stats, level, position)
+	if not weapon_atk:
+		return
+		
+	weapon_atk.initialize_weapon(self)	
