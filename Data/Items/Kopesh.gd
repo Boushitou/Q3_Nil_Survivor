@@ -1,5 +1,4 @@
 extends "res://Data/Weapon.gd"
-class_name Kopesh
 
 var kopesh_scene = preload("res://Scenes/Weapons/kopesh.tscn")
 		

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Kopesh" load_steps=2 format=3 uid="uid://c7p64if204yio"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c7p64if204yio"]
 
 [ext_resource type="Script" path="res://Data/Items/Kopesh.gd" id="1_xw7h2"]
 
