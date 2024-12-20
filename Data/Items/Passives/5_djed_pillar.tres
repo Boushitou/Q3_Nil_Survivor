@@ -16,6 +16,7 @@ stats_upgraded = Array[Dictionary]([{
 "atk_range": 1.5
 }])
 is_multiplicative = true
+apply_instant = false
 ID = 5
 name = "Djed Pillar"
 descriptions = Array[String](["Increases the attack range by 10%", "Increases the attack range by 10%", "Increases the attack range by 10%", "Increases the attack range by 10%", "Increases the attack range by 10%"])

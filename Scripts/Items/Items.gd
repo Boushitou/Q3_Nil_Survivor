@@ -30,9 +30,9 @@ func apply_effects():
 	item.apply_effect(player_stats, level)
 	
 	
-func attack(position : Vector2, direction : Vector2):
-	var weapon_atk : WeaponBehavior = item.create_attack(player_stats, level, position, direction)
+func attack(position : Vector2, direction : Vector2, inventory : Inventory):
+	var weapon_atk : WeaponBehavior = item.create_attack(player_stats, level, inventory, position, direction)
 	if not weapon_atk:
 		return
 		
-	weapon_atk.initialize_weapon(self)	
+	weapon_atk.initialize_weapon(self, inventory)

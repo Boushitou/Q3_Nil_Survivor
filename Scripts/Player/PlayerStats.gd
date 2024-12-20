@@ -1,13 +1,14 @@
 extends Stats
 class_name PlayerStats
 
+@export var inventory : Inventory
+
 @export var attack_speed : float
 @export var atk_range : float
 @export var amount: int
 @export var projectile_speed : float
 
 var stats : Dictionary
-var bonus_items : Array[Items] = []
 
 #region leveling value
 const BASE_XP = 5
@@ -31,7 +32,7 @@ func _ready():
 		"health": health.total_health,
 		"health_regeneration": health.health_regeneration
 }
-
+	inventory.add_start_weapon(self)
 	SignalBus.connect("gain_xp", add_xp)
 	health.connect("has_died", player_death)
 
@@ -74,7 +75,7 @@ func increase_stat(stat_name : String, value):
 
 func get_stat_value(stat_name : String):
 	if stats.has(stat_name):
-		return stats[stat_name]
+		return stats[stat_name] * inventory.get_total_passive_items_bonuses(stat_name)
 	else:
 		print("stat not found : ", stat_name)
 		return 0

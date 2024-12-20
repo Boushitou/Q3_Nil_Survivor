@@ -4,6 +4,7 @@ class_name PlayerMovement
 enum Movement_State {IDLE, MOVING}
 
 @export var player_stats : PlayerStats
+@export var inventory : Inventory
 
 var movement = Vector2(0, 0)
 var state : Movement_State = Movement_State.IDLE

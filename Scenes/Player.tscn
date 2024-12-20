@@ -23,10 +23,11 @@ radius = 126.0
 script = ExtResource("1_d1yww")
 player_movement = NodePath("Body")
 
-[node name="Body" type="Area2D" parent="." node_paths=PackedStringArray("player_stats")]
+[node name="Body" type="Area2D" parent="." node_paths=PackedStringArray("player_stats", "inventory")]
 collision_mask = 6
 script = ExtResource("2_jhwxv")
 player_stats = NodePath("../PlayerStats")
+inventory = NodePath("../Inventory")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="Body" node_paths=PackedStringArray("health")]
 position = Vector2(0, -0.5)
@@ -79,8 +80,9 @@ tint_progress = Color(0.756863, 0, 0, 1)
 script = ExtResource("8_y1rp1")
 health = NodePath("../../../Health")
 
-[node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("health")]
+[node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("inventory", "health")]
 script = ExtResource("4_jjtk5")
+inventory = NodePath("../Inventory")
 attack_speed = 1.0
 atk_range = 20.0
 amount = 1
@@ -92,10 +94,9 @@ power = 10
 script = ExtResource("6_lf85x")
 total_health = 30
 
-[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("player_stats")]
+[node name="Inventory" type="Node" parent="."]
 process_priority = -1
 script = ExtResource("7_mn01f")
-player_stats = NodePath("../PlayerStats")
 starting_weapon_data = ExtResource("10_3t0p2")
 
 [connection signal="area_entered" from="Body" to="Body/BodyCollision" method="_on_body_area_entered"]

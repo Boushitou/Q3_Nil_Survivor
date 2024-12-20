@@ -16,7 +16,7 @@ const MAX_ITEMS = 3
 
 func _ready():
 	inventory = get_tree().get_nodes_in_group("player")[0].get_node("Inventory")
-	player_stats = inventory.player_stats
+	player_stats = get_tree().get_nodes_in_group("player")[0].get_node("PlayerStats")
 	player_stats.connect("level_up_signal", make_parent_visible)
 
 	total_items.append_array(passive_items)

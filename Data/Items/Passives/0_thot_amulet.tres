@@ -16,6 +16,7 @@ stats_upgraded = Array[Dictionary]([{
 "attack_speed": 1.4
 }])
 is_multiplicative = true
+apply_instant = false
 ID = 0
 name = "Thot Amulet"
 descriptions = Array[String](["Increases attack speed by 8%", "Increases attack speed by 8%", "Increases attack speed by 8%", "Increases attack speed by 8%", "Increases attack speed by 8%"])

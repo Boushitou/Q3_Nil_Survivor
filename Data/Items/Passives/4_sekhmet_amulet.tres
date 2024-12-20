@@ -16,6 +16,7 @@ stats_upgraded = Array[Dictionary]([{
 "power": 1.5
 }])
 is_multiplicative = true
+apply_instant = false
 ID = 4
 name = "Sekhmet Amulet"
 descriptions = Array[String](["Increases damage by 10%", "Increases damage by 10%", "Increases damage by 10%", "Increases damage by 10%", "Increases damage by 10%"])

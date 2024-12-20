@@ -10,7 +10,6 @@ var weapons_cooldown : Dictionary = {}
 
 func _ready() -> void:
 	SignalBus.connect("get_new_weapon", add_weapon)
-	inventory.add_start_weapon()
 	
 	
 func _process(delta: float) -> void:
@@ -32,11 +31,9 @@ func attack() -> void:
 			continue
 		if weapons_cooldown[w.ID] <= 0.0:
 			var player : Node2D = get_parent()
-			w.attack(player.global_position, player_movement.current_attack_direction)
-			var player_cooldown = player_stats.get_stat_value("attack_speed") * inventory.get_total_passive_items_bonuses("attack_speed")
+			w.attack(player.global_position, player_movement.current_attack_direction, inventory)
+			var player_cooldown = player_stats.get_stat_value("attack_speed")
 			weapons_cooldown[w.ID] = w.item.atk_speed[w.level - 1] / player_cooldown
-			print("total cooldown", inventory.get_total_passive_items_bonuses("attack_speed"))
-			
 			
 		
 func set_weapons_cooldown() -> void:

@@ -14,6 +14,6 @@ func get_damage(level : int):
 	return damage[level]
 
 
-func create_attack(_player_stats: PlayerStats, _level: int, 
+func create_attack(_player_stats: PlayerStats, _level: int, _inventory : Inventory,
 _position : Vector2 = Vector2.ZERO, _direction : Vector2 = Vector2.ZERO) -> Node:
 	return null

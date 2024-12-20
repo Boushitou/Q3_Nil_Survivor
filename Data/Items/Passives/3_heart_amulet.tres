@@ -16,6 +16,7 @@ stats_upgraded = Array[Dictionary]([{
 "health": 1.5
 }])
 is_multiplicative = true
+apply_instant = true
 ID = 3
 name = "Heart Amulet"
 descriptions = Array[String](["Increases health by 10%", "Increases health by 10%", "Increases health by 10%", "Increases health by 10%", "Increases health by 10%"])

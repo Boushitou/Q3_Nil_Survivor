@@ -10,6 +10,7 @@ stats_upgraded = Array[Dictionary]([{
 "amount": 1
 }])
 is_multiplicative = false
+apply_instant = true
 ID = 7
 name = "Two-Finger Amulet"
 descriptions = Array[String](["Increases the amount of attacks by 1", "Increases the amount of attacks by 1"])
