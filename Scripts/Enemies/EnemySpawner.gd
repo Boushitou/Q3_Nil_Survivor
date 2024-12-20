@@ -3,13 +3,13 @@ class_name EnemySpawner
 
 @export var camera_buffer : int = 50
 
-@export var timer_survival : TimerSurvival
 @export var waves : Array[WaveData] = []
 #The enemy type is defined by an ID, to know the correspondance go to: Data\Enemies\ID_enemies_helper.txt
 @export var enemies_data : Array[EnemyData] = []
 
 var player_node : Node2D
 var enemies_manager : EnemiesManager
+var timer_survival : TimerSurvival
 var camera : Camera2D
 
 var enemy_scene = preload("res://Scenes/enemy.tscn")
@@ -29,6 +29,7 @@ var rng = RandomNumberGenerator.new()
 
 
 func _ready():
+	timer_survival = get_node("../../GameCanvas/SurvivalTimer")
 	timer_survival.connect("time_over", _on_time_over)
 	timer_survival.connect("minute_passed", _on_minute_passed)
 	

@@ -7,6 +7,7 @@ class_name PlayerStats
 @export var projectile_speed : float
 
 var stats : Dictionary
+var bonus_items : Array[Items] = []
 
 #region leveling value
 const BASE_XP = 5
@@ -29,7 +30,8 @@ func _ready():
 		"projectile_speed": projectile_speed,
 		"health": health.total_health,
 		"health_regeneration": health.health_regeneration
-	}
+}
+
 	SignalBus.connect("gain_xp", add_xp)
 	health.connect("has_died", player_death)
 
@@ -67,15 +69,16 @@ func increase_stat(stat_name : String, value):
 				health.upgrade_health(value)
 			elif stat_name == "health_regeneration":
 				health.upgrate_health_regeneration(value)
-
 				
+
+
 func get_stat_value(stat_name : String):
 	if stats.has(stat_name):
 		return stats[stat_name]
 	else:
 		print("stat not found : ", stat_name)
 		return 0
+		
 
-	
 func player_death():
 	get_parent().queue_free()

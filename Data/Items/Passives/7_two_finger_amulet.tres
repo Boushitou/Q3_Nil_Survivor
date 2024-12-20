@@ -8,15 +8,9 @@ stats_upgraded = Array[Dictionary]([{
 "amount": 1
 }, {
 "amount": 1
-}, {
-"amount": 1
-}, {
-"amount": 1
-}, {
-"amount": 1
 }])
 is_multiplicative = false
 ID = 7
 name = "Two-Finger Amulet"
-descriptions = Array[String](["Increases the amount of attacks by 1", "Increases the amount of attacks by 1", "Increases the amount of attacks by 1", "Increases the amount of attacks by 1", "Increases the amount of attacks by 1"])
-max_level = 5
+descriptions = Array[String](["Increases the amount of attacks by 1", "Increases the amount of attacks by 1"])
+max_level = 2

@@ -145,4 +145,3 @@ func get_damage():
 func _on_enemy_died():
 	stats.health.disconnect("has_died", _on_enemy_died)
 	enemies_manager.remove_enemy(self, last_cell)
-	print("enemy died.")

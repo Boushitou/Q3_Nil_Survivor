@@ -71,3 +71,17 @@ func item_is_level_max(item : Items) -> bool:
 
 func get_player_stats():
 	return player_stats
+	
+func get_total_passive_items_bonuses(stat_name : String) -> float:
+	var total_bonus = 0.0
+	for passive in passives_items:
+		if passive.item.stats_upgraded[passive.level - 1].has(stat_name):
+			var bonus = passive.item.stats_upgraded[passive.level - 1][stat_name]
+			total_bonus += bonus
+		else:
+			print("passive item doesn't have stat : ", stat_name)
+		
+	if total_bonus == 0.0:
+		return 1.0
+		
+	return total_bonus	

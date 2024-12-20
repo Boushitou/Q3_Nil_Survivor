@@ -33,7 +33,9 @@ func attack() -> void:
 		if weapons_cooldown[w.ID] <= 0.0:
 			var player : Node2D = get_parent()
 			w.attack(player.global_position, player_movement.current_attack_direction)
-			weapons_cooldown[w.ID] = w.item.atk_speed[w.level - 1]
+			var player_cooldown = player_stats.get_stat_value("attack_speed") * inventory.get_total_passive_items_bonuses("attack_speed")
+			weapons_cooldown[w.ID] = w.item.atk_speed[w.level - 1] / player_cooldown
+			print("total cooldown", inventory.get_total_passive_items_bonuses("attack_speed"))
 			
 			
 		

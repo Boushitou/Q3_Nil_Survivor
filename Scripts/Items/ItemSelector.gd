@@ -134,3 +134,6 @@ func _on_visibility_changed():
 		return
 	if get_parent().is_visible_in_tree():
 		prepare_items_to_display()
+		Engine.time_scale = 0.0
+	else:
+		Engine.time_scale = 1.0

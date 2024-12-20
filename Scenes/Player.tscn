@@ -63,7 +63,7 @@ offset_top = 64.0
 offset_right = 24.0
 offset_bottom = 112.0
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Body/Control" node_paths=PackedStringArray("health")]
+[node name="HealthProgressBar" type="TextureProgressBar" parent="Body/Control" node_paths=PackedStringArray("health")]
 layout_mode = 0
 offset_left = -8.0
 offset_top = 8.0

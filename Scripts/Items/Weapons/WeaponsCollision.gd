@@ -37,6 +37,7 @@ func apply_damage():
 	for enemy in enemies_in_range:
 		enemy.take_damage(damage)
 
-
+#this should ensure that ennemies are not in the array anymore and should not die
+#outside of weapon range (because of the pool system)
 func _on_kopesh_hidden():
 	enemies_in_range.clear()
