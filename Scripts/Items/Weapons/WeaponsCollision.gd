@@ -36,3 +36,7 @@ func _on_area_exited(area):
 func apply_damage():
 	for enemy in enemies_in_range:
 		enemy.take_damage(damage)
+
+
+func _on_kopesh_hidden():
+	enemies_in_range.clear()

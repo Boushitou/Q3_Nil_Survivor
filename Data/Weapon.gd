@@ -4,7 +4,8 @@ extends "res://Data/Item.gd"
 
 @export var damage : Array[int]
 @export var atk_speed : Array[float]
-@export var area : Array[Vector2]
+@export var base_area :Vector2
+@export var bonus_area : Array[float]
 @export var projectile_speed : Array[float]
 @export var hit_delay : Array[float]
 @export var duration: Array[float] #weapon don't have a duration system if set to -1

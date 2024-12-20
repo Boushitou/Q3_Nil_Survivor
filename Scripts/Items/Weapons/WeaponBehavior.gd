@@ -13,10 +13,13 @@ func initialize_weapon(weapon_data : Items):
 		return
 		
 	weapon = weapon_data
-	
 	weapon_area.set_weapon(weapon_data)
-	collider.update_collider(weapon.item.area[weapon_data.level - 1], sprite)
+	
+	var size = weapon.item.base_area * weapon.item.bonus_area[weapon_data.level - 1]
+	collider.update_collider(size, sprite)
+	
 	weapon_timer.set_duration(weapon.item.duration[weapon_data.level - 1])
 
+	
 func _on_timer_timeout():
 	PoolSystem.pool_object(weapon.item.name, self)
