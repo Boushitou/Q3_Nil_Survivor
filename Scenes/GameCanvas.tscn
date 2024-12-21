@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjegdqifbh18b"]
+[gd_scene load_steps=16 format=3 uid="uid://cjegdqifbh18b"]
 
-[ext_resource type="Script" path="res://Scripts/FpsCounter.gd" id="1_j1xen"]
+[ext_resource type="Script" path="res://Scripts/UIs/FpsCounter.gd" id="1_j1xen"]
 [ext_resource type="Script" path="res://Scripts/Items/ItemSelector.gd" id="2_kiayn"]
 [ext_resource type="Resource" uid="uid://c4217x5uvoog0" path="res://Data/Items/Passives/0_thot_amulet.tres" id="3_jcwfr"]
 [ext_resource type="Resource" uid="uid://jd7mc3sucqv5" path="res://Data/Items/Passives/1_winged_scarab.tres" id="4_2t64w"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://c7p64if204yio" path="res://Data/Items/Weapons/8_kopesh.tres" id="11_kf8p0"]
 [ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Square.png" id="12_l6qja"]
 [ext_resource type="Script" path="res://Scripts/Systems/TimerSurvival.gd" id="13_4ttek"]
+[ext_resource type="Script" path="res://Scripts/UIs/XpProgressBar.gd" id="13_nsfak"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_uty8b"]
 
@@ -58,16 +59,27 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 64.0
 
-[node name="XpProgressBar" type="TextureProgressBar" parent="CharacterInformations"]
+[node name="XpProgressBar" type="TextureProgressBar" parent="CharacterInformations" node_paths=PackedStringArray("level_label")]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 24.0
+step = 0.0
 value = 50.0
 nine_patch_stretch = true
 texture_under = ExtResource("12_l6qja")
 texture_progress = ExtResource("12_l6qja")
 tint_under = Color(0.996078, 0.8, 0.4, 1)
 tint_progress = Color(0.2, 0.6, 0.4, 1)
+script = ExtResource("13_nsfak")
+level_label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="CharacterInformations"]
+layout_mode = 0
+offset_left = 1080.0
+offset_right = 1143.0
+offset_bottom = 23.0
+text = "Lv. 9999"
+horizontal_alignment = 2
 
 [node name="SurvivalTimer" type="Node" parent="." node_paths=PackedStringArray("timer_label")]
 unique_name_in_owner = true

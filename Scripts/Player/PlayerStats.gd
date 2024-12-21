@@ -6,12 +6,10 @@ class_name PlayerStats
 
 #region leveling value
 const BASE_XP = 5
-const GROWTH_FACTOR = 1.2
+const GROWTH_FACTOR = 1.2 #1.2
 var next_xp : int = BASE_XP
 var current_xp = 0
 var level_up_queue = 0 #if the player level up too many times at once
-
-signal level_up_signal()
 #endregion
 
 # Called when the node enters the scene tree for the first time.
@@ -45,7 +43,7 @@ func level_up():
 	if level_up_queue < 0:
 		level_up_queue = 0
 
-	level_up_signal.emit()
+	SignalBus.level_up_signal.emit(level, next_xp, current_xp)
 
 
 func increase_stat(stat_name : String, value):

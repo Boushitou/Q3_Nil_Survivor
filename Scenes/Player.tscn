@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="6_lf85x"]
 [ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Square.png" id="7_77ed3"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="7_mn01f"]
-[ext_resource type="Script" path="res://Scripts/Systems/HealthBar.gd" id="8_y1rp1"]
+[ext_resource type="Script" path="res://Scripts/UIs/HealthBar.gd" id="8_y1rp1"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAttack.gd" id="9_4gebf"]
 [ext_resource type="Resource" uid="uid://c7p64if204yio" path="res://Data/Items/Weapons/8_kopesh.tres" id="10_3t0p2"]
 

@@ -21,7 +21,6 @@ func _process(delta: float) -> void:
 
 func set_weapon(weapon_data : Items, player_stats : PlayerStats):
 	damage = weapon_data.item.get_damage(weapon_data.level - 1) * player_stats.get_stat_value("power")
-	print("damage: ", damage)
 	
 
 func _on_area_entered(area):
@@ -41,4 +40,7 @@ func apply_damage():
 #this should ensure that ennemies are not in the array anymore and should not die
 #outside of weapon range (because of the pool system)
 func _on_kopesh_hidden():
+	for enemy in enemies_in_range:
+		if not enemy.is_visible():
+			enemies_in_range.erase(enemy)
 	enemies_in_range.clear()

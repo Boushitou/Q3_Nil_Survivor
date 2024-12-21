@@ -21,3 +21,12 @@ static func ease_in_back(t: float) -> float:
 static func ease_in(t: float) -> float:
 	t = clamp(t, 0.0, 1.0)
 	return pow(t, 3)
+
+	
+static func smooth_fill(value: float, target: float, speed: float, delta: float) -> float:
+	if (value < target):
+		value += (target - value) * speed * delta
+	elif (value > target):
+		value -= (value - target) * speed * delta
+		
+	return value	

@@ -17,7 +17,7 @@ const MAX_ITEMS = 3
 func _ready():
 	inventory = get_tree().get_nodes_in_group("player")[0].get_node("Inventory")
 	player_stats = get_tree().get_nodes_in_group("player")[0].get_node("PlayerStats")
-	player_stats.connect("level_up_signal", make_parent_visible)
+	SignalBus.connect("level_up_signal", make_parent_visible)
 
 	total_items.append_array(passive_items)
 	total_items.append_array(weapons)
@@ -120,13 +120,14 @@ func remove_item(item_to_remove : Item):
 		total_items.remove_at(index)
 
 
-func make_parent_visible():
+func make_parent_visible(_level : int, _next_xp : int, _current_xp : int):
 	get_parent().visible = true
 
 
 func make_parent_not_visible(_added_item : Items):
 	get_parent().visible = false
 	get_tree().paused = false
+	Engine.time_scale = 1.0
 
 
 func _on_visibility_changed():
