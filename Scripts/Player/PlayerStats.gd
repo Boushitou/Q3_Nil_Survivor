@@ -2,13 +2,7 @@ extends Stats
 class_name PlayerStats
 
 @export var inventory : Inventory
-
-@export var attack_speed : float
-@export var atk_range : float
-@export var amount: int
-@export var projectile_speed : float
-
-var stats : Dictionary
+@export var stats : Dictionary
 
 #region leveling value
 const BASE_XP = 5
@@ -22,16 +16,9 @@ signal level_up_signal()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	stats = {
-		"speed": speed,
-		"attack_speed": attack_speed,
-		"power": power,
-		"atk_range": atk_range,
-		"amount": amount,
-		"projectile_speed": projectile_speed,
-		"health": health.total_health,
-		"health_regeneration": health.health_regeneration
-}
+	stats["health"] = health.total_health
+	stats["health_regeneration"] = health.health_regeneration
+	
 	inventory.add_start_weapon(self)
 	SignalBus.connect("gain_xp", add_xp)
 	health.connect("has_died", player_death)

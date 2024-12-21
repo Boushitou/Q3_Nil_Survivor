@@ -8,12 +8,12 @@ class_name WeaponBehavior
 
 var weapon : Items
 
-func initialize_weapon(weapon_data : Items, inventory: Inventory):
+func initialize_weapon(weapon_data : Items, inventory: Inventory, player_stats : PlayerStats):
 	if not weapon_area or not weapon_data.item is Weapon:
 		return
 		
 	weapon = weapon_data
-	weapon_area.set_weapon(weapon_data)
+	weapon_area.set_weapon(weapon_data, player_stats)
 	
 	var size = weapon.item.base_area * weapon.item.bonus_area[weapon_data.level - 1] * inventory.get_total_passive_items_bonuses("atk_range")
 	collider.update_collider(size, sprite)

@@ -35,4 +35,4 @@ func attack(position : Vector2, direction : Vector2, inventory : Inventory):
 	if not weapon_atk:
 		return
 		
-	weapon_atk.initialize_weapon(self, inventory)
+	weapon_atk.initialize_weapon(self, inventory, player_stats)

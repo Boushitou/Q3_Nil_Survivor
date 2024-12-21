@@ -2,8 +2,8 @@ extends Node
 class_name Stats
 
 @export var health : Health
-@export var speed : float
-@export var power : int
+var speed : float
+var power : int
 
 var level = 1
 

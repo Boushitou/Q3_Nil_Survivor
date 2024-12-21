@@ -19,8 +19,9 @@ func _process(delta: float) -> void:
 		hit_timer = hit_delay
 
 
-func set_weapon(weapon_data : Items):
-	damage = weapon_data.item.get_damage(weapon_data.level - 1)
+func set_weapon(weapon_data : Items, player_stats : PlayerStats):
+	damage = weapon_data.item.get_damage(weapon_data.level - 1) * player_stats.get_stat_value("power")
+	print("damage: ", damage)
 	
 
 func _on_area_entered(area):

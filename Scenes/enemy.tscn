@@ -19,8 +19,6 @@ sprite = NodePath("Body")
 [node name="Stats" type="Node" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("3_0op4a")
 health = NodePath("../Health")
-speed = 50.0
-power = 10
 
 [node name="Body" type="Sprite2D" parent="."]
 z_index = 9

@@ -83,12 +83,15 @@ health = NodePath("../../../Health")
 [node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("inventory", "health")]
 script = ExtResource("4_jjtk5")
 inventory = NodePath("../Inventory")
-attack_speed = 1.0
-atk_range = 20.0
-amount = 1
+stats = {
+"amount": 0,
+"atk_range": 1.0,
+"attack_speed": 1.0,
+"power": 1.0,
+"projectile_speed": 0.0,
+"speed": 200.0
+}
 health = NodePath("../Health")
-speed = 200.0
-power = 10
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("6_lf85x")
