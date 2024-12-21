@@ -5,28 +5,26 @@ class_name PlayerAttack
 @export var player_movement : PlayerMovement
 @export var player_stats : PlayerStats
 
-var weapons : Array[Items]
 var weapons_cooldown : Dictionary = {}
 
 func _ready() -> void:
-	SignalBus.connect("get_new_weapon", add_weapon)
+	SignalBus.connect("get_new_weapon", add_weapon_cooldown)
 	
 	
 func _process(delta: float) -> void:
-	for w in weapons:
+	for w in inventory.weapons:
 		if w.item is Weapon:
 			if weapons_cooldown.has(w.ID):
 				weapons_cooldown[w.ID] -= delta
 				attack()
 	
 
-func add_weapon(weapon: Items) -> void:
-	weapons.append(weapon)
+func add_weapon_cooldown(weapon: Items) -> void:
 	weapons_cooldown[weapon.ID] = weapon.item.atk_speed[weapon.level - 1]
 
 	
 func attack() -> void:
-	for w in weapons:
+	for w in inventory.weapons:
 		if not w.item is Weapon:
 			continue
 		if weapons_cooldown[w.ID] <= 0.0:
@@ -34,9 +32,3 @@ func attack() -> void:
 			w.attack(player.global_position, player_movement.current_attack_direction, inventory)
 			var player_cooldown = player_stats.get_stat_value("attack_speed")
 			weapons_cooldown[w.ID] = w.item.atk_speed[w.level - 1] / player_cooldown
-			
-		
-func set_weapons_cooldown() -> void:
-	for w in weapons:
-		if w.item is Weapon:
-			weapons_cooldown[w.ID] = w.item.atk_speed[w.level - 1]
