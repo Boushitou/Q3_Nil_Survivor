@@ -41,6 +41,7 @@ offset_right = 384.0
 offset_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 texture = SubResource("CanvasTexture_uty8b")
 
 [node name="ItemSelector" type="HBoxContainer" parent="Background"]
@@ -49,6 +50,7 @@ offset_left = 24.0
 offset_top = 24.0
 offset_right = 744.0
 offset_bottom = 360.0
+focus_mode = 2
 script = ExtResource("2_kiayn")
 passive_items = Array[Resource("res://Data/PassiveItem.gd")]([ExtResource("3_jcwfr"), ExtResource("4_2t64w"), ExtResource("5_wpnrb"), ExtResource("6_2dw80"), ExtResource("7_yevb1"), ExtResource("8_2og07"), ExtResource("9_2y07n"), ExtResource("10_x2qyv")])
 weapons = Array[Resource]([ExtResource("11_kf8p0")])

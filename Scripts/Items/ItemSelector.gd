@@ -24,11 +24,6 @@ func _ready():
 
 
 func prepare_items_to_display():
-	for child in get_children():
-		child.disconnect("item_selected_signal", set_item_in_inventory)
-		child.disconnect("item_selected_signal", make_parent_not_visible)
-		child.queue_free()
-		
 	items_to_display = get_random_items()
 	
 	if items_to_display.size() > 0:
@@ -56,12 +51,12 @@ func display_items():
 				remove_item(item)
 				
 			first_time = false
-			print("Item level: ", item_level)
 		
 		item_instance.set_item_data(item, player_stats, item_level, first_time)
 		item_instance.connect("item_selected_signal", set_item_in_inventory)
 		item_instance.connect("item_selected_signal", make_parent_not_visible)
 
+	set_focus_neighbors()
 
 func set_item_in_inventory(added_item : Items):
 	var player_item = inventory.get_item_by_ID(added_item.ID)
@@ -125,6 +120,11 @@ func make_parent_visible(_level : int, _next_xp : int, _current_xp : int):
 
 
 func make_parent_not_visible(_added_item : Items):
+	for child in get_children():
+		child.disconnect("item_selected_signal", set_item_in_inventory)
+		child.disconnect("item_selected_signal", make_parent_not_visible)
+		child.queue_free()
+		
 	get_parent().visible = false
 	get_tree().paused = false
 	Engine.time_scale = 1.0
@@ -138,3 +138,21 @@ func _on_visibility_changed():
 		Engine.time_scale = 0.0
 	else:
 		Engine.time_scale = 1.0
+
+		
+func set_focus_neighbors():
+	var children = get_children()
+	var total = children.size()
+	
+	if total == 0:
+		return
+	
+	get_child(0).call_deferred("grab_focus")		
+
+	for i in range(total):
+		var display_button : Button = children[i]
+		var right_neighbor : NodePath = children[(i + 1) % total].get_path()
+		var left_neighbor : NodePath = children[(i - 1 + total) % total].get_path()
+
+		display_button.set_focus_neighbor(SIDE_RIGHT, right_neighbor)
+		display_button.set_focus_neighbor(SIDE_LEFT, left_neighbor)

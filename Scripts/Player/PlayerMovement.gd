@@ -25,9 +25,9 @@ func initiate_move(direction):
 		state = Movement_State.IDLE
 	else:
 		if direction.x != 0:
-			current_attack_direction.x = direction.x
+			current_attack_direction.x = sign(direction.x)
 		if direction.y != 0:
-			current_attack_direction.y = direction.y
+			current_attack_direction.y = sign(direction.y)
 			
 		state = Movement_State.MOVING
 		
