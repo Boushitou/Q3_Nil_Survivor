@@ -47,7 +47,6 @@ collision_mask = 4
 script = ExtResource("5_e4ahy")
 
 [node name="XpOrbDetector" type="CollisionShape2D" parent="Body/XpArea"]
-position = Vector2(8, 0)
 shape = SubResource("CircleShape2D_2iisx")
 
 [node name="PlayerAttack" type="Node" parent="Body" node_paths=PackedStringArray("inventory", "player_movement", "player_stats")]

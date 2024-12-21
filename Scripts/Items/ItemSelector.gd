@@ -2,7 +2,7 @@ extends Node
 class_name ItemSelector
 
 @export var passive_items : Array[PassiveItem]
-@export var weapons : Array[Resource] #I don't understand why my kopesh can't be put here while it inherit Weapon AND Item ...
+@export var weapons : Array[Resource] #I don't understand why my kopesh can't be set in the inspector while it inherit Weapon AND Item ...
 
 var item_choice = preload("res://Scenes/item_choice.tscn")
 

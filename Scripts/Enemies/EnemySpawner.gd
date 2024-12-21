@@ -9,7 +9,6 @@ class_name EnemySpawner
 
 var player_node : Node2D
 var enemies_manager : EnemiesManager
-var timer_survival : TimerSurvival
 var camera : Camera2D
 
 var enemy_scene = preload("res://Scenes/enemy.tscn")
@@ -29,9 +28,8 @@ var rng = RandomNumberGenerator.new()
 
 
 func _ready():
-	timer_survival = get_node("../../GameCanvas/SurvivalTimer")
-	timer_survival.connect("time_over", _on_time_over)
-	timer_survival.connect("minute_passed", _on_minute_passed)
+	SignalBus.connect("time_over", _on_time_over)
+	SignalBus.connect("minute_passed", _on_minute_passed)
 	
 	for enemy_data in enemies_data:
 		enemies[enemy_data.ID] = enemy_data

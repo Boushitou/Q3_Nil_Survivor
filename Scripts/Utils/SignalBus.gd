@@ -5,5 +5,9 @@
 extends Node
 
 signal gain_xp(amount : int)
-signal get_new_weapon(weapon : Weapon)
 signal level_up_signal(level : int, next_xp : int, current_xp : int)
+
+signal get_new_weapon(weapon : Weapon)
+
+signal minute_passed
+signal time_over
