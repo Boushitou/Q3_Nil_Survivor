@@ -19,6 +19,7 @@ weapon_timer = NodePath("Timer")
 [node name="WeaponBody" type="Area2D" parent="." node_paths=PackedStringArray("collider")]
 collision_layer = 8
 collision_mask = 2
+priority = 1
 script = ExtResource("1_f66n7")
 collider = NodePath("CollisionShape2D")
 
@@ -36,6 +37,4 @@ one_shot = true
 script = ExtResource("5_63bj5")
 
 [connection signal="hidden" from="." to="WeaponBody" method="_on_kopesh_hidden"]
-[connection signal="area_entered" from="WeaponBody" to="WeaponBody" method="_on_area_entered"]
-[connection signal="area_exited" from="WeaponBody" to="WeaponBody" method="_on_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -31,5 +31,8 @@ func _on_body_area_exited(area):
 
 func apply_damage():
 	for area in areas_in_range:
+		if not is_instance_valid(area) or not area.is_visible():
+			areas_in_range.erase(area)
+			continue
 		var damage = area.get_damage()
 		health.take_damage(damage)

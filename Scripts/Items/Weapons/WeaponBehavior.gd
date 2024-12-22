@@ -12,6 +12,7 @@ func initialize_weapon(weapon_data : Items, inventory: Inventory, player_stats :
 	if not weapon_area or not weapon_data.item is Weapon:
 		return
 		
+	collider.set_disabled(false)	
 	weapon = weapon_data
 	weapon_area.set_weapon(weapon_data, player_stats)
 	
@@ -22,4 +23,5 @@ func initialize_weapon(weapon_data : Items, inventory: Inventory, player_stats :
 
 	
 func _on_timer_timeout():
+	collider.set_disabled(true)
 	PoolSystem.pool_object(weapon.item.name, self)

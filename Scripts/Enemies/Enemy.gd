@@ -20,12 +20,6 @@ var last_cell : Vector2 = Vector2(-1, 1)
 var update_frequency = 0.1 #10fps
 var time_since_last_update = 0.0
 
-func _ready():
-	add_to_group("enemies")
-	
-	set_collider_bounds()
-	set_separation_radius()
-
 
 func _process(delta):
 	if !enemies_manager || player_node == null:
@@ -49,6 +43,15 @@ func setup_stats(enemy_stat : EnemyData):
 	data = enemy_stat
 	
 	stats.health.connect("has_died", _on_enemy_died)
+	
+	if not is_in_group("enemies"):
+		var old_group = get_groups()
+		for group in old_group:
+			remove_from_group(group)
+		add_to_group("enemies")
+		
+	set_collider_bounds()
+	set_separation_radius()
 
 
 func follow_player(delta):
@@ -86,7 +89,8 @@ func get_separation_force(current_position : Vector2, neighbor_positions : Array
 func set_collider_bounds():
 	if !sprite or !collider:
 		return
-	
+		
+	collider.set_shape(RectangleShape2D.new())
 	var texture_size = sprite.texture.get_size() * sprite.scale
 	var shape = collider.get_shape()
 	

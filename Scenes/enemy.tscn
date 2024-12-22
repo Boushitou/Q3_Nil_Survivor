@@ -9,6 +9,7 @@
 size = Vector2(47.4175, 47)
 
 [node name="Enemy" type="Area2D" node_paths=PackedStringArray("stats", "collider", "sprite")]
+disable_mode = 2
 collision_layer = 2
 script = ExtResource("1_6noeu")
 separation_weight = 50.0
