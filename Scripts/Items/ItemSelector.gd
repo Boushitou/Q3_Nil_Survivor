@@ -29,9 +29,11 @@ func prepare_items_to_display():
 	if items_to_display.size() > 0:
 		display_items()
 		get_tree().paused = true
+		Engine.time_scale = 0.0
 		pass
 	else:
 		make_parent_not_visible(null)
+		Engine.time_scale = 1.0
 		print("No items to display !")
 		
 		
@@ -121,13 +123,14 @@ func make_parent_visible(_level : int, _next_xp : int, _current_xp : int):
 
 func make_parent_not_visible(_added_item : Items):
 	for child in get_children():
-		child.disconnect("item_selected_signal", set_item_in_inventory)
-		child.disconnect("item_selected_signal", make_parent_not_visible)
+		if child.is_connected("item_selected_signal", set_item_in_inventory):
+			child.disconnect("item_selected_signal", set_item_in_inventory)
+		if child.is_connected("item_selected_signal", make_parent_not_visible):	
+			child.disconnect("item_selected_signal", make_parent_not_visible)
 		child.queue_free()
 		
 	get_parent().visible = false
 	get_tree().paused = false
-	Engine.time_scale = 1.0
 
 
 func _on_visibility_changed():
@@ -135,9 +138,6 @@ func _on_visibility_changed():
 		return
 	if get_parent().is_visible_in_tree():
 		prepare_items_to_display()
-		Engine.time_scale = 0.0
-	else:
-		Engine.time_scale = 1.0
 
 		
 func set_focus_neighbors():

@@ -6,6 +6,7 @@ var enemies_manager : EnemiesManager
 var player_node : Node2D
 var separation_radius : float
 var separation_force : Vector2 = Vector2.ZERO
+var data : EnemyData
 
 @export var separation_weight : float
 @export var stats : Stats
@@ -45,6 +46,7 @@ func setup_stats(enemy_stat : EnemyData):
 	stats.power = enemy_stat.power
 	stats.speed = enemy_stat.speed
 	sprite.texture = enemy_stat.sprite
+	data = enemy_stat
 	
 	stats.health.connect("has_died", _on_enemy_died)
 

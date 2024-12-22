@@ -25,6 +25,9 @@ var max_wave_enemies = 0
 var can_spawn = false
 
 var rng = RandomNumberGenerator.new()
+#keep track of enemies type so we don't have to spawn randomly
+var enemies_killed = {} #string, int "type" = int
+var enemies_spawned = {} #string, int "type" = int
 
 
 func _ready():
@@ -67,6 +70,13 @@ func start_next_wave():
 	max_wave_enemies = calculate_max_enemies(current_wave)
 	enemy_frequency = waves[current_wave_nb].enemy_frequency
 	
+	#reset enemies spawned and killed to let the new enemies type to be spawned
+	enemies_spawned.clear()
+	enemies_killed.clear()
+	for enemy_type in current_wave.enemy_data:
+		enemies_spawned[enemy_type["type"]] = 0
+		enemies_killed[enemy_type["type"]] = 0
+	
 
 func calculate_max_enemies(wave_data : WaveData) -> int:
 	var max_enemies = 0
@@ -95,6 +105,7 @@ func spawn_enemies():
 		var enemy = PoolSystem.instantiate_object("enemy", enemy_scene, camera.get_spawn_position(spawn_distance), 0.0, self)
 		enemy.set_references(player_node, enemies_manager)
 		enemy.setup_stats(enemies[enemy_ID])
+		enemies_spawned[enemy_ID] += 1
 		
 		current_enemies_nb += 1
 		#print("spawning ennemies !")
@@ -102,15 +113,21 @@ func spawn_enemies():
 
 func pick_enemy_type() -> int:
 	var enemies_type = current_wave.enemy_data
-	
 	if enemies_type.size() == 0:
 		return -1
 	
-	return enemies_type[rng.randi_range(0, enemies_type.size() - 1)]["type"]
+	for enemy in enemies_type:
+		if enemies_spawned[enemy["type"]] < enemy["count"]:
+			return enemy["type"]
+	
+	var enemy_ID = enemies_killed.keys()[rng.randi_range(0, enemies_killed.size() - 1)]
+	enemies_killed[enemy_ID] -= 1
+	return enemy_ID	
 
 
-func _on_enemy_died(_position : Vector2):
+func _on_enemy_died(_position : Vector2, enemy_type : int):
 	current_enemies_nb -= 1
+	enemies_killed[enemy_type] += 1
 	#print("number of enemies: ", current_enemies_nb)
 
 

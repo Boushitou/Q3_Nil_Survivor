@@ -37,13 +37,25 @@ func add_xp(xp : int):
 
 func level_up():
 	level += 1
-	next_xp = BASE_XP * pow(GROWTH_FACTOR, level - 1)
+	next_xp = calculate_xp(level)
 	level_up_queue -= 1
 	
 	if level_up_queue < 0:
 		level_up_queue = 0
 
 	SignalBus.level_up_signal.emit(level, next_xp, current_xp)
+
+
+#Calculation inspired by the description of the Vampire Survivor wiki level up system
+func calculate_xp(current_level : int) -> int:
+	if current_level == 1:
+		return BASE_XP
+	elif current_level <= 20:
+		return BASE_XP + (level - 1) * 10
+	elif current_level <= 40:
+		return calculate_xp(20) + 600 + (current_level - 20) * 13
+	else:
+		return calculate_xp(40) + 2400 + (current_level - 40) * 16
 
 
 func increase_stat(stat_name : String, value):

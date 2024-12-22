@@ -13,6 +13,8 @@ var max_distance = 500
 
 var orbs : Array[Experience]
 
+var orbs_value = 2
+
 func _ready() -> void:
 	enemies_manager = get_parent()
 	enemies_manager.connect("enemy_died_signal", spawn_orb)
@@ -25,10 +27,10 @@ func _process(_delta: float) -> void:
 		relocate_orbs()
 
 
-func spawn_orb(position : Vector2):
+func spawn_orb(position : Vector2, _enemy_type : int):
 	if xp_orb_nb < MAX_ORB_NB:
 		var new_orb : Experience = PoolSystem.instantiate_object("xp_orb", orb, position, 0.0, self)
-		new_orb.value = 2 #because they don't get destroyed they keep the old value so we initialize them
+		new_orb.value = 1000 #because they don't get destroyed they keep the old value so we initialize them
 		orbs.append(new_orb)
 		xp_orb_nb += 1
 	else:
@@ -39,7 +41,7 @@ func add_value_to_orb():
 	var rnd_index = randi_range(0, get_child_count() - 1)
 	var rnd_orb : Experience = get_child(rnd_index)
 	
-	rnd_orb.value += 2
+	rnd_orb.value += orbs_value
 
 
 func remove_orb(orb_to_remove : Experience):

@@ -94,7 +94,7 @@ health = NodePath("../Health")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("6_lf85x")
-total_health = 30
+total_health = 50000
 
 [node name="Inventory" type="Node" parent="."]
 process_priority = -1

@@ -7,7 +7,7 @@ var camera : Camera2D
 
 var enemy_grid : Dictionary = {}
 
-signal enemy_died_signal(position : Vector2)
+signal enemy_died_signal(position : Vector2, enemy_ID : int)
 
 func _ready():
 	player_node = $"../Player/Body"
@@ -50,8 +50,8 @@ func remove_enemy(enemy: Node2D, cell: Vector2):
 	var enemy_pos = enemy.global_position
 	cell_enemies.erase(enemy)
 	enemy_grid[cell] = cell_enemies
+	enemy_died_signal.emit(enemy_pos, enemy.data.ID)
 	PoolSystem.pool_object("enemy", enemy)
-	emit_signal("enemy_died_signal", enemy_pos)
 
 
 func get_enemy_count() -> int:
