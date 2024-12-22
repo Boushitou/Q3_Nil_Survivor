@@ -113,21 +113,26 @@ func spawn_enemies():
 
 func pick_enemy_type() -> int:
 	var enemies_type = current_wave.enemy_data
+	var enemy_ID = -1
+	
 	if enemies_type.size() == 0:
-		return -1
+		return enemy_ID
 	
 	for enemy in enemies_type:
 		if enemies_spawned[enemy["type"]] < enemy["count"]:
 			return enemy["type"]
 	
-	var enemy_ID = enemies_killed.keys()[rng.randi_range(0, enemies_killed.size() - 1)]
-	enemies_killed[enemy_ID] -= 1
+	for dead_enemy in enemies_killed.keys():
+		if enemies_killed[dead_enemy] > 0:
+			enemies_killed[dead_enemy] -= 1
+			return dead_enemy	
 	return enemy_ID	
 
 
 func _on_enemy_died(_position : Vector2, enemy_type : int):
 	current_enemies_nb -= 1
-	enemies_killed[enemy_type] += 1
+	if enemies_killed.has(enemy_type):
+		enemies_killed[enemy_type] += 1
 	#print("number of enemies: ", current_enemies_nb)
 
 

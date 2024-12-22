@@ -34,7 +34,7 @@ script = ExtResource("6_ql5bx")
 
 [node name="EnemySpawner" type="Node" parent="EnemiesManager"]
 script = ExtResource("7_dhjye")
-waves = Array[Resource("res://Data/WaveData.gd")]([ExtResource("7_eys2x"), ExtResource("8_m107j"), ExtResource("9_yi551")])
+waves = Array[Resource("res://Data/WaveData.gd")]([ExtResource("9_yi551"), ExtResource("7_eys2x"), ExtResource("8_m107j")])
 enemies_data = Array[Resource("res://Data/EnemyData.gd")]([ExtResource("9_bhl7t"), ExtResource("10_hrgb2")])
 
 [node name="XpOrbManager" type="Node" parent="EnemiesManager"]
