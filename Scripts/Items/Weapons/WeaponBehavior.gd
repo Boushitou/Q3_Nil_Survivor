@@ -17,7 +17,7 @@ func initialize_weapon(weapon_data : Items, inventory: Inventory, player_stats :
 	weapon = weapon_data
 	weapon_area.set_weapon(weapon_data, player_stats)
 	
-	var size = weapon.item.base_area * weapon.item.bonus_area[weapon_data.level - 1] * inventory.get_total_passive_items_bonuses("atk_range")
+	var size : Vector2 = weapon.item.base_area * weapon.item.bonus_area[weapon_data.level - 1] * inventory.get_total_passive_items_bonuses("atk_range")
 	collider.update_collider(size, sprite)
 	
 	weapon_timer.set_duration(weapon.item.duration[weapon_data.level - 1])
