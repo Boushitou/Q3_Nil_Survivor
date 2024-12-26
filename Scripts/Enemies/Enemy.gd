@@ -52,6 +52,7 @@ func setup_stats(enemy_stat : EnemyData):
 		
 	set_collider_bounds()
 	set_separation_radius()
+	set_collision_layer_value(2, true)
 
 
 func follow_player(delta):

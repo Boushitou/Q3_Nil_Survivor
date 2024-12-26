@@ -36,5 +36,4 @@ script = ExtResource("2_22q47")
 one_shot = true
 script = ExtResource("5_63bj5")
 
-[connection signal="hidden" from="." to="WeaponBody" method="_on_kopesh_hidden"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -8,6 +8,7 @@
 [node name="XpOrb" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
+monitoring = false
 script = ExtResource("1_2qc04")
 smooth_factor = 2.0
 distance_scale = 0.1

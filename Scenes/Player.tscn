@@ -25,6 +25,7 @@ player_movement = NodePath("Body")
 
 [node name="Body" type="Area2D" parent="." node_paths=PackedStringArray("player_stats", "inventory")]
 collision_mask = 6
+monitorable = false
 script = ExtResource("2_jhwxv")
 player_stats = NodePath("../PlayerStats")
 inventory = NodePath("../Inventory")
@@ -44,6 +45,7 @@ texture = ExtResource("3_dh2ju")
 [node name="XpArea" type="Area2D" parent="Body"]
 collision_layer = 0
 collision_mask = 4
+monitorable = false
 script = ExtResource("5_e4ahy")
 
 [node name="XpOrbDetector" type="CollisionShape2D" parent="Body/XpArea"]
@@ -64,6 +66,7 @@ offset_right = 24.0
 offset_bottom = 112.0
 
 [node name="HealthProgressBar" type="TextureProgressBar" parent="Body/Control" node_paths=PackedStringArray("health")]
+z_index = 10
 layout_mode = 0
 offset_left = -8.0
 offset_top = 8.0

@@ -8,10 +8,11 @@ class_name WeaponBehavior
 
 var weapon : Items
 
-func initialize_weapon(weapon_data : Items, inventory: Inventory, player_stats : PlayerStats):
+func initialize_weapon(weapon_data : Items, inventory: Inventory, player_stats : PlayerStats) -> void:
 	if not weapon_area or not weapon_data.item is Weapon:
 		return
 		
+	weapon_area.set_collision_mask_value(2, true)
 	collider.set_disabled(false)	
 	weapon = weapon_data
 	weapon_area.set_weapon(weapon_data, player_stats)
@@ -22,6 +23,6 @@ func initialize_weapon(weapon_data : Items, inventory: Inventory, player_stats :
 	weapon_timer.set_duration(weapon.item.duration[weapon_data.level - 1])
 
 	
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	collider.set_disabled(true)
 	PoolSystem.pool_object(weapon.item.name, self)
