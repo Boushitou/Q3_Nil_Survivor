@@ -6,14 +6,14 @@ class_name Experience
 
 var xp_orb_manager : XpOrbManager
 var value : int = 2
-var min_speed = 400
+var min_speed : float = 400
 
-var is_absorbed = false
+var is_absorbed : bool = false
 var target : Node2D
 var old_target_pos : Vector2
 
-@export var bounce_duration = 0.1
-var bounce_time = 0.0
+@export var bounce_duration : float = 0.1
+var bounce_time : float = 0.0
 
 func _ready() -> void:
 	xp_orb_manager = get_parent()
@@ -26,12 +26,12 @@ func _process(delta: float) -> void:
 	move_toward_player(delta)
 		
 	
-func _on_hidden():
+func _on_hidden() -> void:
 	xp_orb_manager.remove_orb(self)
 	is_absorbed = false
 
 	
-func start_moving(target_pos : Node2D):
+func start_moving(target_pos : Node2D) -> void:
 	if is_absorbed:
 		return
 		
@@ -41,21 +41,21 @@ func start_moving(target_pos : Node2D):
 	bounce_time = 0.0
 	
 	
-func move_toward_player(delta : float):
+func move_toward_player(delta : float) -> void:
 	if target == null:
 		return
 
-	var distance = old_target_pos.distance_to(target.global_position)
+	var distance : float = old_target_pos.distance_to(target.global_position)
 
 	old_target_pos = target.global_position
 
-	var dynamic_smooth_factor = smooth_factor + (distance * distance_scale)
-	var new_position = Utilities.exp_decay(position, target.global_position, dynamic_smooth_factor, delta)
-	var move_vector = new_position - position
+	var dynamic_smooth_factor : float = smooth_factor + (distance * distance_scale)
+	var new_position : Vector2 = Utilities.exp_decay(position, target.global_position, dynamic_smooth_factor, delta)
+	var move_vector : Vector2 = new_position - position
 	
 	if bounce_time < bounce_duration:
-		var t = bounce_time / bounce_duration
-		var bounce_effect = Utilities.ease_in_back(t)
+		var t : float = bounce_time / bounce_duration
+		var bounce_effect : float = Utilities.ease_in_back(t)
 		move_vector *= bounce_effect
 		bounce_time += delta
 	

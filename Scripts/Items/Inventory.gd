@@ -6,19 +6,19 @@ class_name Inventory
 var passives_items : Array[Items]
 var weapons : Array[Items]
 
-var max_passives = 3
-var max_weapons = 1
+var max_passives : int = 3
+var max_weapons : int = 1
 
 func _ready() -> void:
 	pass
 
-func add_start_weapon(player_stats : PlayerStats):
+func add_start_weapon(player_stats : PlayerStats) -> void:
 	if starting_weapon_data:
-		var starting_weapon = Items.new(starting_weapon_data, player_stats)
+		var starting_weapon : Items = Items.new(starting_weapon_data, player_stats)
 		add_item(starting_weapon)
 
 
-func add_item(item: Items):
+func add_item(item: Items) -> void:
 	if item.item is PassiveItem:
 		passives_items.append(item)
 	elif item.item is Weapon:
@@ -28,11 +28,11 @@ func add_item(item: Items):
 	item.apply_effects()
 	
 
-func level_up_item(item: Items):
-	var items : Array[Items]
+func level_up_item(item: Items) -> void:
+	var items : Array[Items] = []
 	
 	items = passives_items + weapons
-	var correct_item = null
+	var correct_item : Items = null
 	
 	for i in items:
 		if i.ID == item.ID:
@@ -47,7 +47,7 @@ func level_up_item(item: Items):
 
 
 func get_item_by_ID(item_ID : int) -> Items:
-	var items : Array[Items]
+	var items : Array[Items] = []
 	items = passives_items + weapons
 	
 	for i in items:
@@ -70,10 +70,10 @@ func item_is_level_max(item : Items) -> bool:
 	
 	
 func get_total_passive_items_bonuses(stat_name : String) -> float:
-	var total_bonus = 0.0
+	var total_bonus : float = 0.0
 	for passive in passives_items:
 		if passive.item.stats_upgraded[passive.level - 1].has(stat_name):
-			var bonus = passive.item.stats_upgraded[passive.level - 1][stat_name]
+			var bonus : float = passive.item.stats_upgraded[passive.level - 1][stat_name]
 			total_bonus += bonus
 		
 	if total_bonus == 0.0:

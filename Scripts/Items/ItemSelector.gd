@@ -12,9 +12,9 @@ var player_stats : PlayerStats
 var total_items : Array[Item]
 var items_to_display : Array[Item]
 
-const MAX_ITEMS = 3
+const MAX_ITEMS : int = 3
 
-func _ready():
+func _ready() -> void:
 	inventory = get_tree().get_nodes_in_group("player")[0].get_node("Inventory")
 	player_stats = get_tree().get_nodes_in_group("player")[0].get_node("PlayerStats")
 	SignalBus.connect("level_up_signal", make_parent_visible)
@@ -23,7 +23,7 @@ func _ready():
 	total_items.append_array(weapons)
 
 
-func prepare_items_to_display():
+func prepare_items_to_display() -> void:
 	items_to_display = get_random_items()
 	
 	if items_to_display.size() > 0:
@@ -37,15 +37,15 @@ func prepare_items_to_display():
 		print("No items to display !")
 		
 		
-func display_items():
+func display_items() -> void:
 	for item in items_to_display:
 		var item_instance : ItemDisplay
 		item_instance = item_choice.instantiate()
 		add_child(item_instance)
 		
-		var item_level = 1
-		var player_item = inventory.get_item_by_ID(item.ID)
-		var first_time = true
+		var item_level : int = 1
+		var player_item : Items = inventory.get_item_by_ID(item.ID)
+		var first_time : bool = true
 		
 		if player_item:
 			item_level = player_item.level + 1
@@ -60,8 +60,8 @@ func display_items():
 
 	set_focus_neighbors()
 
-func set_item_in_inventory(added_item : Items):
-	var player_item = inventory.get_item_by_ID(added_item.ID)
+func set_item_in_inventory(added_item : Items) -> void:
+	var player_item : Items = inventory.get_item_by_ID(added_item.ID)
 	
 	if not player_item:
 		inventory.add_item(added_item)
@@ -73,8 +73,8 @@ func get_available_items() -> Array[Item]:
 	if total_items.size() == 0:
 		return []
 	
-	var player_passives = inventory.passives_items
-	var player_weapons = inventory.weapons
+	var player_passives : Array[Items] = inventory.passives_items
+	var player_weapons : Array[Items] = inventory.weapons
 	
 	var available_items : Array[Item] = []
 
@@ -96,7 +96,7 @@ func get_available_items() -> Array[Item]:
 	
 
 func get_random_items() -> Array[Item]:
-	var available_items = get_available_items()
+	var available_items : Array[Item] = get_available_items()
 	var selected : Array[Item] = []
 	
 	while available_items.size() > 0 and selected.size() < MAX_ITEMS:
@@ -108,20 +108,20 @@ func get_random_items() -> Array[Item]:
 			
 		available_items.remove_at(index)	
 	
-	return selected	
+	return selected
 	
 	
-func remove_item(item_to_remove : Item):
-	var index = total_items.find(item_to_remove)
+func remove_item(item_to_remove : Item) -> void:
+	var index : int = total_items.find(item_to_remove)
 	if index != -1:
 		total_items.remove_at(index)
 
 
-func make_parent_visible(_level : int, _next_xp : int, _current_xp : int):
+func make_parent_visible(_level : int, _next_xp : int, _current_xp : int) -> void:
 	get_parent().visible = true
 
 
-func make_parent_not_visible(_added_item : Items):
+func make_parent_not_visible(_added_item : Items) -> void:
 	for child in get_children():
 		if child.is_connected("item_selected_signal", set_item_in_inventory):
 			child.disconnect("item_selected_signal", set_item_in_inventory)
@@ -133,16 +133,16 @@ func make_parent_not_visible(_added_item : Items):
 	get_tree().paused = false
 
 
-func _on_visibility_changed():
+func _on_visibility_changed() -> void:
 	if not inventory:
 		return
 	if get_parent().is_visible_in_tree():
 		prepare_items_to_display()
 
 		
-func set_focus_neighbors():
-	var children = get_children()
-	var total = children.size()
+func set_focus_neighbors() -> void:
+	var children : Array[Node] = get_children()
+	var total : int = children.size()
 	
 	if total == 0:
 		return

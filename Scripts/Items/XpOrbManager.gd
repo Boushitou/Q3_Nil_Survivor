@@ -1,19 +1,19 @@
 extends Node
 class_name XpOrbManager
 
-var orb = preload("res://Scenes/xp_orb.tscn")
+var orb : Resource = preload("res://Scenes/xp_orb.tscn")
 
-var xp_orb_nb = 0
-const MAX_ORB_NB = 400
+var xp_orb_nb : int = 0
+const MAX_ORB_NB : int = 400
 var enemies_manager : EnemiesManager
 
 var player_node : Node2D
 var camera : Camera2D
-var max_distance = 500
+var max_distance : float = 500
 
 var orbs : Array[Experience]
 
-var orbs_value = 2
+var orbs_value : int = 2
 
 func _ready() -> void:
 	enemies_manager = get_parent()
@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 		relocate_orbs()
 
 
-func spawn_orb(position : Vector2, _enemy_type : int):
+func spawn_orb(position : Vector2, _enemy_type : int) -> void:
 	if xp_orb_nb < MAX_ORB_NB:
 		var new_orb : Experience = PoolSystem.instantiate_object("xp_orb", orb, position, 0.0, self)
 		new_orb.value = 1000 #because they don't get destroyed they keep the old value so we initialize them
@@ -37,14 +37,14 @@ func spawn_orb(position : Vector2, _enemy_type : int):
 		add_value_to_orb()
 
 	
-func add_value_to_orb():
-	var rnd_index = randi_range(0, get_child_count() - 1)
+func add_value_to_orb() -> void:
+	var rnd_index : int = randi_range(0, get_child_count() - 1)
 	var rnd_orb : Experience = get_child(rnd_index)
 	
 	rnd_orb.value += orbs_value
 
 
-func remove_orb(orb_to_remove : Experience):
+func remove_orb(orb_to_remove : Experience) -> void:
 	if orbs.size() > 0:
 		orbs.erase(orb_to_remove)
 	xp_orb_nb -= 1
@@ -54,16 +54,16 @@ func remove_orb(orb_to_remove : Experience):
 
 
 #if the orbs are too far away we get them closer to the player
-func relocate_orbs():
+func relocate_orbs() -> void:
 	if player_node == null:
 		return
 		
 	for o in orbs:
-		var distance_to_player = o.global_position.distance_squared_to(player_node.global_position)
-		var distance_respawn = camera.get_spawn_distance(50)
+		var distance_to_player : float = o.global_position.distance_squared_to(player_node.global_position)
+		var distance_respawn : float = camera.get_spawn_distance(50)
 
 		if distance_to_player > distance_respawn * distance_respawn + max_distance:
-			var new_pos = camera.get_spawn_position(distance_respawn)
+			var new_pos : Vector2 = camera.get_spawn_position(distance_respawn)
 			o.global_position = new_pos
 
 

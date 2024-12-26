@@ -11,11 +11,11 @@ var item_data : Items
 signal item_selected_signal(item_data: Items)
 
 
-func _ready():
+func _ready() -> void:
 	button_up.connect(_on_item_selected.bind())
 
 
-func set_item_data(item: Item, player_stats: PlayerStats, level : int, first_time: bool):
+func set_item_data(item: Item, player_stats: PlayerStats, level : int, first_time: bool) -> void:
 	item_data = Items.new(item, player_stats)
 	
 	item_name.text = item_data.item.name
@@ -29,5 +29,5 @@ func set_item_data(item: Item, player_stats: PlayerStats, level : int, first_tim
 	item_icon.texture = item_data.item.sprite
 
 
-func _on_item_selected():
+func _on_item_selected() -> void:
 	emit_signal("item_selected_signal", item_data)
