@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 func spawn_orb(position : Vector2, _enemy_type : int) -> void:
 	if xp_orb_nb < MAX_ORB_NB:
 		var new_orb : Experience = PoolSystem.instantiate_object("xp_orb", orb, position, 0.0, self)
-		new_orb.value = 1000 #because they don't get destroyed they keep the old value so we initialize them
+		new_orb.value = orbs_value #because they don't get destroyed they keep the old value so we initialize them
 		orbs.append(new_orb)
 		xp_orb_nb += 1
 	else:

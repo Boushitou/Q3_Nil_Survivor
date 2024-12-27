@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=2 format=3 uid="uid://bmm04nhehaoa2"]
+
+[ext_resource type="Script" path="res://Data/WaveData.gd" id="1_mfcbd"]
+
+[resource]
+script = ExtResource("1_mfcbd")
+wave_nb = 4
+enemy_frequency = 0.25
+enemy_data = Array[Dictionary]([{
+"type": 2
+}])

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://cjy1han4o5m57"]
+
+[ext_resource type="Script" path="res://Data/EnemyData.gd" id="1_6o3bu"]
+[ext_resource type="Texture2D" uid="uid://bgxjrifq2wi0s" path="res://Assets/Enemies/Temporary/pig.png" id="2_h5dcj"]
+
+[resource]
+script = ExtResource("1_6o3bu")
+ID = 2
+name = "Skeleton"
+max_health = 15
+power = 10
+speed = 50.0
+sprite = ExtResource("2_h5dcj")

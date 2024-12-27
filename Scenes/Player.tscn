@@ -91,13 +91,13 @@ stats = {
 "attack_speed": 1.0,
 "power": 1.0,
 "projectile_speed": 0.0,
-"speed": 200.0
+"speed": 150.0
 }
 health = NodePath("../Health")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("6_lf85x")
-total_health = 50000
+total_health = 120
 
 [node name="Inventory" type="Node" parent="."]
 process_priority = -1

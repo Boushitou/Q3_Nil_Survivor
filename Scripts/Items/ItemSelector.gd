@@ -33,7 +33,6 @@ func prepare_items_to_display() -> void:
 		pass
 	else:
 		make_parent_not_visible(null)
-		Engine.time_scale = 1.0
 		print("No items to display !")
 		
 		
@@ -138,6 +137,8 @@ func _on_visibility_changed() -> void:
 		return
 	if get_parent().is_visible_in_tree():
 		prepare_items_to_display()
+	else:
+		Engine.time_scale = 1.0
 
 		
 func set_focus_neighbors() -> void:
