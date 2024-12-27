@@ -2,7 +2,7 @@ extends Node
 class_name Utilities
 
 #optimized lerp by Freya Holmer
-static func exp_decay(a, b, decay, delta) -> float:
+static func exp_decay(a, b, decay, delta):
 	return b + (a - b) * exp(-decay * delta)
 	
 	

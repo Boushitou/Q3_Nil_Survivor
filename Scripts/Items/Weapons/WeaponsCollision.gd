@@ -43,3 +43,4 @@ func apply_damage():
 		enemy.take_damage(damage)
 		if not enemy.is_visible():
 			enemies_in_range.erase(enemy)
+
