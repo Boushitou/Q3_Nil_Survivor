@@ -2,7 +2,7 @@ extends Node
 class_name Utilities
 
 #optimized lerp by Freya Holmer
-static func exp_decay(a, b, decay, delta):
+static func exp_decay(a, b, decay, delta) -> float:
 	return b + (a - b) * exp(-decay * delta)
 	
 	
@@ -12,8 +12,8 @@ static func ease_out(t: float) -> float:
 
 
 static func ease_in_back(t: float) -> float:
-	var c1 = 1.70158 
-	var c3 = c1 + 1
+	var c1 : float = 1.70158 
+	var c3 : float = c1 + 1
 	t = clamp(t, 0.0, 1.0)
 	return c3 * t * t * t - c1 * t * t
 

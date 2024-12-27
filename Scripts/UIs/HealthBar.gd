@@ -11,8 +11,8 @@ func _ready() -> void:
 	value = current_value
 	
 	
-func update_texture_value(current_health : int):
+func update_texture_value(current_health : int) -> void:
 	target_value = current_health
 	
-func update_texture_max_value(total_health : int):
+func update_texture_max_value(total_health : int) -> void:
 	max_value = total_health

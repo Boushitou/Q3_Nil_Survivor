@@ -5,7 +5,7 @@ class_name Stats
 var speed : float
 var power : int
 
-var level = 1
+var level : int = 1
 
 func get_damage() -> int:
 	return power

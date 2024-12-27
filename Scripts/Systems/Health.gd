@@ -6,27 +6,27 @@ class_name Health
 var current_health : int
 var is_dead : bool = false
 
-var regeneration_time = 1.0
-var regeneration_timer = 0.0
+var regeneration_time : float = 1.0
+var regeneration_timer : float = 0.0
 
 signal has_died
 signal change_health_signal(current_health : int)
 signal health_upgrade_signal(total_health : int)
 
-func _ready():
+func _ready() -> void:
 	current_health = total_health
 
 
-func init_health():
+func init_health() -> void:
 	current_health = total_health
 	is_dead = false
 
 
-func _process(delta):
+func _process(delta) -> void:
 	health_regeneration_tick(delta)
 
 
-func take_damage(amount : int):
+func take_damage(amount : int) -> void:
 	if is_dead:
 		return
 	
@@ -39,7 +39,7 @@ func take_damage(amount : int):
 		
 	change_health_signal.emit(current_health)	
 
-func heal(amount : int):
+func heal(amount : int) -> void:
 	if is_dead:
 		return
 	
@@ -47,16 +47,16 @@ func heal(amount : int):
 	current_health = total_health if current_health > total_health else current_health
 
 
-func upgrade_health(amount : int):
+func upgrade_health(amount : int) -> void:
 	total_health += amount
 	health_upgrade_signal.emit(total_health)
 
 
-func upgrate_health_regeneration(amount : int):
+func upgrate_health_regeneration(amount : int) -> void:
 	health_regeneration += amount
 
 
-func health_regeneration_tick(delta):
+func health_regeneration_tick(delta) -> void:
 	if is_dead || health_regeneration <= 0:
 		return
 	
@@ -67,6 +67,6 @@ func health_regeneration_tick(delta):
 		change_health_signal.emit(current_health)
 	
 
-func death():
+func death() -> void:
 	is_dead = true
 	emit_signal("has_died")
