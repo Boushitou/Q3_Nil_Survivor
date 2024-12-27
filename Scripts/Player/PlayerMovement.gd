@@ -6,19 +6,19 @@ enum Movement_State {IDLE, MOVING}
 @export var player_stats : PlayerStats
 @export var inventory : Inventory
 
-var movement = Vector2(0, 0)
+var movement : Vector2 = Vector2(0, 0)
 var state : Movement_State = Movement_State.IDLE
 var current_attack_direction : Vector2 = Vector2(1, 0)  #game starts facing right for weapon and sprite
 
-func _ready():
+func _ready() -> void:
 	add_to_group("player")
 
 
-func _process(delta):
+func _process(delta) -> void:
 	move(delta)
 	
 
-func initiate_move(direction):
+func initiate_move(direction : Vector2) -> void:
 	movement = player_stats.get_stat_value("speed") * direction
 		
 	if movement == Vector2():
@@ -32,6 +32,6 @@ func initiate_move(direction):
 		state = Movement_State.MOVING
 		
 
-func move(delta):
+func move(delta : float) -> void:
 	if state == Movement_State.MOVING:
 		position += movement * delta

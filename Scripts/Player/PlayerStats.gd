@@ -5,15 +5,15 @@ class_name PlayerStats
 @export var stats : Dictionary
 
 #region leveling value
-const BASE_XP = 5
-const GROWTH_FACTOR = 1.2 #1.2
+const BASE_XP : int = 5
+const GROWTH_FACTOR : float = 1.2 #1.2
 var next_xp : int = BASE_XP
-var current_xp = 0
-var level_up_queue = 0 #if the player level up too many times at once
+var current_xp : int = 0
+var level_up_queue : int = 0 #if the player level up too many times at once
 #endregion
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	stats["health"] = health.total_health
 	stats["health_regeneration"] = health.health_regeneration
 	
@@ -22,12 +22,12 @@ func _ready():
 	health.connect("has_died", player_death)
 
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if level_up_queue > 0:
 		level_up()
 
 		
-func add_xp(xp : int):
+func add_xp(xp : int) -> void:
 	current_xp += xp
 	
 	while current_xp >= next_xp:
@@ -35,7 +35,7 @@ func add_xp(xp : int):
 		level_up_queue += 1
 
 
-func level_up():
+func level_up() -> void:
 	level += 1
 	next_xp = calculate_xp(level)
 	level_up_queue -= 1
@@ -58,7 +58,7 @@ func calculate_xp(current_level : int) -> int:
 		return calculate_xp(40) + 2400 + (current_level - 40) * 16
 
 
-func increase_stat(stat_name : String, value):
+func increase_stat(stat_name : String, value) -> void:
 	if stats.has(stat_name):
 			stats[stat_name] = value
 			stats[stat_name] = 0 if stats[stat_name] < 0 else stats[stat_name]
@@ -70,7 +70,7 @@ func increase_stat(stat_name : String, value):
 				
 
 
-func get_stat_value(stat_name : String):
+func get_stat_value(stat_name : String): #this method actually needs to be dynamic
 	if stats.has(stat_name):
 		return stats[stat_name] * inventory.get_total_passive_items_bonuses(stat_name)
 	else:
@@ -78,5 +78,5 @@ func get_stat_value(stat_name : String):
 		return 0
 		
 
-func player_death():
+func player_death() -> void:
 	get_parent().queue_free()

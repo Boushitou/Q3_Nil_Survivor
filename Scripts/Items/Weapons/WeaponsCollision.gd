@@ -2,13 +2,13 @@ extends Area2D
 class_name WeaponsCollision
 
 @export var collider : CollisionModifier
-var damage = 0
+var damage : int = 0
 
 var enemies_in_range : Array[Enemy]
 var hit_delay : float
-var hit_timer = 0.0
+var hit_timer : float = 0.0
 
-func _ready():
+func _ready() ->void:
 	connect("area_entered", _on_area_entered)
 	connect("area_exited", _on_area_exited)
 
@@ -23,11 +23,11 @@ func _physics_process(delta: float) -> void:
 		hit_timer = hit_delay
 
 
-func set_weapon(weapon_data : Items, player_stats : PlayerStats):
+func set_weapon(weapon_data : Items, player_stats : PlayerStats) ->void:
 	damage = weapon_data.item.get_damage(weapon_data.level - 1) * player_stats.get_stat_value("power")
 	
 
-func _on_area_entered(area):
+func _on_area_entered(area) ->void:
 	print("touching enemy")
 	if area.is_in_group("enemies"):
 		enemies_in_range.append(area)
