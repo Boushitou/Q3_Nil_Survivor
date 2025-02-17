@@ -41,7 +41,6 @@ func _on_area_exited(area):
 		
 func apply_damage():
 	for enemy in enemies_in_range:
-		var direction = (enemy.global_position - global_position).normalized()
 		enemy.take_damage(damage, force)
 		if not enemy.is_visible():
 			enemies_in_range.erase(enemy)

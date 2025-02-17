@@ -10,6 +10,7 @@ var data : EnemyData
 
 @export var separation_weight : float
 @export var stats : Stats
+@export var animation_player : AnimationPlayer
 
 @export var collider : CollisionShape2D
 @export var sprite : Sprite2D
@@ -149,6 +150,9 @@ func take_damage(amount : int, force: float) -> void:
 	
 	var direction = (global_position - player_node.global_position).normalized()
 	apply_push_back(force, direction)
+	
+	if animation_player != null:
+		animation_player.play("damaged_animation")
 
 
 func get_damage() -> int:
