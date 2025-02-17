@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponBehavior.gd" id="1_0ffcn"]
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponsCollision.gd" id="1_f66n7"]
-[ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Square.png" id="2_3fhjv"]
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/CollisionModifier.gd" id="2_22q47"]
+[ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Shapes/Square.png" id="3_jegye"]
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponTimer.gd" id="5_63bj5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_faxja"]
@@ -25,7 +25,7 @@ collider = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="WeaponBody"]
 scale = Vector2(0.97, 0.2)
-texture = ExtResource("2_3fhjv")
+texture = ExtResource("3_jegye")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponBody"]
 shape = SubResource("RectangleShape2D_faxja")

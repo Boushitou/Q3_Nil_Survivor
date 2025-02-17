@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCollisions.gd" id="5_b0aba"]
 [ext_resource type="Script" path="res://Scripts/Player/XPCollision.gd" id="5_e4ahy"]
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="6_lf85x"]
-[ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Square.png" id="7_77ed3"]
+[ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Shapes/Square.png" id="7_77ed3"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="7_mn01f"]
 [ext_resource type="Script" path="res://Scripts/UIs/HealthBar.gd" id="8_y1rp1"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAttack.gd" id="9_4gebf"]

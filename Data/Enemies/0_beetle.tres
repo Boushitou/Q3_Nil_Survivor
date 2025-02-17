@@ -7,7 +7,7 @@
 script = ExtResource("1_hn2cu")
 ID = 0
 name = "Beetle"
-max_health = 5
+max_health = 100
 power = 5
 speed = 60.0
 sprite = ExtResource("2_gbbms")

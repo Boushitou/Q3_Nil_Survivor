@@ -86,6 +86,9 @@ func get_separation_force(current_position : Vector2, neighbor_positions : Array
 	
 	return force
 
+func apply_push_back(force: float, direction: Vector2) -> void:
+	var push_vector = direction.normalized() * force
+	position += push_vector
 
 func set_collider_bounds() -> void:
 	if !sprite or !collider:
@@ -141,8 +144,11 @@ func get_neighbors_positions() -> Array:
 	return neighbor_position
 
 
-func take_damage(amount : int) -> void:
+func take_damage(amount : int, force: float) -> void:
 	stats.health.take_damage(amount)
+	
+	var direction = (global_position - player_node.global_position).normalized()
+	apply_push_back(force, direction)
 
 
 func get_damage() -> int:

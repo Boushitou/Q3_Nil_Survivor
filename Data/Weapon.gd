@@ -3,6 +3,7 @@ class_name Weapon
 extends "res://Data/Item.gd"
 
 @export var damage : Array[int]
+@export var push_back_force : float
 @export var atk_speed : Array[float]
 @export var base_area :Vector2
 @export var bonus_area : Array[float]
@@ -12,6 +13,10 @@ extends "res://Data/Item.gd"
 
 func get_damage(level : int):
 	return damage[level]
+
+
+func get_push_back_force() -> float:
+	return push_back_force
 
 
 func create_attack(_player_stats: PlayerStats, _level: int, _inventory : Inventory,
