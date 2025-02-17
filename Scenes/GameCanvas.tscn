@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://cjegdqifbh18b"]
+
+[ext_resource type="Script" path="res://Scripts/UIs/FpsCounter.gd" id="1_j1xen"]
+[ext_resource type="Script" path="res://Scripts/Items/ItemSelector.gd" id="2_kiayn"]
+[ext_resource type="Resource" uid="uid://c4217x5uvoog0" path="res://Data/Items/Passives/0_thot_amulet.tres" id="3_jcwfr"]
+[ext_resource type="Resource" uid="uid://jd7mc3sucqv5" path="res://Data/Items/Passives/1_winged_scarab.tres" id="4_2t64w"]
+[ext_resource type="Resource" uid="uid://b4kxu121xwyeg" path="res://Data/Items/Passives/2_wedjat_eye.tres" id="5_wpnrb"]
+[ext_resource type="Resource" uid="uid://csd5tns1s4r0b" path="res://Data/Items/Passives/3_heart_amulet.tres" id="6_2dw80"]
+[ext_resource type="Resource" uid="uid://g51a3edhb8a7" path="res://Data/Items/Passives/4_sekhmet_amulet.tres" id="7_yevb1"]
+[ext_resource type="Resource" uid="uid://bhhal7s2cnidf" path="res://Data/Items/Passives/5_djed_pillar.tres" id="8_2og07"]
+[ext_resource type="Resource" uid="uid://dsh1hnaocgi5g" path="res://Data/Items/Passives/6_fly_amulet.tres" id="9_2y07n"]
+[ext_resource type="Resource" uid="uid://df1y10ksv8cgl" path="res://Data/Items/Passives/7_two_finger_amulet.tres" id="10_x2qyv"]
+[ext_resource type="Resource" uid="uid://c7p64if204yio" path="res://Data/Items/Weapons/8_kopesh.tres" id="11_kf8p0"]
+[ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Shapes/Square.png" id="12_l6qja"]
+[ext_resource type="Script" path="res://Scripts/Systems/TimerSurvival.gd" id="13_4ttek"]
+[ext_resource type="Script" path="res://Scripts/UIs/XpProgressBar.gd" id="13_nsfak"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_uty8b"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+
+[node name="FpsLabel" type="Label" parent="."]
+offset_left = 1056.0
+offset_top = 64.0
+offset_right = 1152.0
+offset_bottom = 92.0
+text = "Fps : 45452"
+script = ExtResource("1_j1xen")
+
+[node name="Background" type="NinePatchRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -196.0
+offset_right = 384.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+texture = SubResource("CanvasTexture_uty8b")
+
+[node name="ItemSelector" type="HBoxContainer" parent="Background"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 744.0
+offset_bottom = 360.0
+focus_mode = 2
+script = ExtResource("2_kiayn")
+passive_items = Array[Resource("res://Data/PassiveItem.gd")]([ExtResource("3_jcwfr"), ExtResource("4_2t64w"), ExtResource("5_wpnrb"), ExtResource("6_2dw80"), ExtResource("7_yevb1"), ExtResource("8_2og07"), ExtResource("9_2y07n"), ExtResource("10_x2qyv")])
+weapons = Array[Resource]([ExtResource("11_kf8p0")])
+
+[node name="CharacterInformations" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 64.0
+
+[node name="XpProgressBar" type="TextureProgressBar" parent="CharacterInformations" node_paths=PackedStringArray("level_label")]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 24.0
+step = 0.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("12_l6qja")
+texture_progress = ExtResource("12_l6qja")
+tint_under = Color(0.996078, 0.8, 0.4, 1)
+tint_progress = Color(0.2, 0.6, 0.4, 1)
+script = ExtResource("13_nsfak")
+level_label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="CharacterInformations"]
+layout_mode = 0
+offset_left = 1080.0
+offset_right = 1143.0
+offset_bottom = 23.0
+text = "Lv. 9999"
+horizontal_alignment = 2
+
+[node name="SurvivalTimer" type="Node" parent="." node_paths=PackedStringArray("timer_label")]
+unique_name_in_owner = true
+script = ExtResource("13_4ttek")
+timer_label = NodePath("TimerLabel")
+
+[node name="TimerLabel" type="Label" parent="SurvivalTimer"]
+clip_contents = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 24.0
+offset_right = 64.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 28
+text = "Time : 00:00"
+horizontal_alignment = 1
+
+[connection signal="visibility_changed" from="Background/ItemSelector" to="Background/ItemSelector" method="_on_visibility_changed"]

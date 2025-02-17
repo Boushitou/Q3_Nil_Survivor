@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=3 uid="uid://ddcgvg5rx8u17"]
+
+[ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_d1yww"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_jhwxv"]
+[ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="3_dh2ju"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerStats.gd" id="4_jjtk5"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerCollisions.gd" id="5_b0aba"]
+[ext_resource type="Script" path="res://Scripts/Player/XPCollision.gd" id="5_e4ahy"]
+[ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="6_lf85x"]
+[ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Shapes/Square.png" id="7_77ed3"]
+[ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="7_mn01f"]
+[ext_resource type="Script" path="res://Scripts/UIs/HealthBar.gd" id="8_y1rp1"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerAttack.gd" id="9_4gebf"]
+[ext_resource type="Resource" uid="uid://c7p64if204yio" path="res://Data/Items/Weapons/8_kopesh.tres" id="10_3t0p2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
+size = Vector2(48, 119)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2iisx"]
+radius = 126.0
+
+[node name="Player" type="Node" node_paths=PackedStringArray("player_movement") groups=["player"]]
+script = ExtResource("1_d1yww")
+player_movement = NodePath("Body")
+
+[node name="Body" type="Area2D" parent="." node_paths=PackedStringArray("player_stats", "inventory")]
+collision_mask = 6
+monitorable = false
+script = ExtResource("2_jhwxv")
+player_stats = NodePath("../PlayerStats")
+inventory = NodePath("../Inventory")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="Body" node_paths=PackedStringArray("health")]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_rexpl")
+script = ExtResource("5_b0aba")
+health = NodePath("../../Health")
+
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
+z_index = 10
+position = Vector2(-2.38419e-07, 0)
+scale = Vector2(0.375, 1)
+texture = ExtResource("3_dh2ju")
+
+[node name="XpArea" type="Area2D" parent="Body"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("5_e4ahy")
+
+[node name="XpOrbDetector" type="CollisionShape2D" parent="Body/XpArea"]
+shape = SubResource("CircleShape2D_2iisx")
+
+[node name="PlayerAttack" type="Node" parent="Body" node_paths=PackedStringArray("inventory", "player_movement", "player_stats")]
+script = ExtResource("9_4gebf")
+inventory = NodePath("../../Inventory")
+player_movement = NodePath("..")
+player_stats = NodePath("../../PlayerStats")
+
+[node name="Control" type="Control" parent="Body"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -24.0
+offset_top = 64.0
+offset_right = 24.0
+offset_bottom = 112.0
+
+[node name="HealthProgressBar" type="TextureProgressBar" parent="Body/Control" node_paths=PackedStringArray("health")]
+z_index = 10
+layout_mode = 0
+offset_left = -8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 16.0
+mouse_filter = 2
+value = 60.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_77ed3")
+texture_progress = ExtResource("7_77ed3")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.756863, 0, 0, 1)
+script = ExtResource("8_y1rp1")
+health = NodePath("../../../Health")
+
+[node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("inventory", "health")]
+script = ExtResource("4_jjtk5")
+inventory = NodePath("../Inventory")
+stats = {
+"amount": 0,
+"atk_range": 1.0,
+"attack_speed": 1.0,
+"power": 1.0,
+"projectile_speed": 0.0,
+"speed": 150.0
+}
+health = NodePath("../Health")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("6_lf85x")
+total_health = 120
+
+[node name="Inventory" type="Node" parent="."]
+process_priority = -1
+script = ExtResource("7_mn01f")
+starting_weapon_data = ExtResource("10_3t0p2")
+
+[connection signal="area_entered" from="Body" to="Body/BodyCollision" method="_on_body_area_entered"]
+[connection signal="area_exited" from="Body" to="Body/BodyCollision" method="_on_body_area_exited"]
+[connection signal="area_entered" from="Body/XpArea" to="Body/XpArea" method="_on_area_entered"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://k83mr0lct4rk"]
+
+[ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponBehavior.gd" id="1_0ffcn"]
+[ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponsCollision.gd" id="1_f66n7"]
+[ext_resource type="Script" path="res://Scripts/Items/Weapons/CollisionModifier.gd" id="2_22q47"]
+[ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Shapes/Square.png" id="3_jegye"]
+[ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponTimer.gd" id="5_63bj5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_faxja"]
+size = Vector2(97, 20)
+
+[node name="Kopesh" type="Node2D" node_paths=PackedStringArray("sprite", "collider", "weapon_area", "weapon_timer")]
+script = ExtResource("1_0ffcn")
+sprite = NodePath("WeaponBody/Sprite2D")
+collider = NodePath("WeaponBody/CollisionShape2D")
+weapon_area = NodePath("WeaponBody")
+weapon_timer = NodePath("Timer")
+
+[node name="WeaponBody" type="Area2D" parent="." node_paths=PackedStringArray("collider")]
+collision_layer = 8
+collision_mask = 2
+priority = 1
+script = ExtResource("1_f66n7")
+collider = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="WeaponBody"]
+scale = Vector2(0.97, 0.2)
+texture = ExtResource("3_jegye")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponBody"]
+shape = SubResource("RectangleShape2D_faxja")
+debug_color = Color(0.996078, 0, 0.180392, 0.32549)
+script = ExtResource("2_22q47")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+script = ExtResource("5_63bj5")
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="hidden" from="." to="." method="_on_hidden"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

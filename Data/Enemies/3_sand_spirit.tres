@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://b0khdkysugn2s"]
+
+[ext_resource type="Script" path="res://Data/EnemyData.gd" id="1_6bafu"]
+[ext_resource type="Texture2D" uid="uid://cee1il8snlxsn" path="res://Assets/Enemies/Temporary/parrot.png" id="2_mso3v"]
+
+[resource]
+script = ExtResource("1_6bafu")
+ID = 3
+name = "Sand Spirit"
+max_health = 10
+power = 5
+speed = 70.0
+sprite = ExtResource("2_mso3v")

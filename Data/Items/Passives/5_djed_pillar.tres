@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="PassiveItem" load_steps=2 format=3 uid="uid://bhhal7s2cnidf"]
+
+[ext_resource type="Script" path="res://Data/PassiveItem.gd" id="1_o3tco"]
+
+[resource]
+script = ExtResource("1_o3tco")
+stats_upgraded = Array[Dictionary]([{
+"atk_range": 1.1
+}, {
+"atk_range": 1.2
+}, {
+"atk_range": 1.3
+}, {
+"atk_range": 1.4
+}, {
+"atk_range": 1.5
+}])
+is_multiplicative = true
+apply_instant = false
+ID = 5
+name = "Djed Pillar"
+descriptions = Array[String](["Increases the attack range by 10%", "Increases the attack range by 10%", "Increases the attack range by 10%", "Increases the attack range by 10%", "Increases the attack range by 10%"])
+max_level = 5
