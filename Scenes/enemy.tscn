@@ -8,6 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lggj"]
 size = Vector2(47.4175, 47)
 
+[sub_resource type="Animation" id="Animation_ejcj8"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_6rfar"]
 resource_name = "damaged_animation"
 length = 0.06
@@ -24,9 +27,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0.828967, 0, 0.00255892, 1), Color(1, 1, 1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_ejcj8"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dfuqf"]
 _data = {

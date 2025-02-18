@@ -16,6 +16,7 @@ stats_upgraded = Array[Dictionary]([{
 "projectile_speed": 1.5
 }])
 is_multiplicative = true
+apply_instant = false
 ID = 6
 name = "Fly Amulet"
 descriptions = Array[String](["Increases projectiles speed by 10%", "Increases projectiles speed by 10%", "Increases projectiles speed by 10%", "Increases projectiles speed by 10%", "Increases projectiles speed by 10%"])

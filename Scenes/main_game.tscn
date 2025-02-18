@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0jg0mtojp1l8"]
+[gd_scene load_steps=19 format=3 uid="uid://d0jg0mtojp1l8"]
 
 [ext_resource type="Script" path="res://Scripts/Systems/GameManager.gd" id="1_grhj2"]
 [ext_resource type="PackedScene" uid="uid://ddcgvg5rx8u17" path="res://Scenes/Player.tscn" id="1_o57fh"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://cjy1han4o5m57" path="res://Data/Enemies/2_skeleton.tres" id="13_y3egy"]
 [ext_resource type="Resource" uid="uid://b0khdkysugn2s" path="res://Data/Enemies/3_sand_spirit.tres" id="14_qs507"]
 [ext_resource type="Resource" uid="uid://c584eclw4prq4" path="res://Data/Enemies/4_stone_golem.tres" id="15_2ams7"]
+[ext_resource type="Script" path="res://Scripts/Systems/ParticlesManager.gd" id="17_dyq7y"]
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_grhj2")
@@ -43,5 +44,8 @@ enemies_data = Array[Resource("res://Data/EnemyData.gd")]([ExtResource("9_bhl7t"
 
 [node name="XpOrbManager" type="Node" parent="EnemiesManager"]
 script = ExtResource("13_ij7ea")
+
+[node name="ParticlesManager" type="Node" parent="."]
+script = ExtResource("17_dyq7y")
 
 [node name="GameCanvas" parent="." instance=ExtResource("6_blb7o")]
