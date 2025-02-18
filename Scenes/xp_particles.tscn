@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bod1d3he555ap"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/ParticlesEffect.gd" id="1_7o0g0"]
+
+[sub_resource type="Gradient" id="Gradient_8ltb1"]
+offsets = PackedFloat32Array(0, 0.537815)
+colors = PackedColorArray(0.702475, 0.985517, 0.753386, 1, 0.298039, 0.694118, 0.4, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n7c8o"]
+gradient = SubResource("Gradient_8ltb1")
+
+[sub_resource type="Curve" id="Curve_xjlbv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.093985, 1), 0.0, 0.0, 0, 0, Vector2(0.996241, 0), -2.76908, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ouqww"]
+curve = SubResource("Curve_xjlbv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rgqin"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector3(0, -1, 0)
+spread = 60.0
+flatness = 0.7
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_ouqww")
+color_ramp = SubResource("GradientTexture1D_n7c8o")
+
+[node name="XpParticles" type="GPUParticles2D"]
+z_index = 10
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_rgqin")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_7o0g0")
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="finished" from="." to="." method="_on_finished"]

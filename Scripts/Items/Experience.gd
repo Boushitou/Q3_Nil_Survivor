@@ -15,6 +15,8 @@ var old_target_pos : Vector2
 @export var bounce_duration : float = 0.1
 var bounce_time : float = 0.0
 
+var xp_particles : PackedScene = preload("res://Scenes/xp_particles.tscn")
+
 func _ready() -> void:
 	xp_orb_manager = get_parent()
 
@@ -35,6 +37,10 @@ func start_moving(target_pos : Node2D) -> void:
 	if is_absorbed:
 		return
 		
+	var particles_name = "xp_particles"
+	var particles = PoolSystem.instantiate_object(particles_name, xp_particles, global_position, 0.0, get_tree().root)
+	particles.particles_type = particles_name
+	
 	old_target_pos = target_pos.global_position
 	is_absorbed = true
 	target = target_pos

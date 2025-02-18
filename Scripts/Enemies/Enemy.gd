@@ -21,7 +21,7 @@ var last_cell : Vector2 = Vector2(-1, 1)
 var update_frequency : float = 0.1 #10fps
 var time_since_last_update : float = 0.0
 
-var death_particles_scene = preload("res://Scenes/death_particles.tscn")
+var death_particles_scene : PackedScene = preload("res://Scenes/death_particles.tscn")
 
 
 func _process(delta) -> void:
@@ -154,7 +154,8 @@ func take_damage(amount : int, force: float) -> void:
 	apply_push_back(force, direction)
 	
 	if animation_player != null:
-		animation_player.play("damaged_animation")
+		if not animation_player.is_playing():
+			animation_player.play("damaged_animation")
 
 
 func get_damage() -> int:
@@ -162,11 +163,9 @@ func get_damage() -> int:
 	
 
 func _on_enemy_died() -> void:
-	var particles = PoolSystem.instantiate_object("death_particles", death_particles_scene, global_position, 0.0, get_tree().root)
-	particles.global_position = global_position
-	particles.emitting = false
-	particles.restart()
-	particles.emitting = true
+	var particle_name = "death_particles"
+	var particles = PoolSystem.instantiate_object(particle_name, death_particles_scene, global_position, 0.0, get_tree().root)
+	particles.particles_type = particle_name
 	
 	stats.health.disconnect("has_died", _on_enemy_died)
 	enemies_manager.remove_enemy(self, last_cell)

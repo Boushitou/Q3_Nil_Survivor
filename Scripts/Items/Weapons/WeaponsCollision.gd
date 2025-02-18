@@ -27,6 +27,8 @@ func _physics_process(delta: float) -> void:
 func set_weapon(weapon_data : Items, player_stats : PlayerStats) ->void:
 	damage = weapon_data.item.get_damage(weapon_data.level - 1) * player_stats.get_stat_value("power")
 	force = weapon_data.item.get_push_back_force()
+	hit_delay = weapon_data.item.hit_delay[weapon_data.level - 1]
+	hit_timer = hit_delay
 	
 
 func _on_area_entered(area) ->void:
@@ -44,4 +46,3 @@ func apply_damage():
 		enemy.take_damage(damage, force)
 		if not enemy.is_visible():
 			enemies_in_range.erase(enemy)
-

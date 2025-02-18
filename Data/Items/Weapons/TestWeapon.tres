@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://e2h6b8hf0vb5"]
+
+[ext_resource type="Script" path="res://Data/Weapon.gd" id="1_nmy0v"]
+
+[resource]
+script = ExtResource("1_nmy0v")
+damage = Array[int]([0, 0, 0, 0, 0, 0, 0, 0])
+push_back_force = 20.0
+atk_speed = Array[float]([])
+base_area = Vector2(0, 0)
+bonus_area = Array[float]([])
+projectile_speed = Array[float]([])
+hit_delay = Array[float]([])
+duration = Array[float]([])
+ID = 0
+name = ""
+descriptions = Array[String]([])
+max_level = 8
