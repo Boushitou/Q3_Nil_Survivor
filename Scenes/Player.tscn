@@ -76,7 +76,7 @@ health = NodePath("../../Health")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body" node_paths=PackedStringArray("player_controller")]
 sprite_frames = SubResource("SpriteFrames_cghne")
 animation = &"idle"
-frame_progress = 0.542849
+frame_progress = 0.777795
 script = ExtResource("10_yf6mg")
 player_controller = NodePath("../..")
 
@@ -136,7 +136,7 @@ health = NodePath("../Health")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("6_lf85x")
-total_health = 120
+total_health = 99999
 
 [node name="Inventory" type="Node" parent="."]
 process_priority = -1
