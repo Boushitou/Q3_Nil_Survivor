@@ -1,28 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://k83mr0lct4rk"]
+[gd_scene load_steps=11 format=3 uid="uid://k83mr0lct4rk"]
 
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponBehavior.gd" id="1_0ffcn"]
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponsCollision.gd" id="1_f66n7"]
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/CollisionModifier.gd" id="2_22q47"]
-[ext_resource type="Texture2D" uid="uid://c4qkmwdjxi2l5" path="res://Assets/Weapons/Kopesh/AttackSwoosh1.png" id="3_1h3qk"]
-[ext_resource type="Texture2D" uid="uid://dyglrth033lp2" path="res://Assets/Weapons/Kopesh/AttackSwoosh2.png" id="4_cxrid"]
+[ext_resource type="Texture2D" uid="uid://dko17qdq8l03s" path="res://Assets/Weapons/Kopesh/AttackSwooshBis1.png" id="3_2ygiq"]
+[ext_resource type="Texture2D" uid="uid://bw3p821jlk6j8" path="res://Assets/Weapons/Kopesh/AttackSwooshBis2.png" id="4_e3cf0"]
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponTimer.gd" id="5_63bj5"]
-[ext_resource type="Texture2D" uid="uid://o5l2f8ptkude" path="res://Assets/Weapons/Kopesh/AttackSwoosh3.png" id="5_npc0y"]
+[ext_resource type="Texture2D" uid="uid://bybjvjkog2knh" path="res://Assets/Weapons/Kopesh/AttackSwooshBis3.png" id="5_l5gej"]
+[ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponAnimation.gd" id="6_jkap5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u4h3m"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_1h3qk")
+"texture": ExtResource("3_2ygiq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_cxrid")
+"texture": ExtResource("5_l5gej")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_npc0y")
+"texture": ExtResource("4_e3cf0")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 60.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_faxja"]
@@ -42,14 +43,18 @@ priority = 1
 script = ExtResource("1_f66n7")
 collider = NodePath("CollisionShape2D")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WeaponBody"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WeaponBody" node_paths=PackedStringArray("weapon_timer")]
 position = Vector2(-0.499999, 0)
 scale = Vector2(1.51563, 1)
 sprite_frames = SubResource("SpriteFrames_u4h3m")
 animation = &"attack"
-frame_progress = 0.547317
+frame = 2
+frame_progress = 1.0
+script = ExtResource("6_jkap5")
+weapon_timer = NodePath("../../Timer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponBody"]
+visible = false
 shape = SubResource("RectangleShape2D_faxja")
 debug_color = Color(0.996078, 0, 0.180392, 0.32549)
 script = ExtResource("2_22q47")
@@ -59,5 +64,6 @@ one_shot = true
 script = ExtResource("5_63bj5")
 
 [connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="draw" from="." to="WeaponBody/AnimatedSprite2D" method="_on_kopesh_draw"]
 [connection signal="hidden" from="." to="." method="_on_hidden"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
