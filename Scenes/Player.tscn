@@ -73,9 +73,12 @@ shape = SubResource("RectangleShape2D_rexpl")
 script = ExtResource("5_b0aba")
 health = NodePath("../../Health")
 
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body" node_paths=PackedStringArray("player_controller")]
 sprite_frames = SubResource("SpriteFrames_cghne")
 animation = &"idle"
+frame_progress = 0.789563
 script = ExtResource("10_yf6mg")
 player_controller = NodePath("../..")
 
@@ -107,9 +110,9 @@ offset_bottom = 112.0
 z_index = 10
 layout_mode = 0
 offset_left = -8.0
-offset_top = 8.0
+offset_top = -28.0
 offset_right = 56.0
-offset_bottom = 16.0
+offset_bottom = -20.0
 mouse_filter = 2
 value = 60.0
 nine_patch_stretch = true

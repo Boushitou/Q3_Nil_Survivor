@@ -1,7 +1,7 @@
 extends Node
 class_name WeaponBehavior
 
-@export var sprite : Sprite2D
+@export var sprite : AnimatedSprite2D
 @export var collider : CollisionModifier
 @export var weapon_area : WeaponsCollision
 @export var weapon_timer : WeaponTimer
