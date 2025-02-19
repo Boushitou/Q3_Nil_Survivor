@@ -1,7 +1,7 @@
 extends Node
 class_name XpOrbManager
 
-var orb : Resource = preload("res://Scenes/xp_orb.tscn")
+var orb : Resource = preload("res://Scenes/xp_orbs.tscn")
 
 var xp_orb_nb : int = 0
 const MAX_ORB_NB : int = 400

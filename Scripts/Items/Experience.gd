@@ -15,7 +15,7 @@ var old_target_pos : Vector2
 @export var bounce_duration : float = 0.1
 var bounce_time : float = 0.0
 
-var xp_particles : PackedScene = preload("res://Scenes/xp_particles.tscn")
+var xp_particles : PackedScene = load("res://Scenes/xp_particles.tscn")
 
 func _ready() -> void:
 	xp_orb_manager = get_parent()
@@ -68,4 +68,4 @@ func move_toward_player(delta : float) -> void:
 	if move_vector.length() < min_speed * delta:
 		move_vector = move_vector.normalized() * min_speed * delta
 		
-	position += move_vector	
+	position += move_vector
