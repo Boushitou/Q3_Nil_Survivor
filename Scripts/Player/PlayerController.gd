@@ -4,6 +4,8 @@ class_name PlayerController
 @export var player_movement : PlayerMovement
 var direction : Vector2 = Vector2(0, 0)
 
+signal moving_signal(direction: Vector2)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
 	handle_inputs()
@@ -22,6 +24,7 @@ func movement_input() -> void:
 	if direction.length() > 1:
 		direction = direction.normalized()
 		
+	moving_signal.emit(direction)
 	apply_direction()
 
 

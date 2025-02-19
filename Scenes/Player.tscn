@@ -1,20 +1,57 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddcgvg5rx8u17"]
+[gd_scene load_steps=22 format=3 uid="uid://ddcgvg5rx8u17"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_d1yww"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_jhwxv"]
-[ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="3_dh2ju"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerStats.gd" id="4_jjtk5"]
+[ext_resource type="Texture2D" uid="uid://cqrlbcwdcgdna" path="res://Assets/Player/Idle/PlayerIdle1.png" id="4_m6l54"]
+[ext_resource type="Texture2D" uid="uid://wq2tuaibp1g4" path="res://Assets/Player/Idle/PlayerIdle2.png" id="5_3jxu7"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCollisions.gd" id="5_b0aba"]
 [ext_resource type="Script" path="res://Scripts/Player/XPCollision.gd" id="5_e4ahy"]
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="6_lf85x"]
+[ext_resource type="Texture2D" uid="uid://beurplglukvvk" path="res://Assets/Player/Walk/PlayerWalk1.png" id="6_mlj7w"]
 [ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Shapes/Square.png" id="7_77ed3"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="7_mn01f"]
+[ext_resource type="Texture2D" uid="uid://dj75gvg8alucg" path="res://Assets/Player/Walk/PlayerWalk2.png" id="7_rv08k"]
+[ext_resource type="Texture2D" uid="uid://pog51bntgv0v" path="res://Assets/Player/Walk/PlayerWalk3.png" id="8_3bbue"]
 [ext_resource type="Script" path="res://Scripts/UIs/HealthBar.gd" id="8_y1rp1"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAttack.gd" id="9_4gebf"]
+[ext_resource type="Texture2D" uid="uid://bjw2xrwbpfjp0" path="res://Assets/Player/Walk/PlayerWalk4.png" id="9_cqf2r"]
 [ext_resource type="Resource" uid="uid://c7p64if204yio" path="res://Data/Items/Weapons/8_kopesh.tres" id="10_3t0p2"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerAnimation.gd" id="10_yf6mg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
-size = Vector2(48, 119)
+size = Vector2(29, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cghne"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_m6l54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3jxu7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_mlj7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rv08k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3bbue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cqf2r")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2iisx"]
 radius = 126.0
@@ -31,18 +68,19 @@ player_stats = NodePath("../PlayerStats")
 inventory = NodePath("../Inventory")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="Body" node_paths=PackedStringArray("health")]
-position = Vector2(0, -0.5)
+position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_rexpl")
 script = ExtResource("5_b0aba")
 health = NodePath("../../Health")
 
-[node name="Sprite2D" type="Sprite2D" parent="Body"]
-z_index = 10
-position = Vector2(-2.38419e-07, 0)
-scale = Vector2(0.375, 1)
-texture = ExtResource("3_dh2ju")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body" node_paths=PackedStringArray("player_controller")]
+sprite_frames = SubResource("SpriteFrames_cghne")
+animation = &"idle"
+script = ExtResource("10_yf6mg")
+player_controller = NodePath("../..")
 
 [node name="XpArea" type="Area2D" parent="Body"]
+visible = false
 collision_layer = 0
 collision_mask = 4
 monitorable = false
