@@ -16,6 +16,7 @@ stats_upgraded = Array[Dictionary]([{
 "speed": 1.5
 }])
 is_multiplicative = true
+apply_instant = false
 ID = 1
 name = "Winged Scarab"
 descriptions = Array[String](["Increases movement speed by 10%", "Increases movement speed by 10%", "Increases movement speed by 10%", "Increases movement speed by 10%", "Increases movement speed by 10%"])

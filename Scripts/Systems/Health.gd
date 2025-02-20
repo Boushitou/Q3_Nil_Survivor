@@ -69,4 +69,4 @@ func health_regeneration_tick(delta) -> void:
 
 func death() -> void:
 	is_dead = true
-	emit_signal("has_died")
+	has_died.emit()

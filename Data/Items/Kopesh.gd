@@ -9,4 +9,5 @@ position : Vector2 = Vector2.ZERO, direction : Vector2 = Vector2.ZERO) -> Node:
 	var offset = position.x + (total_area_x * 0.5) * direction .x
 	var spawn_position = Vector2(offset, position.y)
 	var weapon = PoolSystem.instantiate_object(name, kopesh_scene, spawn_position, 0.0, _player_stats)
+	weapon.get_node("WeaponBody/AnimatedSprite2D").flip_h = direction.x < 0
 	return weapon

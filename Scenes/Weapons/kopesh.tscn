@@ -1,10 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://k83mr0lct4rk"]
+[gd_scene load_steps=9 format=3 uid="uid://k83mr0lct4rk"]
 
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponBehavior.gd" id="1_0ffcn"]
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponsCollision.gd" id="1_f66n7"]
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/CollisionModifier.gd" id="2_22q47"]
-[ext_resource type="Texture2D" uid="uid://dko17qdq8l03s" path="res://Assets/Weapons/Kopesh/AttackSwooshBis1.png" id="3_2ygiq"]
-[ext_resource type="Texture2D" uid="uid://bw3p821jlk6j8" path="res://Assets/Weapons/Kopesh/AttackSwooshBis2.png" id="4_e3cf0"]
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponTimer.gd" id="5_63bj5"]
 [ext_resource type="Texture2D" uid="uid://bybjvjkog2knh" path="res://Assets/Weapons/Kopesh/AttackSwooshBis3.png" id="5_l5gej"]
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponAnimation.gd" id="6_jkap5"]
@@ -13,13 +11,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_2ygiq")
-}, {
-"duration": 1.0,
 "texture": ExtResource("5_l5gej")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_e3cf0")
 }],
 "loop": false,
 "name": &"attack",
@@ -44,11 +36,11 @@ script = ExtResource("1_f66n7")
 collider = NodePath("CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WeaponBody" node_paths=PackedStringArray("weapon_timer")]
+unique_name_in_owner = true
 position = Vector2(-0.499999, 0)
 scale = Vector2(1.51563, 1)
 sprite_frames = SubResource("SpriteFrames_u4h3m")
 animation = &"attack"
-frame = 2
 frame_progress = 1.0
 script = ExtResource("6_jkap5")
 weapon_timer = NodePath("../../Timer")
