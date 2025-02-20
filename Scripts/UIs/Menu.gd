@@ -15,7 +15,3 @@ func _on_start_button_pressed():
 
 func _on_quit_button_pressed():
 	quit_game()
-	
-
-func _on_resume_button_pressed():
-	SignalBus.pause_pressed.emit()

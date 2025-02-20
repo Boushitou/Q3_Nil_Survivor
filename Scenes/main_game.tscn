@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scripts/Systems/GameManager.gd" id="1_grhj2"]
 [ext_resource type="PackedScene" uid="uid://ddcgvg5rx8u17" path="res://Scenes/Player.tscn" id="1_o57fh"]
-[ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="3_xo0ds"]
 [ext_resource type="Script" path="res://Scripts/Systems/CameraFollow.gd" id="5_mlmmy"]
 [ext_resource type="PackedScene" uid="uid://cjegdqifbh18b" path="res://Scenes/GameCanvas.tscn" id="6_blb7o"]
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemiesManager.gd" id="6_ql5bx"]
@@ -18,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://b0khdkysugn2s" path="res://Data/Enemies/3_sand_spirit.tres" id="14_qs507"]
 [ext_resource type="Resource" uid="uid://c584eclw4prq4" path="res://Data/Enemies/4_stone_golem.tres" id="15_2ams7"]
 [ext_resource type="Texture2D" uid="uid://cid6bfuct6eqq" path="res://Assets/Tilemap/desert.png" id="18_m6hef"]
+[ext_resource type="PackedScene" uid="uid://blevg44ichqh8" path="res://Scenes/UIs/pause_menu.tscn" id="18_o5w5n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwbhb"]
 texture = ExtResource("18_m6hef")
@@ -257,11 +257,6 @@ script = ExtResource("1_grhj2")
 
 [node name="Player" parent="." instance=ExtResource("1_o57fh")]
 
-[node name="TestSprite" type="Sprite2D" parent="."]
-position = Vector2(-341, -11)
-scale = Vector2(-0.180349, 0.139784)
-texture = ExtResource("3_xo0ds")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("5_mlmmy")
 smooth_factor = 5.0
@@ -279,6 +274,9 @@ enemies_data = Array[Resource("res://Data/EnemyData.gd")]([ExtResource("9_bhl7t"
 script = ExtResource("13_ij7ea")
 
 [node name="GameCanvas" parent="." instance=ExtResource("6_blb7o")]
+
+[node name="pause_menu" parent="GameCanvas" node_paths=PackedStringArray("game_manager") instance=ExtResource("18_o5w5n")]
+game_manager = NodePath("../..")
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://blevg44ichqh8"]
 
-[ext_resource type="Script" path="res://Scripts/UIs/Menu.gd" id="1_3pw4b"]
 [ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Shapes/Square.png" id="1_cg81r"]
+[ext_resource type="Script" path="res://Scripts/UIs/PauseMenu.gd" id="1_fitf7"]
 
 [node name="pause_menu" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3pw4b")
+script = ExtResource("1_fitf7")
 
 [node name="Background" type="NinePatchRect" parent="."]
 modulate = Color(0.687215, 0.687215, 0.687215, 1)
@@ -76,6 +76,8 @@ text = "RESUME"
 [node name="FpsCheck" type="CheckButton" parent="Background/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+button_pressed = true
 text = "Display Fps"
 
 [node name="Button" type="Button" parent="Background/VBoxContainer"]
@@ -84,3 +86,4 @@ theme_override_font_sizes/font_size = 32
 text = "QUIT"
 
 [connection signal="pressed" from="Background/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="toggled" from="Background/VBoxContainer/FpsCheck" to="." method="_on_fps_check_toggled"]

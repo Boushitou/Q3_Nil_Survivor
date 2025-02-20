@@ -28,7 +28,7 @@ func prepare_items_to_display() -> void:
 	
 	if items_to_display.size() > 0:
 		display_items()
-		SignalBus.pause_pressed.emit()
+		SignalBus.pause_pressed.emit(false)
 		SignalBus.enable_pause.emit(false)
 		pass
 	else:
@@ -130,7 +130,7 @@ func make_parent_not_visible(_added_item : Items) -> void:
 		
 	get_parent().visible = false
 	SignalBus.enable_pause.emit(true)
-	SignalBus.pause_pressed.emit()
+	SignalBus.pause_pressed.emit(false)
 
 
 func _on_visibility_changed() -> void:

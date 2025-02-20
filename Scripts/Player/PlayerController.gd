@@ -34,5 +34,5 @@ func apply_direction() -> void:
 
 	
 func pause_game() -> void:
-	if Input.is_action_pressed("pause"):
-		SignalBus.pause_pressed.emit()
+	if Input.is_action_just_pressed("pause"):
+		SignalBus.pause_pressed.emit(true)
