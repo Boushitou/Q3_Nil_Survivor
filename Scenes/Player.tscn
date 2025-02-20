@@ -57,10 +57,12 @@ animations = [{
 radius = 126.0
 
 [node name="Player" type="Node" node_paths=PackedStringArray("player_movement") groups=["player"]]
+process_mode = 3
 script = ExtResource("1_d1yww")
 player_movement = NodePath("Body")
 
 [node name="Body" type="Area2D" parent="." node_paths=PackedStringArray("player_stats", "inventory")]
+process_mode = 1
 collision_mask = 6
 monitorable = false
 script = ExtResource("2_jhwxv")
@@ -68,12 +70,14 @@ player_stats = NodePath("../PlayerStats")
 inventory = NodePath("../Inventory")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="Body" node_paths=PackedStringArray("health")]
+process_mode = 1
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_rexpl")
 script = ExtResource("5_b0aba")
 health = NodePath("../../Health")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body" node_paths=PackedStringArray("player_controller")]
+process_mode = 1
 sprite_frames = SubResource("SpriteFrames_cghne")
 animation = &"idle"
 frame_progress = 0.578545
@@ -81,6 +85,7 @@ script = ExtResource("10_yf6mg")
 player_controller = NodePath("../..")
 
 [node name="XpArea" type="Area2D" parent="Body"]
+process_mode = 1
 visible = false
 collision_layer = 0
 collision_mask = 4
@@ -91,12 +96,14 @@ script = ExtResource("5_e4ahy")
 shape = SubResource("CircleShape2D_2iisx")
 
 [node name="PlayerAttack" type="Node" parent="Body" node_paths=PackedStringArray("inventory", "player_movement", "player_stats")]
+process_mode = 1
 script = ExtResource("9_4gebf")
 inventory = NodePath("../../Inventory")
 player_movement = NodePath("..")
 player_stats = NodePath("../../PlayerStats")
 
 [node name="Control" type="Control" parent="Body"]
+process_mode = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = -24.0
@@ -105,6 +112,7 @@ offset_right = 24.0
 offset_bottom = 112.0
 
 [node name="HealthProgressBar" type="TextureProgressBar" parent="Body/Control" node_paths=PackedStringArray("health")]
+process_mode = 1
 z_index = 10
 layout_mode = 0
 offset_left = -8.0
@@ -122,6 +130,7 @@ script = ExtResource("8_y1rp1")
 health = NodePath("../../../Health")
 
 [node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("inventory", "health")]
+process_mode = 1
 script = ExtResource("4_jjtk5")
 inventory = NodePath("../Inventory")
 stats = {
@@ -135,10 +144,12 @@ stats = {
 health = NodePath("../Health")
 
 [node name="Health" type="Node" parent="."]
+process_mode = 1
 script = ExtResource("6_lf85x")
 total_health = 99999
 
 [node name="Inventory" type="Node" parent="."]
+process_mode = 1
 process_priority = -1
 script = ExtResource("7_mn01f")
 starting_weapon_data = ExtResource("10_3t0p2")

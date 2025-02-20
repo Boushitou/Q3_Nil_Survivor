@@ -11,3 +11,6 @@ signal get_new_weapon(weapon : Weapon)
 
 signal minute_passed
 signal time_over
+	
+signal pause_pressed()
+signal enable_pause(can_pause : bool)

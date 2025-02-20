@@ -6,13 +6,14 @@ var direction : Vector2 = Vector2(0, 0)
 
 signal moving_signal(direction: Vector2)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta) -> void:
+	
+func _input(_event: InputEvent) -> void:
 	handle_inputs()
 
-
+	
 func handle_inputs() -> void:
 	movement_input()
+	pause_game()
 
 
 func movement_input() -> void:
@@ -30,3 +31,8 @@ func movement_input() -> void:
 
 func apply_direction() -> void:
 	player_movement.initiate_move(direction)
+
+	
+func pause_game() -> void:
+	if Input.is_action_pressed("pause"):
+		SignalBus.pause_pressed.emit()

@@ -28,8 +28,8 @@ func prepare_items_to_display() -> void:
 	
 	if items_to_display.size() > 0:
 		display_items()
-		get_tree().paused = true
-		Engine.time_scale = 0.0
+		SignalBus.pause_pressed.emit()
+		SignalBus.enable_pause.emit(false)
 		pass
 	else:
 		make_parent_not_visible(null)
@@ -129,7 +129,8 @@ func make_parent_not_visible(_added_item : Items) -> void:
 		child.queue_free()
 		
 	get_parent().visible = false
-	get_tree().paused = false
+	SignalBus.enable_pause.emit(true)
+	SignalBus.pause_pressed.emit()
 
 
 func _on_visibility_changed() -> void:
@@ -137,8 +138,6 @@ func _on_visibility_changed() -> void:
 		return
 	if get_parent().is_visible_in_tree():
 		prepare_items_to_display()
-	else:
-		Engine.time_scale = 1.0
 
 		
 func set_focus_neighbors() -> void:
