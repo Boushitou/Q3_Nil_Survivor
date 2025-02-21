@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxadrq7dwh8ov"]
+
+[sub_resource type="Curve" id="Curve_iu0gu"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0.148148, 249.231), 0.0, 0.0, 0, 0, Vector2(0.984127, -344.176), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nhlwv"]
+curve = SubResource("Curve_iu0gu")
+
+[sub_resource type="Gradient" id="Gradient_tggu8"]
+offsets = PackedFloat32Array(0, 0.745342)
+colors = PackedColorArray(0.819608, 0, 0, 1, 0.559523, 8.90419e-07, 3.36915e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jsf8m"]
+gradient = SubResource("Gradient_tggu8")
+
+[sub_resource type="Curve" id="Curve_ml31e"]
+_data = [Vector2(0, 0.703297), 0.0, 0.0, 0, 0, Vector2(1, 0.285714), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_48npi"]
+curve = SubResource("Curve_ml31e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_60wua"]
+particle_flag_disable_z = true
+angle_curve = SubResource("CurveTexture_nhlwv")
+direction = Vector3(0, -1, 0)
+spread = 50.0
+initial_velocity_min = 60.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 98.025, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_48npi")
+color_ramp = SubResource("GradientTexture1D_jsf8m")
+
+[node name="blood_spash" type="GPUParticles2D"]
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_60wua")
+explosiveness = 1.0
+trail_lifetime = 0.2
+trail_sections = 5

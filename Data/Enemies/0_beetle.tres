@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://dhtrl42tt5ogm"]
 
 [ext_resource type="Script" path="res://Data/EnemyData.gd" id="1_hn2cu"]
-[ext_resource type="Texture2D" uid="uid://blhpy3xxif3m1" path="res://Assets/Enemies/Temporary/rabbit.png" id="2_gbbms"]
+[ext_resource type="SpriteFrames" uid="uid://djqqc5swcbcc7" path="res://SpriteFrames/BeetleFrames.tres" id="2_t521u"]
 
 [resource]
 script = ExtResource("1_hn2cu")
@@ -10,4 +10,4 @@ name = "Beetle"
 max_health = 5
 power = 5
 speed = 60.0
-sprite = ExtResource("2_gbbms")
+sprite = ExtResource("2_t521u")

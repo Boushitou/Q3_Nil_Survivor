@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://sqhlboqxh67u"]
+
+[ext_resource type="Texture2D" uid="uid://d1ixqnicnrpjy" path="res://Assets/Enemies/Mummy/Mummy1.png" id="1_0tdjt"]
+[ext_resource type="Texture2D" uid="uid://b8mgdv41cevw" path="res://Assets/Enemies/Mummy/Mummy2.png" id="2_r5r51"]
+[ext_resource type="Texture2D" uid="uid://b6ahe2pmuibo7" path="res://Assets/Enemies/Mummy/Mummy3.png" id="3_t6x8x"]
+[ext_resource type="Texture2D" uid="uid://b6edcwggdgbc7" path="res://Assets/Enemies/Mummy/Mummy4.png" id="4_4hyuh"]
+[ext_resource type="Texture2D" uid="uid://7ll0due7x53y" path="res://Assets/Enemies/Mummy/Mummy5.png" id="5_qah2h"]
+[ext_resource type="Texture2D" uid="uid://bht7dfhppq4rw" path="res://Assets/Enemies/Mummy/Mummy6.png" id="6_m1ivx"]
+[ext_resource type="Texture2D" uid="uid://cvwfq3c8bnctf" path="res://Assets/Enemies/Mummy/Mummy7.png" id="7_xyega"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0tdjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_r5r51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t6x8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4hyuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qah2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m1ivx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xyega")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

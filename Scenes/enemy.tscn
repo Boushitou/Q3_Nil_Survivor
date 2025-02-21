@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bym5pcg3yn5ja"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Enemy.gd" id="1_6noeu"]
+[ext_resource type="SpriteFrames" uid="uid://sqhlboqxh67u" path="res://SpriteFrames/MummyFrames.tres" id="2_n2480"]
 [ext_resource type="Script" path="res://Scripts/Systems/Stats.gd" id="3_0op4a"]
-[ext_resource type="Texture2D" uid="uid://blhpy3xxif3m1" path="res://Assets/Enemies/Temporary/rabbit.png" id="3_3d46h"]
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="4_021do"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lggj"]
@@ -45,10 +45,12 @@ animation_player = NodePath("AnimationPlayer")
 collider = NodePath("CollisionShape2D")
 sprite = NodePath("Body")
 
-[node name="Body" type="Sprite2D" parent="."]
+[node name="Body" type="AnimatedSprite2D" parent="."]
 z_index = 9
-scale = Vector2(0.168168, 0.162791)
-texture = ExtResource("3_3d46h")
+scale = Vector2(1.031, 1)
+sprite_frames = ExtResource("2_n2480")
+frame = 2
+frame_progress = 0.87451
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.29125, -0.5)

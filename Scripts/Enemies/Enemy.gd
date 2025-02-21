@@ -13,7 +13,7 @@ var data : EnemyData
 @export var animation_player : AnimationPlayer
 
 @export var collider : CollisionShape2D
-@export var sprite : Sprite2D
+@export var sprite : AnimatedSprite2D
 
 var grid_size : int = 50
 var last_cell : Vector2 = Vector2(-1, 1)
@@ -42,7 +42,7 @@ func setup_stats(enemy_stat : EnemyData) -> void:
 	stats.health.init_health()
 	stats.power = enemy_stat.power
 	stats.speed = enemy_stat.speed
-	sprite.texture = enemy_stat.sprite
+	sprite.sprite_frames = enemy_stat.sprite
 	data = enemy_stat
 	
 	stats.health.connect("has_died", _on_enemy_died)
@@ -56,6 +56,8 @@ func setup_stats(enemy_stat : EnemyData) -> void:
 	set_collider_bounds()
 	set_separation_radius()
 	set_collision_layer_value(2, true)
+	
+	sprite.play();
 
 
 func follow_player(delta) -> void:
@@ -98,7 +100,7 @@ func set_collider_bounds() -> void:
 		return
 		
 	collider.set_shape(RectangleShape2D.new())
-	var texture_size : Vector2 = sprite.texture.get_size() * sprite.scale
+	var texture_size : Vector2 = sprite.sprite_frames.get_frame_texture("default", 0).get_size() * sprite.scale
 	var shape : Shape2D = collider.get_shape()
 	
 	if shape is CircleShape2D:

@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://djqqc5swcbcc7"]
+
+[ext_resource type="Texture2D" uid="uid://d1p7jwixcp0ee" path="res://Assets/Enemies/Beetle/Beetle1.png" id="1_iqdxy"]
+[ext_resource type="Texture2D" uid="uid://dpymx3r37etkd" path="res://Assets/Enemies/Beetle/Beetle2.png" id="2_loplw"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iqdxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_loplw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

@@ -13,6 +13,6 @@ enemy_data = Array[Dictionary]([{
 "count": 30,
 "type": 0
 }, {
-"count": 5,
+"count": 10,
 "type": 4
 }])

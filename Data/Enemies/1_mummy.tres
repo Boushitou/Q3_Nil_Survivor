@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://cm3hry1mlptl6"]
 
 [ext_resource type="Script" path="res://Data/EnemyData.gd" id="1_r8prr"]
-[ext_resource type="Texture2D" uid="uid://jsq4g7sk7ymu" path="res://Assets/Enemies/Temporary/giraffe.png" id="2_5hkrk"]
+[ext_resource type="SpriteFrames" uid="uid://sqhlboqxh67u" path="res://SpriteFrames/MummyFrames.tres" id="2_gpyko"]
 
 [resource]
 script = ExtResource("1_r8prr")
@@ -10,4 +10,4 @@ name = "Mummy"
 max_health = 10
 power = 5
 speed = 40.0
-sprite = ExtResource("2_5hkrk")
+sprite = ExtResource("2_gpyko")
