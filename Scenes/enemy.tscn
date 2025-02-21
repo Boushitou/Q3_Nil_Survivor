@@ -18,7 +18,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:modulate")
+tracks/0/path = NodePath("EntitySprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,9 +43,9 @@ separation_weight = 50.0
 stats = NodePath("Stats")
 animation_player = NodePath("AnimationPlayer")
 collider = NodePath("CollisionShape2D")
-sprite = NodePath("Body")
+sprite = NodePath("EntitySprite")
 
-[node name="Body" type="AnimatedSprite2D" parent="."]
+[node name="EntitySprite" type="AnimatedSprite2D" parent="."]
 z_index = 9
 scale = Vector2(1.031, 1)
 sprite_frames = ExtResource("2_n2480")

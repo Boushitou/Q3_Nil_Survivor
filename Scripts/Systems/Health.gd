@@ -10,6 +10,7 @@ var regeneration_time : float = 1.0
 var regeneration_timer : float = 0.0
 
 signal has_died
+signal take_damage_signal(damage : int)
 signal change_health_signal(current_health : int)
 signal health_upgrade_signal(total_health : int)
 
@@ -37,6 +38,7 @@ func take_damage(amount : int) -> void:
 		current_health = 0
 		death()
 		
+	take_damage_signal.emit(amount)	
 	change_health_signal.emit(current_health)	
 
 func heal(amount : int) -> void:

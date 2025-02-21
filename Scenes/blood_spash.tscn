@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxadrq7dwh8ov"]
+[gd_scene load_steps=9 format=3 uid="uid://dxadrq7dwh8ov"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/ParticlesEffect.gd" id="1_u4jba"]
 
 [sub_resource type="Curve" id="Curve_iu0gu"]
 min_value = -360.0
@@ -31,14 +33,21 @@ spread = 50.0
 initial_velocity_min = 60.0
 initial_velocity_max = 60.0
 gravity = Vector3(0, 98.025, 0)
-scale_min = 2.0
-scale_max = 2.0
+scale_min = 15.0
+scale_max = 15.0
 scale_curve = SubResource("CurveTexture_48npi")
 color_ramp = SubResource("GradientTexture1D_jsf8m")
 
 [node name="blood_spash" type="GPUParticles2D"]
+emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_60wua")
+one_shot = true
+speed_scale = 3.0
 explosiveness = 1.0
 trail_lifetime = 0.2
 trail_sections = 5
+script = ExtResource("1_u4jba")
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="finished" from="." to="." method="_on_finished"]

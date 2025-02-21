@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ddcgvg5rx8u17"]
+[gd_scene load_steps=29 format=3 uid="uid://ddcgvg5rx8u17"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_d1yww"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_jhwxv"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://d2etnibaqhv1x" path="res://Assets/Player/Walk/PlayerWalk6.png" id="11_o7tij"]
 [ext_resource type="Texture2D" uid="uid://bcjf8xrjeg34e" path="res://Assets/Player/Walk/PlayerWalk7.png" id="12_ulr8j"]
 [ext_resource type="Texture2D" uid="uid://dhv3xev5fcmee" path="res://Assets/Player/Walk/PlayerWalk8.png" id="13_6cxx3"]
+[ext_resource type="PackedScene" uid="uid://dxadrq7dwh8ov" path="res://Scenes/blood_spash.tscn" id="15_32fum"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
 size = Vector2(29, 64)
@@ -69,6 +70,14 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Animation" id="Animation_bi1js"]
+resource_name = "damaged_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ii3b"]
+_data = {
+"damaged_animation": SubResource("Animation_bi1js")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_2iisx"]
 radius = 126.0
 
@@ -92,12 +101,20 @@ shape = SubResource("RectangleShape2D_rexpl")
 script = ExtResource("5_b0aba")
 health = NodePath("../../Health")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body" node_paths=PackedStringArray("player_controller")]
+[node name="EntitySprite" type="AnimatedSprite2D" parent="Body" node_paths=PackedStringArray("player_controller", "health", "animation_player")]
 process_mode = 1
 sprite_frames = SubResource("SpriteFrames_cghne")
 animation = &"walk"
 script = ExtResource("10_yf6mg")
 player_controller = NodePath("../..")
+health = NodePath("../../Health")
+animation_player = NodePath("../AnimationPlayer")
+blood_splash = ExtResource("15_32fum")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
+libraries = {
+"": SubResource("AnimationLibrary_3ii3b")
+}
 
 [node name="XpArea" type="Area2D" parent="Body"]
 process_mode = 1
