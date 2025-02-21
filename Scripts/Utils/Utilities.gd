@@ -1,6 +1,8 @@
 extends Node
 class_name Utilities
 
+static var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
 #optimized lerp by Freya Holmer
 static func exp_decay(a, b, decay, delta):
 	return b + (a - b) * exp(-decay * delta)
@@ -30,3 +32,7 @@ static func smooth_fill(value: float, target: float, speed: float, delta: float)
 		value -= (value - target) * speed * delta
 		
 	return value	
+	
+	
+static func get_random_float(minimum: float, maximum: float) -> float:
+	return rng.randf_range(minimum, maximum)

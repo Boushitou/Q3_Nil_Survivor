@@ -62,6 +62,7 @@ func setup_stats(enemy_stat : EnemyData) -> void:
 
 func follow_player(delta) -> void:
 	var direction : Vector2 = (player_node.global_position - global_position).normalized()
+	sprite.flip_h = direction.x < 0
 	
 	time_since_last_update += delta
 
