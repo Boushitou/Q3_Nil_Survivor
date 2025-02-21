@@ -48,7 +48,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 56
 text = "PAUSE"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="PauseContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -66,24 +66,50 @@ size_flags_vertical = 4
 theme_override_constants/separation = 36
 alignment = 1
 
-[node name="ResumeButton" type="Button" parent="Background/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="Background/PauseContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
 text = "RESUME"
 
-[node name="FpsCheck" type="CheckButton" parent="Background/VBoxContainer"]
+[node name="FpsCheck" type="CheckButton" parent="Background/PauseContainer"]
+modulate = Color(0.347541, 0.356499, 0.855297, 1)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 button_pressed = true
 text = "Display Fps"
 
-[node name="Button" type="Button" parent="Background/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="Background/PauseContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "QUIT"
 
-[connection signal="pressed" from="Background/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="toggled" from="Background/VBoxContainer/FpsCheck" to="." method="_on_fps_check_toggled"]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.156863)
+layout_mode = 2
+anchor_top = 0.106
+anchor_bottom = 0.869
+offset_top = 0.311996
+offset_right = 281.0
+offset_bottom = -0.112
+texture = ExtResource("1_cg81r")
+
+[node name="StatsContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/StatsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "STATS"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Background/PauseContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="toggled" from="Background/PauseContainer/FpsCheck" to="." method="_on_fps_check_toggled"]
+[connection signal="pressed" from="Background/PauseContainer/QuitButton" to="." method="_on_quit_button_pressed"]

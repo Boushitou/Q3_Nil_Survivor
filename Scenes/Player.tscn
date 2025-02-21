@@ -1,23 +1,27 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddcgvg5rx8u17"]
+[gd_scene load_steps=26 format=3 uid="uid://ddcgvg5rx8u17"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_d1yww"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_jhwxv"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerStats.gd" id="4_jjtk5"]
-[ext_resource type="Texture2D" uid="uid://cqrlbcwdcgdna" path="res://Assets/Player/Idle/PlayerIdle1.png" id="4_m6l54"]
-[ext_resource type="Texture2D" uid="uid://wq2tuaibp1g4" path="res://Assets/Player/Idle/PlayerIdle2.png" id="5_3jxu7"]
+[ext_resource type="Texture2D" uid="uid://c0c2a3saac7qf" path="res://Assets/Player/Idle/PlayerIdle1.png" id="4_m6l54"]
+[ext_resource type="Texture2D" uid="uid://ctoto6i2q8lye" path="res://Assets/Player/Idle/PlayerIdle2.png" id="5_3jxu7"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCollisions.gd" id="5_b0aba"]
 [ext_resource type="Script" path="res://Scripts/Player/XPCollision.gd" id="5_e4ahy"]
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="6_lf85x"]
-[ext_resource type="Texture2D" uid="uid://beurplglukvvk" path="res://Assets/Player/Walk/PlayerWalk1.png" id="6_mlj7w"]
+[ext_resource type="Texture2D" uid="uid://bplvg1v3vlkkb" path="res://Assets/Player/Walk/PlayerWalk1.png" id="6_mlj7w"]
 [ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Shapes/Square.png" id="7_77ed3"]
 [ext_resource type="Script" path="res://Scripts/Items/Inventory.gd" id="7_mn01f"]
-[ext_resource type="Texture2D" uid="uid://dj75gvg8alucg" path="res://Assets/Player/Walk/PlayerWalk2.png" id="7_rv08k"]
-[ext_resource type="Texture2D" uid="uid://pog51bntgv0v" path="res://Assets/Player/Walk/PlayerWalk3.png" id="8_3bbue"]
+[ext_resource type="Texture2D" uid="uid://dstoxvy66l8hl" path="res://Assets/Player/Walk/PlayerWalk2.png" id="7_rv08k"]
+[ext_resource type="Texture2D" uid="uid://d0t4sbomb3d1m" path="res://Assets/Player/Walk/PlayerWalk3.png" id="8_3bbue"]
 [ext_resource type="Script" path="res://Scripts/UIs/HealthBar.gd" id="8_y1rp1"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAttack.gd" id="9_4gebf"]
-[ext_resource type="Texture2D" uid="uid://bjw2xrwbpfjp0" path="res://Assets/Player/Walk/PlayerWalk4.png" id="9_cqf2r"]
+[ext_resource type="Texture2D" uid="uid://dyf56khh5lc4m" path="res://Assets/Player/Walk/PlayerWalk4.png" id="9_cqf2r"]
 [ext_resource type="Resource" uid="uid://c7p64if204yio" path="res://Data/Items/Weapons/8_kopesh.tres" id="10_3t0p2"]
+[ext_resource type="Texture2D" uid="uid://cr34h4ued3lcd" path="res://Assets/Player/Walk/PlayerWalk5.png" id="10_qo0ew"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerAnimation.gd" id="10_yf6mg"]
+[ext_resource type="Texture2D" uid="uid://d2etnibaqhv1x" path="res://Assets/Player/Walk/PlayerWalk6.png" id="11_o7tij"]
+[ext_resource type="Texture2D" uid="uid://bcjf8xrjeg34e" path="res://Assets/Player/Walk/PlayerWalk7.png" id="12_ulr8j"]
+[ext_resource type="Texture2D" uid="uid://dhv3xev5fcmee" path="res://Assets/Player/Walk/PlayerWalk8.png" id="13_6cxx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
 size = Vector2(29, 64)
@@ -47,10 +51,22 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_cqf2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qo0ew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_o7tij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ulr8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6cxx3")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2iisx"]
@@ -79,8 +95,7 @@ health = NodePath("../../Health")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body" node_paths=PackedStringArray("player_controller")]
 process_mode = 1
 sprite_frames = SubResource("SpriteFrames_cghne")
-animation = &"idle"
-frame_progress = 0.578545
+animation = &"walk"
 script = ExtResource("10_yf6mg")
 player_controller = NodePath("../..")
 
@@ -146,7 +161,7 @@ health = NodePath("../Health")
 [node name="Health" type="Node" parent="."]
 process_mode = 1
 script = ExtResource("6_lf85x")
-total_health = 99999
+total_health = 120
 
 [node name="Inventory" type="Node" parent="."]
 process_mode = 1

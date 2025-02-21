@@ -129,8 +129,10 @@ func make_parent_not_visible(_added_item : Items) -> void:
 		child.queue_free()
 		
 	get_parent().visible = false
-	SignalBus.enable_pause.emit(true)
-	SignalBus.pause_pressed.emit(false)
+	
+	if get_tree().paused:
+		SignalBus.enable_pause.emit(true)
+		SignalBus.pause_pressed.emit(false)
 
 
 func _on_visibility_changed() -> void:
