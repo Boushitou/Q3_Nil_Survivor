@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://cjy1han4o5m57"]
 
 [ext_resource type="Script" path="res://Data/EnemyData.gd" id="1_6o3bu"]
-[ext_resource type="SpriteFrames" uid="uid://djqqc5swcbcc7" path="res://SpriteFrames/BeetleFrames.tres" id="2_ydlrk"]
+[ext_resource type="SpriteFrames" uid="uid://sqhlboqxh67u" path="res://SpriteFrames/MummyFrames.tres" id="2_6arul"]
 
 [resource]
 script = ExtResource("1_6o3bu")
@@ -10,4 +10,5 @@ name = "Skeleton"
 max_health = 15
 power = 10
 speed = 50.0
-sprite = ExtResource("2_ydlrk")
+sprite = ExtResource("2_6arul")
+tint = Color(0.34277, 0.505091, 0.820366, 1)

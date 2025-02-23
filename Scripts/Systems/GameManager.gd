@@ -33,8 +33,8 @@ func pause_game(can_display_pause : bool) -> void:
 				display_pause_menu.emit(true)
 			Engine.time_scale = 0.0
 		
-		print("game is paused ? : ", game_is_paused)
+		#print("game is paused ? : ", game_is_paused)
 		
 func enable_pause(pause_enabled : bool) -> void:
 	can_pause = pause_enabled
-	print("can pause ? : ", can_pause)
+	#print("can pause ? : ", can_pause)

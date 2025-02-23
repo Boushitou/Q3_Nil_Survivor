@@ -5,3 +5,4 @@ Here is the list of enemies by ID:
 2: "skeleton"
 3: "sand spirit"
 4: "stone golem"
+5: "anubis avatar"

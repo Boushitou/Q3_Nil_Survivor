@@ -43,6 +43,7 @@ func setup_stats(enemy_stat : EnemyData) -> void:
 	stats.power = enemy_stat.power
 	stats.speed = enemy_stat.speed
 	sprite.sprite_frames = enemy_stat.sprite
+	sprite.modulate = enemy_stat.tint
 	data = enemy_stat
 	
 	stats.health.connect("has_died", _on_enemy_died)

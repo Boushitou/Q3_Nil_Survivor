@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_xw7h2")
 damage = Array[int]([10, 15, 20, 25, 30, 35, 40, 45])
-push_back_force = 10.0
+push_back_force = 20.0
 atk_speed = Array[float]([1.0, 1.0, 1.0, 0.8, 0.8, 0.8, 0.8, 0.6])
 base_area = Vector2(200, 20)
 bonus_area = Array[float]([1.0, 1.0, 1.0, 1.0, 1.2, 1.2, 1.2, 1.4])

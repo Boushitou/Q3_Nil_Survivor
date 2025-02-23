@@ -69,6 +69,7 @@ func start_next_wave() -> void:
 	
 	max_wave_enemies = calculate_max_enemies(current_wave)
 	enemy_frequency = waves[current_wave_nb].enemy_frequency
+	time_since_last_spawn = enemy_frequency
 	
 	#reset enemies spawned and killed to let the new enemies type to be spawned
 	enemies_spawned.clear()
