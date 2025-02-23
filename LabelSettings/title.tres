@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dstfcyh1anmeg"]
+
+[ext_resource type="FontFile" uid="uid://c74f8yr85l71q" path="res://Assets/Fonts/DIOGENES.ttf" id="1_22olr"]
+
+[resource]
+font = ExtResource("1_22olr")
+font_size = 32
+font_color = Color(0, 0, 0, 1)

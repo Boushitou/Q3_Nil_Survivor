@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PassiveItem" load_steps=3 format=3 uid="uid://c4217x5uvoog0"]
 
 [ext_resource type="Script" path="res://Data/PassiveItem.gd" id="1_kdnse"]
-[ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="2_gfr4w"]
+[ext_resource type="Texture2D" uid="uid://dd3pbhej8ourl" path="res://Assets/ItemsIcons/Passives/ThotAmulet.png" id="2_ixya0"]
 
 [resource]
 script = ExtResource("1_kdnse")
@@ -22,4 +22,4 @@ ID = 0
 name = "Thot Amulet"
 descriptions = Array[String](["Increases attack speed by 8%", "Increases attack speed by 8%", "Increases attack speed by 8%", "Increases attack speed by 8%", "Increases attack speed by 8%"])
 max_level = 5
-sprite = ExtResource("2_gfr4w")
+sprite = ExtResource("2_ixya0")

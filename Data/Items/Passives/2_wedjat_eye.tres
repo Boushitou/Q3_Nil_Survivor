@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="PassiveItem" load_steps=2 format=3 uid="uid://b4kxu121xwyeg"]
+[gd_resource type="Resource" script_class="PassiveItem" load_steps=3 format=3 uid="uid://b4kxu121xwyeg"]
 
 [ext_resource type="Script" path="res://Data/PassiveItem.gd" id="1_a2ebr"]
+[ext_resource type="Texture2D" uid="uid://doo712fpr2kwr" path="res://Assets/ItemsIcons/Passives/WedjatEye.png" id="2_v36ha"]
 
 [resource]
 script = ExtResource("1_a2ebr")
@@ -21,3 +22,4 @@ ID = 2
 name = "Wedjat Eye"
 descriptions = Array[String](["Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec"])
 max_level = 5
+sprite = ExtResource("2_v36ha")

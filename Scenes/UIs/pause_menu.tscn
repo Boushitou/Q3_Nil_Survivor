@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://blevg44ichqh8"]
+[gd_scene load_steps=9 format=3 uid="uid://blevg44ichqh8"]
 
 [ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Shapes/Square.png" id="1_cg81r"]
 [ext_resource type="Script" path="res://Scripts/UIs/PauseMenu.gd" id="1_fitf7"]
+[ext_resource type="LabelSettings" uid="uid://dstfcyh1anmeg" path="res://LabelSettings/title.tres" id="3_c80rv"]
+[ext_resource type="FontFile" uid="uid://c74f8yr85l71q" path="res://Assets/Fonts/DIOGENES.ttf" id="3_tj4ic"]
+[ext_resource type="Theme" uid="uid://b1vamqc7drh4i" path="res://LabelSettings/buttons.tres" id="4_gshti"]
+
+[sub_resource type="Theme" id="Theme_k8hxx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m2b7x"]
+font = ExtResource("3_tj4ic")
+font_size = 92
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_os8vj"]
+bg_color = Color(0.347042, 0.595237, 0.984075, 1)
+anti_aliasing = false
 
 [node name="pause_menu" type="Control"]
 layout_mode = 3
@@ -15,17 +29,17 @@ script = ExtResource("1_fitf7")
 [node name="Background" type="NinePatchRect" parent="."]
 modulate = Color(0.687215, 0.687215, 0.687215, 1)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -195.0
-offset_top = -217.5
-offset_right = 195.0
-offset_bottom = 217.5
+anchors_preset = -1
+anchor_left = 0.292535
+anchor_top = 0.058642
+anchor_right = 0.72309
+anchor_bottom = 0.95679
+offset_right = 4.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(250, 300)
+theme = SubResource("Theme_k8hxx")
 texture = ExtResource("1_cg81r")
 
 [node name="MarginContainer" type="MarginContainer" parent="Background"]
@@ -34,82 +48,116 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 22.0
-offset_top = 18.0
+offset_top = 138.0
 offset_right = -19.0
 offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Background/MarginContainer"]
+[node name="PauseContainer" type="VBoxContainer" parent="Background/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 56
-text = "PAUSE"
-
-[node name="PauseContainer" type="VBoxContainer" parent="Background"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -68.0
-offset_top = -282.5
-offset_right = 68.0
-offset_bottom = -73.5
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 36
+theme_override_constants/separation = 72
 alignment = 1
 
-[node name="ResumeButton" type="Button" parent="Background/PauseContainer"]
+[node name="ResumeButton" type="Button" parent="Background/MarginContainer/PauseContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("4_gshti")
 text = "RESUME"
 
-[node name="FpsCheck" type="CheckButton" parent="Background/PauseContainer"]
+[node name="FpsCheck" type="CheckButton" parent="Background/MarginContainer/PauseContainer"]
 modulate = Color(0.347541, 0.356499, 0.855297, 1)
 layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_gshti")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 button_pressed = true
 text = "Display Fps"
 
-[node name="QuitButton" type="Button" parent="Background/PauseContainer"]
+[node name="QuitButton" type="Button" parent="Background/MarginContainer/PauseContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("4_gshti")
 text = "QUIT"
+
+[node name="PauseLabel" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -114.0
+offset_right = 114.0
+offset_bottom = 145.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_m2b7x")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.156863)
-layout_mode = 2
-anchor_top = 0.106
-anchor_bottom = 0.869
-offset_top = 0.311996
-offset_right = 281.0
-offset_bottom = -0.112
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.101852
+anchor_right = 0.243924
+anchor_bottom = 0.905864
+grow_vertical = 2
 texture = ExtResource("1_cg81r")
+metadata/_edit_use_anchors_ = true
 
 [node name="StatsContainer" type="VBoxContainer" parent="NinePatchRect"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.0231481
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.972222
+offset_left = 15.0
+offset_top = 51.0
+offset_right = -15.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 25
+alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="NinePatchRect/StatsContainer"]
+[node name="HealthLabel" type="Label" parent="NinePatchRect/StatsContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Health: 999"
+label_settings = ExtResource("3_c80rv")
+
+[node name="RegenLabel" type="Label" parent="NinePatchRect/StatsContainer"]
+layout_mode = 2
+text = "Regeneration: 999"
+label_settings = ExtResource("3_c80rv")
+
+[node name="MoveSpeedLabel" type="Label" parent="NinePatchRect/StatsContainer"]
+layout_mode = 2
+text = "MoveSpeed: 999"
+label_settings = ExtResource("3_c80rv")
+
+[node name="PowerLabel" type="Label" parent="NinePatchRect/StatsContainer"]
+layout_mode = 2
+text = "Power: 999"
+label_settings = ExtResource("3_c80rv")
+
+[node name="AttackRangeLabel" type="Label" parent="NinePatchRect/StatsContainer"]
+layout_mode = 2
+text = "Range: 999"
+label_settings = ExtResource("3_c80rv")
+
+[node name="AttackSpeedLabel" type="Label" parent="NinePatchRect/StatsContainer"]
+layout_mode = 2
+text = "Attack Speed: 999"
+label_settings = ExtResource("3_c80rv")
+
+[node name="StatsLabel" type="Label" parent="NinePatchRect"]
+layout_mode = 2
+offset_right = 281.0
+offset_bottom = 51.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_os8vj")
 text = "STATS"
+label_settings = ExtResource("3_c80rv")
 horizontal_alignment = 1
 
-[connection signal="pressed" from="Background/PauseContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="toggled" from="Background/PauseContainer/FpsCheck" to="." method="_on_fps_check_toggled"]
-[connection signal="pressed" from="Background/PauseContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/PauseContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="toggled" from="Background/MarginContainer/PauseContainer/FpsCheck" to="." method="_on_fps_check_toggled"]
+[connection signal="pressed" from="Background/MarginContainer/PauseContainer/QuitButton" to="." method="_on_quit_button_pressed"]

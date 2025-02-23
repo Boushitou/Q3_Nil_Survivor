@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="PassiveItem" load_steps=2 format=3 uid="uid://csd5tns1s4r0b"]
+[gd_resource type="Resource" script_class="PassiveItem" load_steps=3 format=3 uid="uid://csd5tns1s4r0b"]
 
 [ext_resource type="Script" path="res://Data/PassiveItem.gd" id="1_knxyw"]
+[ext_resource type="Texture2D" uid="uid://c7tg3m5q4q8uq" path="res://Assets/ItemsIcons/Passives/HeartAmulet.png" id="2_u8cjt"]
 
 [resource]
 script = ExtResource("1_knxyw")
@@ -21,3 +22,4 @@ ID = 3
 name = "Heart Amulet"
 descriptions = Array[String](["Increases health by 10%", "Increases health by 10%", "Increases health by 10%", "Increases health by 10%", "Increases health by 10%"])
 max_level = 5
+sprite = ExtResource("2_u8cjt")

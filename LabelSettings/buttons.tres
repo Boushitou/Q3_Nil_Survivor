@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b1vamqc7drh4i"]
+
+[ext_resource type="FontFile" uid="uid://c74f8yr85l71q" path="res://Assets/Fonts/DIOGENES.ttf" id="1_u3hsp"]
+
+[resource]
+default_font = ExtResource("1_u3hsp")
+default_font_size = 34

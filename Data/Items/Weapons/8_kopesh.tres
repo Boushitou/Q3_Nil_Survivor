@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c7p64if204yio"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c7p64if204yio"]
 
 [ext_resource type="Script" path="res://Data/Items/Kopesh.gd" id="1_xw7h2"]
+[ext_resource type="Texture2D" uid="uid://cnmosmm0qts3g" path="res://Assets/ItemsIcons/Weapons/Khopesh.png" id="2_bh727"]
 
 [resource]
 script = ExtResource("1_xw7h2")
@@ -16,3 +17,4 @@ ID = 8
 name = "Kopesh"
 descriptions = Array[String](["Slices in a sweaping arc, cleaving through enemies.", "Inflict 5 more damages.", "Inflict 5 more damages.", "Inflict 5 more damages, attack speed up by 20%.", "Inflict 5 more damages, area of attack up by 10%.", "Inflict 5 more damages.", "Inflict 5 more damages.", "Inflict 5 more damages, attack speed up by 20%, area of attack up by 10%."])
 max_level = 8
+sprite = ExtResource("2_bh727")

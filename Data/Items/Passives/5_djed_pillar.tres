@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="PassiveItem" load_steps=2 format=3 uid="uid://bhhal7s2cnidf"]
+[gd_resource type="Resource" script_class="PassiveItem" load_steps=3 format=3 uid="uid://bhhal7s2cnidf"]
 
 [ext_resource type="Script" path="res://Data/PassiveItem.gd" id="1_o3tco"]
+[ext_resource type="Texture2D" uid="uid://bmi083wobfsx" path="res://Assets/ItemsIcons/Passives/DjedPillar.png" id="2_3gbmq"]
 
 [resource]
 script = ExtResource("1_o3tco")
@@ -21,3 +22,4 @@ ID = 5
 name = "Djed Pillar"
 descriptions = Array[String](["Increases the attack range by 10%", "Increases the attack range by 10%", "Increases the attack range by 10%", "Increases the attack range by 10%", "Increases the attack range by 10%"])
 max_level = 5
+sprite = ExtResource("2_3gbmq")

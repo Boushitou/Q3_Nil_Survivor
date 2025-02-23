@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="PassiveItem" load_steps=2 format=3 uid="uid://g51a3edhb8a7"]
+[gd_resource type="Resource" script_class="PassiveItem" load_steps=3 format=3 uid="uid://g51a3edhb8a7"]
 
 [ext_resource type="Script" path="res://Data/PassiveItem.gd" id="1_nm72s"]
+[ext_resource type="Texture2D" uid="uid://b2upat5g2y1mq" path="res://Assets/ItemsIcons/Passives/SekhmetAmulet.png" id="2_avlt5"]
 
 [resource]
 script = ExtResource("1_nm72s")
@@ -21,3 +22,4 @@ ID = 4
 name = "Sekhmet Amulet"
 descriptions = Array[String](["Increases damage by 10%", "Increases damage by 10%", "Increases damage by 10%", "Increases damage by 10%", "Increases damage by 10%"])
 max_level = 5
+sprite = ExtResource("2_avlt5")

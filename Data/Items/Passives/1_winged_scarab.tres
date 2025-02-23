@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="PassiveItem" load_steps=2 format=3 uid="uid://jd7mc3sucqv5"]
+[gd_resource type="Resource" script_class="PassiveItem" load_steps=3 format=3 uid="uid://jd7mc3sucqv5"]
 
 [ext_resource type="Script" path="res://Data/PassiveItem.gd" id="1_vkhb6"]
+[ext_resource type="Texture2D" uid="uid://cvfpqouctx1v6" path="res://Assets/ItemsIcons/Passives/WingedScarab.png" id="2_3dfmk"]
 
 [resource]
 script = ExtResource("1_vkhb6")
@@ -21,3 +22,4 @@ ID = 1
 name = "Winged Scarab"
 descriptions = Array[String](["Increases movement speed by 10%", "Increases movement speed by 10%", "Increases movement speed by 10%", "Increases movement speed by 10%", "Increases movement speed by 10%"])
 max_level = 5
+sprite = ExtResource("2_3dfmk")
