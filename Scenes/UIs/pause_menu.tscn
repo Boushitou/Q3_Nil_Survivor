@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://blevg44ichqh8"]
+[gd_scene load_steps=11 format=3 uid="uid://blevg44ichqh8"]
 
 [ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Shapes/Square.png" id="1_cg81r"]
 [ext_resource type="Script" path="res://Scripts/UIs/PauseMenu.gd" id="1_fitf7"]
 [ext_resource type="LabelSettings" uid="uid://dstfcyh1anmeg" path="res://LabelSettings/title.tres" id="3_c80rv"]
 [ext_resource type="FontFile" uid="uid://c74f8yr85l71q" path="res://Assets/Fonts/DIOGENES.ttf" id="3_tj4ic"]
 [ext_resource type="Theme" uid="uid://b1vamqc7drh4i" path="res://LabelSettings/buttons.tres" id="4_gshti"]
+[ext_resource type="Script" path="res://Scripts/UIs/StatsDisplayer.gd" id="5_ni3cb"]
+[ext_resource type="LabelSettings" uid="uid://dullqg7ao61aw" path="res://LabelSettings/stats_settings.tres" id="6_n73uo"]
 
 [sub_resource type="Theme" id="Theme_k8hxx"]
 
@@ -30,10 +32,10 @@ script = ExtResource("1_fitf7")
 modulate = Color(0.687215, 0.687215, 0.687215, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.118519
-anchor_right = 0.7
-anchor_bottom = 0.888889
+anchor_left = 0.366667
+anchor_top = 0.296296
+anchor_right = 0.633333
+anchor_bottom = 0.77037
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(250, 300)
@@ -43,13 +45,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Background"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 22.0
-offset_top = 138.0
-offset_right = -19.0
-offset_bottom = -24.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -138.0
+offset_right = 99.0
+offset_bottom = 216.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -96,9 +100,9 @@ label_settings = SubResource("LabelSettings_m2b7x")
 self_modulate = Color(1, 1, 1, 0.156863)
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.101852
-anchor_right = 0.243924
-anchor_bottom = 0.905864
+anchor_top = 0.118519
+anchor_right = 0.24375
+anchor_bottom = 0.948148
 grow_vertical = 2
 texture = ExtResource("1_cg81r")
 metadata/_edit_use_anchors_ = true
@@ -115,37 +119,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 85
 alignment = 1
+script = ExtResource("5_ni3cb")
+stat_labels = {
+"atk_range": "",
+"attack_speed": "",
+"health": "",
+"health_regeneration": "",
+"power": "",
+"speed": ""
+}
+label_settings = ExtResource("6_n73uo")
 metadata/_edit_use_anchors_ = true
-
-[node name="HealthLabel" type="Label" parent="NinePatchRect/StatsContainer"]
-layout_mode = 2
-text = "Health: 999"
-label_settings = ExtResource("3_c80rv")
-
-[node name="RegenLabel" type="Label" parent="NinePatchRect/StatsContainer"]
-layout_mode = 2
-text = "Regeneration: 999"
-label_settings = ExtResource("3_c80rv")
-
-[node name="MoveSpeedLabel" type="Label" parent="NinePatchRect/StatsContainer"]
-layout_mode = 2
-text = "MoveSpeed: 999"
-label_settings = ExtResource("3_c80rv")
-
-[node name="PowerLabel" type="Label" parent="NinePatchRect/StatsContainer"]
-layout_mode = 2
-text = "Power: 999"
-label_settings = ExtResource("3_c80rv")
-
-[node name="AttackRangeLabel" type="Label" parent="NinePatchRect/StatsContainer"]
-layout_mode = 2
-text = "Range: 999"
-label_settings = ExtResource("3_c80rv")
-
-[node name="AttackSpeedLabel" type="Label" parent="NinePatchRect/StatsContainer"]
-layout_mode = 2
-text = "Attack Speed: 999"
-label_settings = ExtResource("3_c80rv")
 
 [node name="StatsLabel" type="Label" parent="NinePatchRect"]
 layout_mode = 2

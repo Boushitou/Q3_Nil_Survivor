@@ -7,7 +7,7 @@ func _ready() -> void:
 	if is_instance_valid(game_manager):
 		game_manager.connect("display_pause_menu", display_pause_menu)
 		
-	visible = false	
+	visible = false
 		
 		
 func display_pause_menu(can_display : bool) -> void:

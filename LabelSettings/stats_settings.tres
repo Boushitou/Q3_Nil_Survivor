@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dullqg7ao61aw"]
+
+[ext_resource type="FontFile" uid="uid://c74f8yr85l71q" path="res://Assets/Fonts/DIOGENES.ttf" id="1_t2l83"]
+
+[resource]
+font = ExtResource("1_t2l83")
+font_size = 38
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
