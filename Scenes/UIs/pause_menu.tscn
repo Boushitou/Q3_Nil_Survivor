@@ -30,17 +30,16 @@ script = ExtResource("1_fitf7")
 modulate = Color(0.687215, 0.687215, 0.687215, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.292535
-anchor_top = 0.058642
-anchor_right = 0.72309
-anchor_bottom = 0.95679
-offset_right = 4.0
-offset_bottom = 18.0
+anchor_left = 0.3
+anchor_top = 0.118519
+anchor_right = 0.7
+anchor_bottom = 0.888889
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(250, 300)
 theme = SubResource("Theme_k8hxx")
 texture = ExtResource("1_cg81r")
+metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Background"]
 layout_mode = 1
@@ -107,15 +106,14 @@ metadata/_edit_use_anchors_ = true
 [node name="StatsContainer" type="VBoxContainer" parent="NinePatchRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.0231481
-anchor_right = 1.0
+anchor_left = 0.0320285
+anchor_top = 0.0818814
+anchor_right = 0.967972
 anchor_bottom = 0.972222
-offset_left = 15.0
-offset_top = 51.0
-offset_right = -15.0
+offset_bottom = -6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 85
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -151,12 +149,15 @@ label_settings = ExtResource("3_c80rv")
 
 [node name="StatsLabel" type="Label" parent="NinePatchRect"]
 layout_mode = 2
-offset_right = 281.0
-offset_bottom = 51.0
+anchor_right = 0.999
+anchor_bottom = 0.059
+offset_right = 0.134979
+offset_bottom = -0.23167
 theme_override_styles/normal = SubResource("StyleBoxFlat_os8vj")
 text = "STATS"
 label_settings = ExtResource("3_c80rv")
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Background/MarginContainer/PauseContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="toggled" from="Background/MarginContainer/PauseContainer/FpsCheck" to="." method="_on_fps_check_toggled"]

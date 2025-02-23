@@ -37,6 +37,7 @@ collider = NodePath("CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WeaponBody" node_paths=PackedStringArray("weapon_timer")]
 unique_name_in_owner = true
+texture_filter = 1
 position = Vector2(-0.499999, 0)
 scale = Vector2(1.51563, 1)
 sprite_frames = SubResource("SpriteFrames_u4h3m")

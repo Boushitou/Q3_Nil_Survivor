@@ -116,8 +116,10 @@ health = NodePath("../../Health")
 
 [node name="EntitySprite" type="AnimatedSprite2D" parent="Body" node_paths=PackedStringArray("player_controller", "health", "animation_player")]
 process_mode = 1
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_cghne")
 animation = &"idle"
+frame_progress = 0.741873
 script = ExtResource("10_yf6mg")
 player_controller = NodePath("../..")
 health = NodePath("../../Health")
