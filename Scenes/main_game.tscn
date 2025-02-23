@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://d0jg0mtojp1l8"]
+[gd_scene load_steps=21 format=3 uid="uid://d0jg0mtojp1l8"]
 
 [ext_resource type="Script" path="res://Scripts/Systems/GameManager.gd" id="1_grhj2"]
 [ext_resource type="PackedScene" uid="uid://ddcgvg5rx8u17" path="res://Scenes/Player.tscn" id="1_o57fh"]
 [ext_resource type="Script" path="res://Scripts/Systems/CameraFollow.gd" id="5_mlmmy"]
 [ext_resource type="PackedScene" uid="uid://cjegdqifbh18b" path="res://Scenes/GameCanvas.tscn" id="6_blb7o"]
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemiesManager.gd" id="6_ql5bx"]
+[ext_resource type="Resource" uid="uid://bwhux13w4ad2p" path="res://Data/Waves/wave1.tres" id="6_rb6wg"]
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemySpawner.gd" id="7_dhjye"]
 [ext_resource type="Resource" uid="uid://bmh5pfw8h3mqh" path="res://Data/Waves/wave2.tres" id="7_mered"]
 [ext_resource type="Resource" uid="uid://dhtrl42tt5ogm" path="res://Data/Enemies/0_beetle.tres" id="9_bhl7t"]
@@ -266,7 +267,7 @@ script = ExtResource("6_ql5bx")
 
 [node name="EnemySpawner" type="Node" parent="EnemiesManager"]
 script = ExtResource("7_dhjye")
-waves = Array[Resource("res://Data/WaveData.gd")]([ExtResource("7_mered"), ExtResource("7_mered"), ExtResource("9_wf2w0"), ExtResource("10_rkblb")])
+waves = Array[Resource("res://Data/WaveData.gd")]([ExtResource("6_rb6wg"), ExtResource("7_mered"), ExtResource("9_wf2w0"), ExtResource("10_rkblb")])
 enemies_data = Array[Resource("res://Data/EnemyData.gd")]([ExtResource("9_bhl7t"), ExtResource("10_hrgb2"), ExtResource("13_y3egy"), ExtResource("14_qs507"), ExtResource("15_2ams7")])
 
 [node name="XpOrbManager" type="Node" parent="EnemiesManager"]

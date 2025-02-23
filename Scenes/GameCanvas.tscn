@@ -19,10 +19,14 @@
 process_mode = 3
 
 [node name="FpsLabel" type="Label" parent="."]
-offset_left = 1056.0
-offset_top = 64.0
-offset_right = 1152.0
-offset_bottom = 92.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 86.0
+offset_bottom = 114.0
+grow_horizontal = 0
+size_flags_horizontal = 8
 text = "Fps : 45452"
 script = ExtResource("1_j1xen")
 
@@ -55,38 +59,18 @@ weapons = Array[Resource]([ExtResource("11_kf8p0")])
 
 [node name="CharacterInformations" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 64.0
-
-[node name="XpProgressBar" type="TextureProgressBar" parent="CharacterInformations" node_paths=PackedStringArray("level_label")]
-layout_mode = 0
-offset_right = 1152.0
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 24.0
-step = 0.0
-value = 50.0
-nine_patch_stretch = true
-texture_under = ExtResource("12_l6qja")
-texture_progress = ExtResource("12_l6qja")
-tint_under = Color(0.996078, 0.8, 0.4, 1)
-tint_progress = Color(0.2, 0.6, 0.4, 1)
-script = ExtResource("13_nsfak")
-level_label = NodePath("../Label")
+grow_horizontal = 2
+size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CharacterInformations"]
-layout_mode = 0
-offset_left = 1080.0
-offset_right = 1143.0
-offset_bottom = 23.0
-text = "Lv. 9999"
-horizontal_alignment = 2
-
-[node name="SurvivalTimer" type="Node" parent="." node_paths=PackedStringArray("timer_label")]
+[node name="SurvivalTimer" type="Node" parent="CharacterInformations" node_paths=PackedStringArray("timer_label")]
 unique_name_in_owner = true
 script = ExtResource("13_4ttek")
 timer_label = NodePath("TimerLabel")
 
-[node name="TimerLabel" type="Label" parent="SurvivalTimer"]
+[node name="TimerLabel" type="Label" parent="CharacterInformations/SurvivalTimer"]
 clip_contents = true
 anchors_preset = 5
 anchor_left = 0.5
@@ -96,8 +80,47 @@ offset_top = 24.0
 offset_right = 64.0
 offset_bottom = 55.0
 grow_horizontal = 2
+size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 28
 text = "Time : 00:00"
 horizontal_alignment = 1
+
+[node name="XpProgressBar" type="TextureProgressBar" parent="CharacterInformations" node_paths=PackedStringArray("level_label")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("12_l6qja")
+texture_progress = ExtResource("12_l6qja")
+tint_under = Color(0.996078, 0.8, 0.4, 1)
+tint_progress = Color(0.2, 0.6, 0.4, 1)
+script = ExtResource("13_nsfak")
+level_label = NodePath("../Label")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CharacterInformations"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -11.0
+offset_right = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Lv. 9999"
+horizontal_alignment = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="visibility_changed" from="Background/ItemSelector" to="Background/ItemSelector" method="_on_visibility_changed"]
