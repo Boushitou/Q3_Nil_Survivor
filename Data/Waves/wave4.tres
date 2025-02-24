@@ -4,13 +4,12 @@
 
 [resource]
 script = ExtResource("1_mfcbd")
-wave_nb = 4
 enemy_frequency = 0.25
 enemy_data = Array[Dictionary]([{
-"count": 15,
+"count": 30,
 "type": 3
 }, {
-"count": 30,
+"count": 5,
 "type": 0
 }, {
 "count": 10,

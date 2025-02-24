@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_t0m22")
-enemy_frequency = 60.0
+enemy_frequency = 1.0
 enemy_data = Array[Dictionary]([{
 "count": 1,
 "type": 5

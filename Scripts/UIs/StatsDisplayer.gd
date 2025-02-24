@@ -49,7 +49,7 @@ func update_stats_display(_can_display) -> void:
 
 			# If stat should be displayed as a percentage
 			if stat_name in PERCENTAGE_STATS:
-				stat_value = (stat_value - 1) * 100  # Convert 1.1 -> 10%
+				stat_value = (stat_value - 1) * 100  # Convert 1.1 to 10%
 				label.text = "%s: +%.1f%%" % [display_name, stat_value]
 			else:
 				label.text = "%s: %d" % [display_name, stat_value]

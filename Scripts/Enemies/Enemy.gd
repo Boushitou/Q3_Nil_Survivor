@@ -22,6 +22,7 @@ var update_frequency : float = 0.1 #10fps
 var time_since_last_update : float = 0.0
 
 var death_particles_scene : PackedScene = preload("res://Scenes/death_particles.tscn")
+var damage_display_scene : PackedScene = preload("res://Scenes/UIs/damage_display.tscn")
 
 
 func _process(delta) -> void:
@@ -157,9 +158,15 @@ func take_damage(amount : int, force: float) -> void:
 	var direction = (global_position - player_node.global_position).normalized()
 	apply_push_back(force, direction)
 	
+	#Feedback of the damage
 	if animation_player != null:
 		if not animation_player.is_playing():
 			animation_player.play("damaged_animation")
+		
+	#Show the damage number on top of the enemy	
+	var damage_display = PoolSystem.instantiate_object("damage_display", damage_display_scene, global_position, 0.0, get_tree().root)	
+	
+	damage_display.animate_display(amount)
 
 
 func get_damage() -> int:

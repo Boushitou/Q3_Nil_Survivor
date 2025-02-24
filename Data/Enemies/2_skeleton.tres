@@ -7,7 +7,7 @@
 script = ExtResource("1_6o3bu")
 ID = 2
 name = "Skeleton"
-max_health = 15
+max_health = 25
 power = 10
 speed = 50.0
 sprite = ExtResource("2_6arul")

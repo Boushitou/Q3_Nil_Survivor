@@ -175,6 +175,7 @@ tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(0.756863, 0, 0, 1)
 script = ExtResource("8_y1rp1")
 health = NodePath("../../../Health")
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerStats" type="Node" parent="." node_paths=PackedStringArray("inventory", "health")]
 process_mode = 1
@@ -194,6 +195,7 @@ health = NodePath("../Health")
 process_mode = 1
 script = ExtResource("6_lf85x")
 total_health = 120
+health_regeneration = 1
 
 [node name="Inventory" type="Node" parent="."]
 process_mode = 1

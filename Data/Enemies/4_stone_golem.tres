@@ -9,6 +9,6 @@ ID = 4
 name = "Stone Golem"
 max_health = 150
 power = 10
-speed = 40.0
+speed = 50.0
 sprite = ExtResource("2_jn6ck")
 tint = Color(0.666667, 0.372549, 0, 1)
