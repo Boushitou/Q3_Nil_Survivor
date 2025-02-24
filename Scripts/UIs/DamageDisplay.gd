@@ -17,4 +17,5 @@ func animate_display(damage : int) -> void :
 
 
 func _on_animation_player_animation_finished(_anim_name):
+	animation_player.stop()
 	PoolSystem.pool_object("damage_display", self)
