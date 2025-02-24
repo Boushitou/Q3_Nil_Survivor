@@ -7,6 +7,8 @@
 [sub_resource type="LabelSettings" id="LabelSettings_tbc1t"]
 font = ExtResource("2_lnpi2")
 font_size = 112
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

@@ -19,7 +19,7 @@ font_color = Color(0, 0, 0, 1)
 bg_color = Color(0.347042, 0.595237, 0.984075, 1)
 anti_aliasing = false
 
-[node name="pause_menu" type="Control"]
+[node name="pause_menu" type="Control" node_paths=PackedStringArray("resume_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fitf7")
+resume_button = NodePath("Background/MarginContainer/PauseContainer/ResumeButton")
 
 [node name="Background" type="NinePatchRect" parent="."]
 modulate = Color(0.687215, 0.687215, 0.687215, 1)
@@ -64,6 +65,8 @@ alignment = 1
 
 [node name="ResumeButton" type="Button" parent="Background/MarginContainer/PauseContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../FpsCheck")
 theme = ExtResource("4_gshti")
 text = "RESUME"
 
@@ -71,6 +74,8 @@ text = "RESUME"
 modulate = Color(0.347541, 0.356499, 0.855297, 1)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
 theme = ExtResource("4_gshti")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -79,6 +84,8 @@ text = "Display Fps"
 
 [node name="QuitButton" type="Button" parent="Background/MarginContainer/PauseContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../FpsCheck")
+focus_neighbor_bottom = NodePath("../ResumeButton")
 theme = ExtResource("4_gshti")
 text = "QUIT"
 

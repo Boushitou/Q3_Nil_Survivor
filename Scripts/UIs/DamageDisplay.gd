@@ -14,3 +14,7 @@ func animate_display(damage : int) -> void :
 	damage_to_display = damage
 	damage_label.text = str(damage_to_display)
 	animation_player.play("damage_animation")
+
+
+func _on_animation_player_animation_finished(_anim_name):
+	PoolSystem.pool_object("damage_display", self)

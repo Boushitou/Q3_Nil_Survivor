@@ -61,6 +61,7 @@ func set_references(player : Node2D, manager: EnemiesManager) -> void:
 
 func start_next_wave() -> void:
 	current_wave_nb += 1
+	current_enemies_nb = 0
 	
 	if current_wave_nb >= waves.size():
 		return

@@ -2,6 +2,7 @@ extends Menu
 class_name PauseMenu
 
 @export var game_manager : GameManager
+@export var resume_button : Button
 
 func _ready() -> void:
 	if is_instance_valid(game_manager):
@@ -13,6 +14,7 @@ func _ready() -> void:
 func display_pause_menu(can_display : bool) -> void:
 	if can_display:
 		visible = true
+		resume_button.grab_focus()
 	else:
 		visible = false
 

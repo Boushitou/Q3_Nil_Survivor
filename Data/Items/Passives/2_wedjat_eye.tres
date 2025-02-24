@@ -20,6 +20,6 @@ is_multiplicative = false
 apply_instant = true
 ID = 2
 name = "Wedjat Eye"
-descriptions = Array[String](["Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec", "Increases health regeneration by 1 hp / sec"])
+descriptions = Array[String](["Increases health regeneration by 1", "Increases health regeneration by 1", "Increases health regeneration by 1", "Increases health regeneration by 1", "Increases health regeneration by 1"])
 max_level = 5
 sprite = ExtResource("2_v36ha")

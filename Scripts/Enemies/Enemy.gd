@@ -39,6 +39,7 @@ func set_references(player : Node2D, manager: EnemiesManager) -> void:
 	
 	
 func setup_stats(enemy_stat : EnemyData) -> void:
+	collider.process_mode = PROCESS_MODE_INHERIT
 	stats.health.total_health = enemy_stat.max_health
 	stats.health.init_health()
 	stats.power = enemy_stat.power
@@ -178,5 +179,6 @@ func _on_enemy_died() -> void:
 	var particles = PoolSystem.instantiate_object(particle_name, death_particles_scene, global_position, 0.0, get_tree().root)
 	particles.particles_type = particle_name
 	
+	collider.process_mode = PROCESS_MODE_DISABLED
 	stats.health.disconnect("has_died", _on_enemy_died)
 	enemies_manager.remove_enemy(self, last_cell)

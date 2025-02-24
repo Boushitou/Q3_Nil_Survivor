@@ -1,7 +1,7 @@
 extends Node
 class_name TimerSurvival
 
-var max_time : float = 1800.0 #30 minutes
+var max_time : float = 300.0 #30 minutes 1800.0
 var elapsed_time : float = 0.0 #To check every minutes
 var current_time : float = 0.0 #total time elapsed
 var time_is_over : bool = false
@@ -14,6 +14,7 @@ func _process(delta) -> void:
 		
 	if current_time >= max_time:
 		SignalBus.emit_signal("time_over")
+		SignalBus.emit_signal("minute_passed")
 		time_is_over = true
 		return
 	

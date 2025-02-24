@@ -1,19 +1,24 @@
 extends Node
 class_name GameManager
 
+@export var player : Node
+@export var game_over_menu : GameOverScreen
 var game_is_paused : bool = false
 var can_pause : bool = true
 
 signal display_pause_menu(can_display : bool)
 
 func _ready() -> void:
-	SignalBus.connect("time_over", on_game_win)
+	var player_health = player.get_node("Health")
+	if player_health != null:
+		player_health.connect("has_died", on_game_over)
+		
 	SignalBus.connect("pause_pressed", pause_game)
 	SignalBus.connect("enable_pause", enable_pause)
 
 	
-func on_game_win() -> void:
-	print("Game Win")
+func on_game_over() -> void:
+	game_over_menu.show()
 
 	
 func pause_game(can_display_pause : bool) -> void:
