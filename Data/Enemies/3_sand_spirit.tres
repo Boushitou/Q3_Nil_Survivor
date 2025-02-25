@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://b0khdkysugn2s"]
 
 [ext_resource type="Script" path="res://Data/EnemyData.gd" id="1_6bafu"]
-[ext_resource type="SpriteFrames" uid="uid://sqhlboqxh67u" path="res://SpriteFrames/MummyFrames.tres" id="2_sbpt0"]
+[ext_resource type="SpriteFrames" uid="uid://c48gmvyj3nmyo" path="res://SpriteFrames/SandSpiritFrames.tres" id="2_ms6m0"]
 
 [resource]
 script = ExtResource("1_6bafu")
@@ -10,5 +10,5 @@ name = "Sand Spirit"
 max_health = 20
 power = 6
 speed = 80.0
-sprite = ExtResource("2_sbpt0")
-tint = Color(0.718179, 0.717969, 2.31028e-06, 1)
+sprite = ExtResource("2_ms6m0")
+tint = Color(1, 1, 1, 1)

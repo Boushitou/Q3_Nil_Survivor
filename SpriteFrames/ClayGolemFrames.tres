@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://owwxre3f2ql8"]
+
+[ext_resource type="Texture2D" uid="uid://cl1mj0ef55ewa" path="res://Assets/Enemies/ClayGolem/Golem1.png" id="1_sba6p"]
+[ext_resource type="Texture2D" uid="uid://bwnpl5vn5grty" path="res://Assets/Enemies/ClayGolem/Golem2.png" id="2_iincg"]
+[ext_resource type="Texture2D" uid="uid://tjo8oufd3f8r" path="res://Assets/Enemies/ClayGolem/Golem3.png" id="3_fn5qx"]
+[ext_resource type="Texture2D" uid="uid://do1jowcb6nrso" path="res://Assets/Enemies/ClayGolem/Golem4.png" id="4_r517n"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sba6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_iincg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fn5qx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r517n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]

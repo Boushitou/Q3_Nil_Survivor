@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://c48gmvyj3nmyo"]
+
+[ext_resource type="Texture2D" uid="uid://cq0bj4fpaq10j" path="res://Assets/Enemies/SandSpirit/SandSpirit1.png" id="1_s4gut"]
+[ext_resource type="Texture2D" uid="uid://chru0ggae3ldd" path="res://Assets/Enemies/SandSpirit/SandSpirit2.png" id="2_melxd"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s4gut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_melxd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

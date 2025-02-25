@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2l8hvlhxtov8"
-path="res://.godot/imported/Skeleton3.png-f8d299eb8dfc68c65a9c6ffadfa5e9aa.ctex"
+uid="uid://cl1mj0ef55ewa"
+path="res://.godot/imported/Golem1.png-668842699d40cc7a5e783809bb92575f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/Skeletton/Skeleton3.png"
-dest_files=["res://.godot/imported/Skeleton3.png-f8d299eb8dfc68c65a9c6ffadfa5e9aa.ctex"]
+source_file="res://Assets/Enemies/ClayGolem/Golem1.png"
+dest_files=["res://.godot/imported/Golem1.png-668842699d40cc7a5e783809bb92575f.ctex"]
 
 [params]
 
