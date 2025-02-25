@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bym5pcg3yn5ja"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Enemy.gd" id="1_6noeu"]
-[ext_resource type="SpriteFrames" uid="uid://sqhlboqxh67u" path="res://SpriteFrames/MummyFrames.tres" id="2_n2480"]
+[ext_resource type="SpriteFrames" uid="uid://tpqguwv68tnf" path="res://SpriteFrames/SkelettonFrames.tres" id="2_2v1nm"]
 [ext_resource type="Script" path="res://Scripts/Systems/Stats.gd" id="3_0op4a"]
 [ext_resource type="Script" path="res://Scripts/Systems/Health.gd" id="4_021do"]
 
@@ -49,11 +49,10 @@ sprite = NodePath("EntitySprite")
 z_index = 9
 texture_filter = 1
 scale = Vector2(1.031, 1)
-sprite_frames = ExtResource("2_n2480")
-frame = 6
-frame_progress = 0.730227
+sprite_frames = ExtResource("2_2v1nm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.29125, -0.5)
 shape = SubResource("RectangleShape2D_2lggj")
 

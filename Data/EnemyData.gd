@@ -8,4 +8,4 @@ extends Resource
 @export var power : int
 @export var speed : float
 @export var sprite : SpriteFrames
-@export var tint : Color
+@export var tint : Color = Color(1, 1, 1, 1)

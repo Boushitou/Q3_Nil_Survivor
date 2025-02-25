@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://tpqguwv68tnf"]
+
+[ext_resource type="Texture2D" uid="uid://baypfl5yps102" path="res://Assets/Enemies/Skeletton/Skeleton1.png" id="1_331kf"]
+[ext_resource type="Texture2D" uid="uid://b30r0crc4pw03" path="res://Assets/Enemies/Skeletton/Skeleton2.png" id="2_1hogs"]
+[ext_resource type="Texture2D" uid="uid://c2l8hvlhxtov8" path="res://Assets/Enemies/Skeletton/Skeleton3.png" id="3_cc138"]
+[ext_resource type="Texture2D" uid="uid://255yamhhiamr" path="res://Assets/Enemies/Skeletton/Skeleton4.png" id="4_4xrd6"]
+[ext_resource type="Texture2D" uid="uid://b2op0iel6sam8" path="res://Assets/Enemies/Skeletton/Skeleton5.png" id="5_b8a8b"]
+[ext_resource type="Texture2D" uid="uid://dyqakr1bl3537" path="res://Assets/Enemies/Skeletton/Skeleton6.png" id="6_cu77g"]
+[ext_resource type="Texture2D" uid="uid://dgemlpprfirnj" path="res://Assets/Enemies/Skeletton/Skeleton7.png" id="7_c06q5"]
+[ext_resource type="Texture2D" uid="uid://dqfnofmj0yj6i" path="res://Assets/Enemies/Skeletton/Skeleton8.png" id="8_y3eoc"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_331kf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1hogs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cc138")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4xrd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b8a8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cu77g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_c06q5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y3eoc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

@@ -31,7 +31,7 @@ var enemies_spawned : Dictionary = {} #string, int "type" = int
 
 
 func _ready() -> void:
-	#SignalBus.connect("time_over", _on_time_over)
+	SignalBus.connect("time_over", _on_time_over)
 	SignalBus.connect("minute_passed", _on_minute_passed)
 	
 	for enemy_data in enemies_data:
