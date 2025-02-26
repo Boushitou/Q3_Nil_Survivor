@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://8oqdi8ytofae"]
+[gd_scene load_steps=6 format=3 uid="uid://8oqdi8ytofae"]
 
+[ext_resource type="Script" path="res://Scripts/UIs/InventoryDisplay.gd" id="1_0io6r"]
 [ext_resource type="Script" path="res://Scripts/UIs/InventoryItemDisplay.gd" id="1_f6ved"]
 [ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="1_sv6ot"]
 
@@ -20,13 +21,16 @@ corner_radius_bottom_left = 1
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="InventoryDisplay" type="Control"]
+[node name="InventoryDisplay" type="Control" node_paths=PackedStringArray("weapons_display", "passives_display")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0io6r")
+weapons_display = NodePath("Panel/MarginContainer/VBoxContainer2/WeaponsContainer")
+passives_display = NodePath("Panel/MarginContainer/VBoxContainer2/PassivesContainer")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -106,8 +110,8 @@ custom_minimum_size = Vector2(62, 62)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3gnd1")
 script = ExtResource("1_f6ved")
-item_level_label = NodePath("../../WeaponsContainer/ItemPanel/ItemLevel")
-item_icon = NodePath("../../WeaponsContainer/ItemPanel/ItemIcon")
+item_level_label = NodePath("ItemLevel")
+item_icon = NodePath("ItemIcon")
 
 [node name="ItemIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel"]
 custom_minimum_size = Vector2(50, 50)
@@ -147,8 +151,8 @@ custom_minimum_size = Vector2(62, 62)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3gnd1")
 script = ExtResource("1_f6ved")
-item_level_label = NodePath("../../WeaponsContainer/ItemPanel/ItemLevel")
-item_icon = NodePath("../../WeaponsContainer/ItemPanel/ItemIcon")
+item_level_label = NodePath("ItemLevel")
+item_icon = NodePath("ItemIcon")
 
 [node name="ItemIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel2"]
 custom_minimum_size = Vector2(50, 50)
@@ -188,8 +192,8 @@ custom_minimum_size = Vector2(62, 62)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3gnd1")
 script = ExtResource("1_f6ved")
-item_level_label = NodePath("../../WeaponsContainer/ItemPanel/ItemLevel")
-item_icon = NodePath("../../WeaponsContainer/ItemPanel/ItemIcon")
+item_level_label = NodePath("ItemLevel")
+item_icon = NodePath("ItemIcon")
 
 [node name="ItemIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel3"]
 custom_minimum_size = Vector2(50, 50)

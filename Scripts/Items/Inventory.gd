@@ -21,6 +21,7 @@ func add_start_weapon(player_stats : PlayerStats) -> void:
 func add_item(item: Items) -> void:
 	if item.item is PassiveItem:
 		passives_items.append(item)
+		SignalBus.get_new_passive.emit(item)
 	elif item.item is Weapon:
 		weapons.append(item)
 		SignalBus.get_new_weapon.emit(item)
@@ -44,6 +45,7 @@ func level_up_item(item: Items) -> void:
 		return
 		
 	correct_item.level_up()
+	SignalBus.level_up_item.emit(correct_item)
 
 
 func get_item_by_ID(item_ID : int) -> Items:

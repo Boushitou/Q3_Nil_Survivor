@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://d0jg0mtojp1l8"]
+[gd_scene load_steps=25 format=3 uid="uid://d0jg0mtojp1l8"]
 
 [ext_resource type="Script" path="res://Scripts/Systems/GameManager.gd" id="1_grhj2"]
 [ext_resource type="PackedScene" uid="uid://ddcgvg5rx8u17" path="res://Scenes/Player.tscn" id="1_o57fh"]
 [ext_resource type="Script" path="res://Scripts/Systems/CameraFollow.gd" id="5_mlmmy"]
+[ext_resource type="Script" path="res://Scripts/UIs/InventoryDisplay.gd" id="6_6craa"]
 [ext_resource type="PackedScene" uid="uid://cjegdqifbh18b" path="res://Scenes/GameCanvas.tscn" id="6_blb7o"]
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemiesManager.gd" id="6_ql5bx"]
 [ext_resource type="Resource" uid="uid://bwhux13w4ad2p" path="res://Data/Waves/wave1.tres" id="6_rb6wg"]
@@ -29,6 +30,20 @@ script = ExtResource("1_grhj2")
 player = NodePath("Player")
 game_over_menu = NodePath("GameCanvas/game_over_screen")
 
+[node name="GameCanvas" parent="." instance=ExtResource("6_blb7o")]
+
+[node name="pause_menu" parent="GameCanvas" node_paths=PackedStringArray("game_manager") instance=ExtResource("18_o5w5n")]
+game_manager = NodePath("../..")
+
+[node name="game_over_screen" parent="GameCanvas" instance=ExtResource("20_ivujt")]
+visible = false
+
+[node name="InventoryDisplay" parent="GameCanvas" instance=ExtResource("22_kpyo5")]
+offset_top = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("6_6craa")
+
 [node name="Player" parent="." instance=ExtResource("1_o57fh")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -46,20 +61,6 @@ enemies_data = Array[Resource("res://Data/EnemyData.gd")]([ExtResource("9_bhl7t"
 
 [node name="XpOrbManager" type="Node" parent="EnemiesManager"]
 script = ExtResource("13_ij7ea")
-
-[node name="GameCanvas" parent="." instance=ExtResource("6_blb7o")]
-
-[node name="pause_menu" parent="GameCanvas" node_paths=PackedStringArray("game_manager") instance=ExtResource("18_o5w5n")]
-visible = false
-game_manager = NodePath("../..")
-
-[node name="game_over_screen" parent="GameCanvas" instance=ExtResource("20_ivujt")]
-visible = false
-
-[node name="InventoryDisplay" parent="GameCanvas" instance=ExtResource("22_kpyo5")]
-offset_top = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
 
 [node name="TileMap" parent="." node_paths=PackedStringArray("player") instance=ExtResource("22_b6tan")]
 player = NodePath("../Player")

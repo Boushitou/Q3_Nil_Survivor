@@ -8,6 +8,8 @@ signal gain_xp(amount : int)
 signal level_up_signal(level : int, next_xp : int, current_xp : int)
 
 signal get_new_weapon(weapon : Weapon)
+signal get_new_passive(passive : PassiveItem)
+signal level_up_item(item : Items)
 
 signal minute_passed
 signal time_over
