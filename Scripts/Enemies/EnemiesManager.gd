@@ -69,7 +69,7 @@ func respawn_enemies() -> void:
 			var distance_to_player : float = enemy.global_position.distance_squared_to(player_node.global_position)
 			var distance_respawn : float = camera.get_spawn_distance(50)
 			
-			if distance_to_player > distance_respawn * distance_respawn + 300:
+			if distance_to_player > distance_respawn * distance_respawn + 20:
 				var new_pos : Vector2 = camera.get_spawn_position(distance_respawn)
 				enemy.global_position = new_pos
 				#print("enemy has be rellocated !")

@@ -1,7 +1,7 @@
 extends Node
 class_name EnemySpawner
 
-@export var camera_buffer : int = 50
+@export var camera_buffer : int = 20
 
 @export var waves : Array[WaveData] = []
 #The enemy type is defined by an ID, to know the correspondance go to: Data\Enemies\ID_enemies_helper.txt

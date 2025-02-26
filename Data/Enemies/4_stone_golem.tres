@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://c584eclw4prq4"]
 
 [ext_resource type="Script" path="res://Data/EnemyData.gd" id="1_3tvw6"]
-[ext_resource type="SpriteFrames" uid="uid://sqhlboqxh67u" path="res://SpriteFrames/MummyFrames.tres" id="2_jn6ck"]
+[ext_resource type="SpriteFrames" uid="uid://owwxre3f2ql8" path="res://SpriteFrames/ClayGolemFrames.tres" id="2_m2gkp"]
 
 [resource]
 script = ExtResource("1_3tvw6")
@@ -10,5 +10,5 @@ name = "Stone Golem"
 max_health = 150
 power = 10
 speed = 50.0
-sprite = ExtResource("2_jn6ck")
+sprite = ExtResource("2_m2gkp")
 tint = Color(1, 1, 1, 1)

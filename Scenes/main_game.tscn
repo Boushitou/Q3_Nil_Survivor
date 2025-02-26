@@ -1,9 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://d0jg0mtojp1l8"]
+[gd_scene load_steps=24 format=3 uid="uid://d0jg0mtojp1l8"]
 
 [ext_resource type="Script" path="res://Scripts/Systems/GameManager.gd" id="1_grhj2"]
 [ext_resource type="PackedScene" uid="uid://ddcgvg5rx8u17" path="res://Scenes/Player.tscn" id="1_o57fh"]
 [ext_resource type="Script" path="res://Scripts/Systems/CameraFollow.gd" id="5_mlmmy"]
-[ext_resource type="Script" path="res://Scripts/UIs/InventoryDisplay.gd" id="6_6craa"]
 [ext_resource type="PackedScene" uid="uid://cjegdqifbh18b" path="res://Scenes/GameCanvas.tscn" id="6_blb7o"]
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemiesManager.gd" id="6_ql5bx"]
 [ext_resource type="Resource" uid="uid://bwhux13w4ad2p" path="res://Data/Waves/wave1.tres" id="6_rb6wg"]
@@ -42,7 +41,6 @@ visible = false
 offset_top = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-script = ExtResource("6_6craa")
 
 [node name="Player" parent="." instance=ExtResource("1_o57fh")]
 
