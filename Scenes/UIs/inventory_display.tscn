@@ -1,0 +1,225 @@
+[gd_scene load_steps=5 format=3 uid="uid://8oqdi8ytofae"]
+
+[ext_resource type="Script" path="res://Scripts/UIs/InventoryItemDisplay.gd" id="1_f6ved"]
+[ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="1_sv6ot"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gnd1"]
+bg_color = Color(0.202539, 0.580725, 0.485253, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.894118, 0, 0.0627451, 1)
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_b3lwe"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="InventoryDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.110417
+anchor_bottom = 0.133333
+offset_right = -1.0
+offset_bottom = -2.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -64.0
+offset_right = 97.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="WeaponsContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ItemPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer2/WeaponsContainer" node_paths=PackedStringArray("item_level_label", "item_icon")]
+custom_minimum_size = Vector2(62, 62)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3gnd1")
+script = ExtResource("1_f6ved")
+item_level_label = NodePath("ItemLevel")
+item_icon = NodePath("ItemIcon")
+
+[node name="ItemIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer2/WeaponsContainer/ItemPanel"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sv6ot")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ItemLevel" type="Label" parent="Panel/MarginContainer/VBoxContainer2/WeaponsContainer/ItemPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.5
+offset_top = -18.0
+offset_right = 1.5
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "3
+"
+label_settings = SubResource("LabelSettings_b3lwe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PassivesContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ItemPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer" node_paths=PackedStringArray("item_level_label", "item_icon")]
+custom_minimum_size = Vector2(62, 62)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3gnd1")
+script = ExtResource("1_f6ved")
+item_level_label = NodePath("../../WeaponsContainer/ItemPanel/ItemLevel")
+item_icon = NodePath("../../WeaponsContainer/ItemPanel/ItemIcon")
+
+[node name="ItemIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sv6ot")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ItemLevel" type="Label" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.5
+offset_top = -18.0
+offset_right = 1.5
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "3
+"
+label_settings = SubResource("LabelSettings_b3lwe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemPanel2" type="Panel" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer" node_paths=PackedStringArray("item_level_label", "item_icon")]
+custom_minimum_size = Vector2(62, 62)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3gnd1")
+script = ExtResource("1_f6ved")
+item_level_label = NodePath("../../WeaponsContainer/ItemPanel/ItemLevel")
+item_icon = NodePath("../../WeaponsContainer/ItemPanel/ItemIcon")
+
+[node name="ItemIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sv6ot")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ItemLevel" type="Label" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.5
+offset_top = -18.0
+offset_right = 1.5
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "3
+"
+label_settings = SubResource("LabelSettings_b3lwe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemPanel3" type="Panel" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer" node_paths=PackedStringArray("item_level_label", "item_icon")]
+custom_minimum_size = Vector2(62, 62)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3gnd1")
+script = ExtResource("1_f6ved")
+item_level_label = NodePath("../../WeaponsContainer/ItemPanel/ItemLevel")
+item_icon = NodePath("../../WeaponsContainer/ItemPanel/ItemIcon")
+
+[node name="ItemIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel3"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sv6ot")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ItemLevel" type="Label" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.5
+offset_top = -18.0
+offset_right = 1.5
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "3
+"
+label_settings = SubResource("LabelSettings_b3lwe")
+horizontal_alignment = 1
+vertical_alignment = 1

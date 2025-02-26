@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://clcwb2jfkfg6g" path="res://Assets/Shapes/Circle.png" id="1_k3oth"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tdkdf"]
+radius = 5.0
 
 [node name="XpOrb" type="Area2D"]
 collision_layer = 4
@@ -17,7 +18,7 @@ bounce_duration = 0.3
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.299862, 0.692182, 0.398183, 1)
 position = Vector2(-2.38419e-07, 2.38419e-07)
-scale = Vector2(0.21, 0.21)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_k3oth")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

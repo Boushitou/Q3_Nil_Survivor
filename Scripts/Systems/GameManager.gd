@@ -19,6 +19,7 @@ func _ready() -> void:
 	
 func on_game_over() -> void:
 	game_over_menu.show()
+	pause_game(false)
 
 	
 func pause_game(can_display_pause : bool) -> void:

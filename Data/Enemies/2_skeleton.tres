@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://cjy1han4o5m57"]
 
 [ext_resource type="Script" path="res://Data/EnemyData.gd" id="1_6o3bu"]
-[ext_resource type="SpriteFrames" uid="uid://tpqguwv68tnf" path="res://SpriteFrames/SkelettonFrames.tres" id="2_5gyie"]
+[ext_resource type="SpriteFrames" uid="uid://tpqguwv68tnf" path="res://SpriteFrames/SkeletonFrames.tres" id="2_5gyie"]
 
 [resource]
 script = ExtResource("1_6o3bu")

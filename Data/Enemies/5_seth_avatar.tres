@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://bgsp18tb7ypjk"]
 
 [ext_resource type="Script" path="res://Data/EnemyData.gd" id="1_8uvj5"]
-[ext_resource type="SpriteFrames" uid="uid://sqhlboqxh67u" path="res://SpriteFrames/MummyFrames.tres" id="2_q0pa7"]
+[ext_resource type="SpriteFrames" uid="uid://cjsgma354bwnk" path="res://SpriteFrames/SethFrames.tres" id="2_7v58u"]
 
 [resource]
 script = ExtResource("1_8uvj5")
@@ -10,5 +10,5 @@ name = "Anubis Avatar"
 max_health = 99999999
 power = 1000
 speed = 500.0
-sprite = ExtResource("2_q0pa7")
-tint = Color(1, 0, 0, 1)
+sprite = ExtResource("2_7v58u")
+tint = Color(1, 1, 1, 1)

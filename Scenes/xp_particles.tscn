@@ -32,6 +32,7 @@ scale_curve = SubResource("CurveTexture_ouqww")
 color_ramp = SubResource("GradientTexture1D_n7c8o")
 
 [node name="XpParticles" type="GPUParticles2D"]
+process_mode = 1
 z_index = 10
 emitting = false
 amount = 5

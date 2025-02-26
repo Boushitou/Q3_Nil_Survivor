@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d0jg0mtojp1l8"]
+[gd_scene load_steps=24 format=3 uid="uid://d0jg0mtojp1l8"]
 
 [ext_resource type="Script" path="res://Scripts/Systems/GameManager.gd" id="1_grhj2"]
 [ext_resource type="PackedScene" uid="uid://ddcgvg5rx8u17" path="res://Scenes/Player.tscn" id="1_o57fh"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://blevg44ichqh8" path="res://Scenes/UIs/pause_menu.tscn" id="18_o5w5n"]
 [ext_resource type="PackedScene" uid="uid://lunrw4fa2uku" path="res://Scenes/UIs/game_over_screen.tscn" id="20_ivujt"]
 [ext_resource type="PackedScene" uid="uid://b087swcxdrgpx" path="res://Scenes/terrain_gen.tscn" id="22_b6tan"]
+[ext_resource type="PackedScene" uid="uid://8oqdi8ytofae" path="res://Scenes/UIs/inventory_display.tscn" id="22_kpyo5"]
 
 [node name="MainGame" type="Node2D" node_paths=PackedStringArray("player", "game_over_menu")]
 script = ExtResource("1_grhj2")
@@ -54,6 +55,11 @@ game_manager = NodePath("../..")
 
 [node name="game_over_screen" parent="GameCanvas" instance=ExtResource("20_ivujt")]
 visible = false
+
+[node name="InventoryDisplay" parent="GameCanvas" instance=ExtResource("22_kpyo5")]
+offset_top = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="TileMap" parent="." node_paths=PackedStringArray("player") instance=ExtResource("22_b6tan")]
 player = NodePath("../Player")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b087swcxdrgpx"]
+[gd_scene load_steps=7 format=3 uid="uid://b087swcxdrgpx"]
 
 [ext_resource type="Script" path="res://Scripts/Systems/TileGeneration/TileMapGeneration.gd" id="1_j1p5d"]
+[ext_resource type="Texture2D" uid="uid://cgpoidnuv1bxq" path="res://Assets/Tilemap/SandTiles.png" id="2_afdhp"]
 [ext_resource type="Texture2D" uid="uid://cid6bfuct6eqq" path="res://Assets/Tilemap/desert.png" id="2_t0sh6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v1l4b"]
@@ -233,11 +234,34 @@ texture = ExtResource("2_t0sh6")
 6:23/0 = 0
 7:23/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dsk44"]
+texture = ExtResource("2_afdhp")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+3:2/0 = 0
+3:1/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:2/0 = 0
+1:3/0 = 0
+1:0/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+3:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_x7vso"]
+tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_v1l4b")
+sources/1 = SubResource("TileSetAtlasSource_dsk44")
 
 [node name="TileMap" type="TileMap"]
-scale = Vector2(5, 5)
+z_index = -1
+scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_x7vso")
 format = 2
 layer_0/tile_data = PackedInt32Array(1, 327680, 1)

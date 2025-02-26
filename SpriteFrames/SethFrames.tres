@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cjsgma354bwnk"]
+
+[ext_resource type="Texture2D" uid="uid://ddfc03a1bp8lb" path="res://Assets/Enemies/Seth/Seth1.png" id="1_1tdj8"]
+[ext_resource type="Texture2D" uid="uid://dbt1aj2l2234k" path="res://Assets/Enemies/Seth/Seth2.png" id="2_g41o7"]
+[ext_resource type="Texture2D" uid="uid://b7vnmibk5shbk" path="res://Assets/Enemies/Seth/Seth3.png" id="3_5k6ef"]
+[ext_resource type="Texture2D" uid="uid://xx3ao2fj2mad" path="res://Assets/Enemies/Seth/Seth4.png" id="4_xhww8"]
+[ext_resource type="Texture2D" uid="uid://nltw8nk2d4yq" path="res://Assets/Enemies/Seth/Seth5.png" id="5_pre6b"]
+[ext_resource type="Texture2D" uid="uid://dfeve8m01ccyf" path="res://Assets/Enemies/Seth/Seth6.png" id="6_sugj5"]
+[ext_resource type="Texture2D" uid="uid://ckuab4v0yaprs" path="res://Assets/Enemies/Seth/Seth7.png" id="7_i6bsa"]
+[ext_resource type="Texture2D" uid="uid://86raw6v18tpe" path="res://Assets/Enemies/Seth/Seth8.png" id="8_g25w2"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1tdj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_g41o7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5k6ef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xhww8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pre6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sugj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i6bsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_g25w2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

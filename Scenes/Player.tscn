@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ddcgvg5rx8u17"]
+[gd_scene load_steps=30 format=3 uid="uid://ddcgvg5rx8u17"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_d1yww"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_jhwxv"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bcjf8xrjeg34e" path="res://Assets/Player/Walk/PlayerWalk7.png" id="12_ulr8j"]
 [ext_resource type="Texture2D" uid="uid://dhv3xev5fcmee" path="res://Assets/Player/Walk/PlayerWalk8.png" id="13_6cxx3"]
 [ext_resource type="PackedScene" uid="uid://dxadrq7dwh8ov" path="res://Scenes/blood_spash.tscn" id="15_32fum"]
+[ext_resource type="Texture2D" uid="uid://clcwb2jfkfg6g" path="res://Assets/Shapes/Circle.png" id="16_20rlm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
 size = Vector2(29, 64)
@@ -109,6 +110,7 @@ inventory = NodePath("../Inventory")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="Body" node_paths=PackedStringArray("health")]
 process_mode = 1
+visible = false
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_rexpl")
 script = ExtResource("5_b0aba")
@@ -116,6 +118,7 @@ health = NodePath("../../Health")
 
 [node name="EntitySprite" type="AnimatedSprite2D" parent="Body" node_paths=PackedStringArray("player_controller", "health", "animation_player")]
 process_mode = 1
+z_index = 1
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_cghne")
 animation = &"idle"
@@ -125,6 +128,14 @@ player_controller = NodePath("../..")
 health = NodePath("../../Health")
 animation_player = NodePath("../AnimationPlayer")
 blood_splash = ExtResource("15_32fum")
+
+[node name="ShadowSprite" type="Sprite2D" parent="Body/EntitySprite"]
+modulate = Color(0, 0, 0, 0.498039)
+z_index = -1
+texture_filter = 1
+position = Vector2(-1, 29)
+scale = Vector2(0.37, 0.08)
+texture = ExtResource("16_20rlm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
 libraries = {

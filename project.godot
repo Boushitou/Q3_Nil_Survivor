@@ -29,6 +29,10 @@ window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [input]
 
 ui_accept={
@@ -78,3 +82,4 @@ pause={
 
 textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.501961, 0.501961, 0.501961, 1)
+viewport/hdr_2d=true

@@ -39,6 +39,7 @@ scale_curve = SubResource("CurveTexture_48npi")
 color_ramp = SubResource("GradientTexture1D_jsf8m")
 
 [node name="blood_spash" type="GPUParticles2D"]
+process_mode = 1
 emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_60wua")

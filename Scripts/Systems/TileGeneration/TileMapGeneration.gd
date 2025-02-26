@@ -29,8 +29,8 @@ func _process(_delta: float) -> void:
 
 func world_to_chunk(world_pos: Vector2) -> Vector2:
 	return Vector2i(
-		floor(world_pos.x / (chunk_size * 16)),
-		floor(world_pos.y / (chunk_size * 16))
+		floor(world_pos.x / (chunk_size * 64)),
+		floor(world_pos.y / (chunk_size * 64))
 	)
 
 	
@@ -42,8 +42,8 @@ func generate_new_chunk(chunk_pos: Vector2) -> void:
 			var tile_x = chunk_pos.x * chunk_size + x
 			var tile_y = chunk_pos.y * chunk_size + y
 			
-			var rand_tile = randi_range(6, 7)
-			set_cell(0, Vector2i(tile_x, tile_y), 0, Vector2i(rand_tile, 3))
+			#var rand_tile = randi_range(6, 7)
+			set_cell(0, Vector2i(tile_x, tile_y), 1, Vector2i(0, 0))
 
 
 func cleanup_chunks(player_chunk: Vector2) -> void:

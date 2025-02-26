@@ -30,6 +30,7 @@ scale_curve = SubResource("CurveTexture_ymopj")
 color_ramp = SubResource("GradientTexture1D_sflys")
 
 [node name="DeathParticles" type="GPUParticles2D"]
+process_mode = 1
 z_index = 10
 emitting = false
 amount = 30
