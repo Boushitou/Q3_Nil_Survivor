@@ -9,6 +9,7 @@ enum Movement_State {IDLE, MOVING}
 var movement : Vector2 = Vector2(0, 0)
 var state : Movement_State = Movement_State.IDLE
 var current_attack_direction : Vector2 = Vector2(1, 0)  #game starts facing right for weapon and sprite
+var last_horizontal_direction : Vector2 = Vector2(1, 0)
 
 func _ready() -> void:
 	add_to_group("player")
@@ -25,9 +26,8 @@ func initiate_move(direction : Vector2) -> void:
 		state = Movement_State.IDLE
 	else:
 		if direction.x != 0:
-			current_attack_direction.x = sign(direction.x)
-		if direction.y != 0:
-			current_attack_direction.y = sign(direction.y)
+			last_horizontal_direction = Vector2(sign(direction.x), 0)
+		current_attack_direction = direction
 			
 		state = Movement_State.MOVING
 		

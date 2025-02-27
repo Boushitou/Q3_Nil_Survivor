@@ -25,6 +25,7 @@ func set_item_data(item: Item, player_stats: PlayerStats, level : int, first_tim
 	else:
 		item_level.text = "Level : " + str(level)
 		
+	print(item_data.item.name, " level : ", level)
 	item_description.text = item_data.get_effect_description(level - 1)
 	item_icon.texture = item_data.item.sprite
 

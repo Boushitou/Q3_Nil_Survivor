@@ -3,9 +3,11 @@ extends "res://Data/Weapon.gd"
 var javelin_scene = preload("res://Scenes/Weapons/javelin.tscn")
 
 func create_attack(_player_stats: PlayerStats, level: int, inventory : Inventory,
-position : Vector2 = Vector2.ZERO, direction : Vector2 = Vector2.ZERO) -> Node:
+position : Vector2 = Vector2.ZERO, direction : Vector2 = Vector2.ZERO, _horizontal_direction : Vector2 = Vector2.ZERO) -> Node:
 	var total_area_x = base_area.x * bonus_area[level - 1] * inventory.get_total_passive_items_bonuses("atk_range")
 	
+	direction.normalized()	
+
 	var angle = direction.angle()	
 
 	var offset_distance = total_area_x * 0.5

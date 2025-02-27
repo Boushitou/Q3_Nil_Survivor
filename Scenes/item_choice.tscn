@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cq40npsykrqaw"]
 
 [ext_resource type="Script" path="res://Scripts/Items/ItemDisplay.gd" id="1_saccb"]
-[ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="1_td5pq"]
+[ext_resource type="Texture2D" uid="uid://crqe0rqp80dki" path="res://Assets/Weapons/Javelin/Javelot.png" id="2_cmaca"]
 [ext_resource type="FontFile" uid="uid://c74f8yr85l71q" path="res://Assets/Fonts/DIOGENES.ttf" id="3_3t2id"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rct2e"]
@@ -40,12 +40,13 @@ grow_vertical = 2
 alignment = 1
 
 [node name="ItemIcon" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-texture = ExtResource("1_td5pq")
-expand_mode = 3
-stretch_mode = 4
+texture = ExtResource("2_cmaca")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ItemName" type="Label" parent="VBoxContainer"]
 layout_mode = 2

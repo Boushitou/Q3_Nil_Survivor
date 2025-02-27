@@ -13,7 +13,7 @@ var max_distance : float = 500
 
 var orbs : Array[Experience]
 
-var orbs_value : int = 2
+var orbs_value : int = 500
 
 func _ready() -> void:
 	enemies_manager = get_parent()

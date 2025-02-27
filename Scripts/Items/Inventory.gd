@@ -7,7 +7,7 @@ var passives_items : Array[Items]
 var weapons : Array[Items]
 
 var max_passives : int = 3
-var max_weapons : int = 1
+var max_weapons : int = 2
 
 func _ready() -> void:
 	pass

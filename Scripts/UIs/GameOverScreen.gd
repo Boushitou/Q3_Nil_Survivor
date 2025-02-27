@@ -20,6 +20,8 @@ func on_game_win() -> void:
 
 
 func _on_retry_button_button_up():
+	SignalBus.pause_pressed.emit(false)
+	SignalBus.enable_pause.emit(true)
 	change_scene("res://Scenes/main_game.tscn")
 
 

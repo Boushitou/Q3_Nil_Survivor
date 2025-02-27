@@ -11,6 +11,8 @@ extends "res://Data/Item.gd"
 @export var hit_delay : Array[float]
 @export var duration: Array[float] #weapon don't have a duration system if set to -1
 @export var piercing_power : Array[int]
+@export var max_amount: int
+@export var amount : Array[int]
 
 func get_damage(level : int):
 	return damage[level]
@@ -21,5 +23,5 @@ func get_push_back_force() -> float:
 
 
 func create_attack(_player_stats: PlayerStats, _level: int, _inventory : Inventory,
-_position : Vector2 = Vector2.ZERO, _direction : Vector2 = Vector2.ZERO) -> Node:
+_position : Vector2 = Vector2.ZERO, _direction : Vector2 = Vector2.ZERO, _horizontal_direction : Vector2 = Vector2.ZERO) -> Node:
 	return null

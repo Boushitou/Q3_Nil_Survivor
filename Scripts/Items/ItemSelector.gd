@@ -89,7 +89,7 @@ func get_available_items() -> Array[Item]:
 			if not inventory.item_is_level_max(weapon):
 				available_items.append(weapon.item)
 	else:
-		available_items.append_array(weapons)
+		available_items.append_array(total_items)
 	
 	return available_items
 	

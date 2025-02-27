@@ -13,6 +13,8 @@ func _init(item_type: Item, stats: PlayerStats) -> void:
 	
 
 func get_effect_description(index: int) -> String:
+	if index >= item.descriptions.size():
+		return "No description available"
 	return  item.descriptions[index]
 
 
@@ -30,8 +32,8 @@ func apply_effects() -> void:
 	item.apply_effect(player_stats, level)
 	
 	
-func attack(position : Vector2, direction : Vector2, inventory : Inventory) -> void:
-	var weapon_atk : WeaponBehavior = item.create_attack(player_stats, level, inventory, position, direction)
+func attack(position : Vector2, direction : Vector2, horizontal_direction : Vector2, inventory : Inventory) -> void:
+	var weapon_atk : WeaponBehavior = item.create_attack(player_stats, level, inventory, position, direction, horizontal_direction)
 	if not weapon_atk:
 		return
 		

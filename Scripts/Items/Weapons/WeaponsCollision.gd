@@ -9,6 +9,8 @@ var enemies_in_range : Array[Enemy]
 var hit_delay : float
 var hit_timer : float = 0.0
 
+signal on_enemy_hit()
+
 func _ready() ->void:
 	connect("area_entered", _on_area_entered)
 	connect("area_exited", _on_area_exited)
@@ -44,3 +46,4 @@ func _on_area_exited(area):
 func apply_damage():
 	for enemy in enemies_in_range:
 		enemy.take_damage(damage, force)
+		on_enemy_hit.emit()
