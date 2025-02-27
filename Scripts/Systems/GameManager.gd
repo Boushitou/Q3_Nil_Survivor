@@ -30,7 +30,7 @@ func pause_game(can_display_pause : bool) -> void:
 			
 			if can_display_pause:
 				display_pause_menu.emit(false)
-			Engine.time_scale = 1.0
+			Engine.time_scale = 1.0	
 		else:
 			get_tree().paused = true
 			game_is_paused = true 

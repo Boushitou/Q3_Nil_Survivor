@@ -10,6 +10,7 @@ extends "res://Data/Item.gd"
 @export var projectile_speed : Array[float]
 @export var hit_delay : Array[float]
 @export var duration: Array[float] #weapon don't have a duration system if set to -1
+@export var piercing_power : Array[int]
 
 func get_damage(level : int):
 	return damage[level]

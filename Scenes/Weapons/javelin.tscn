@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://bw66e33icet8t"]
+
+[ext_resource type="Texture2D" uid="uid://crqe0rqp80dki" path="res://Assets/Weapons/Javelin/Javelot.png" id="1_7h0ko"]
+[ext_resource type="Script" path="res://Scripts/Items/Weapons/Projectile.gd" id="1_w3pjc"]
+[ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponsCollision.gd" id="2_dhbep"]
+[ext_resource type="Script" path="res://Scripts/Items/Weapons/CollisionModifier.gd" id="3_urje1"]
+[ext_resource type="Script" path="res://Scripts/Items/Weapons/WeaponAnimation.gd" id="5_hikck"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq0sr"]
+size = Vector2(60, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vj3d6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7h0ko")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Javelin" type="Node2D" node_paths=PackedStringArray("sprite", "collider", "weapon_area")]
+script = ExtResource("1_w3pjc")
+sprite = NodePath("Area2D/Sprite2D")
+collider = NodePath("Area2D/CollisionShape2D")
+weapon_area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_dhbep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_dq0sr")
+script = ExtResource("3_urje1")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_vj3d6")
+script = ExtResource("5_hikck")
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="hidden" from="." to="." method="_on_hidden"]

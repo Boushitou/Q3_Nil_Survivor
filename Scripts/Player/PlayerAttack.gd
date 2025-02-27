@@ -26,7 +26,7 @@ func add_weapon_cooldown(weapon: Items) -> void:
 func attack(w : Items) -> void:
 	if not w.item is Weapon: 
 		return 
-	if weapons_cooldown[w.ID] <= 0.0: 
+	if weapons_cooldown[w.ID] <= 0.0:
 		var player : Node2D = get_parent()
 		w.attack(player.global_position, player_movement.current_attack_direction, inventory)
 		var player_cooldown : float = player_stats.get_stat_value("attack_speed")

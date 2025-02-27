@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name WeaponBehavior
 
 @export var sprite : AnimatedSprite2D
@@ -18,7 +18,8 @@ func initialize_weapon(weapon_data : Items, inventory: Inventory, player_stats :
 	var size : Vector2 = weapon.item.base_area * weapon.item.bonus_area[weapon_data.level - 1] * inventory.get_total_passive_items_bonuses("atk_range")
 	collider.update_collider(size, sprite)
 	
-	weapon_timer.set_duration(weapon.item.duration[weapon_data.level - 1])
+	if weapon.item.duration[weapon_data.level - 1] > 0:
+		weapon_timer.set_duration(weapon.item.duration[weapon_data.level - 1])
 
 	
 func _on_timer_timeout() -> void:

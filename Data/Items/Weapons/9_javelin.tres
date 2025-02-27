@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dm2ehuoje28em"]
+
+[ext_resource type="Script" path="res://Data/Items/Javelin.gd" id="1_n62fg"]
+[ext_resource type="Texture2D" uid="uid://crqe0rqp80dki" path="res://Assets/Weapons/Javelin/Javelot.png" id="2_ukcgi"]
+
+[resource]
+script = ExtResource("1_n62fg")
+damage = Array[int]([7, 7, 12, 12, 12, 17, 17, 17])
+push_back_force = 10.0
+atk_speed = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+base_area = Vector2(60, 15)
+bonus_area = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+projectile_speed = Array[float]([300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0])
+hit_delay = Array[float]([10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0])
+duration = Array[float]([-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0])
+piercing_power = Array[int]([0, 0, 1, 1, 1, 1, 2, 2])
+ID = 9
+name = "Javelin"
+descriptions = Array[String](["prout", "prout", "prout", "prout", "prout", "prout", "prout", "prout"])
+max_level = 8
+sprite = ExtResource("2_ukcgi")
