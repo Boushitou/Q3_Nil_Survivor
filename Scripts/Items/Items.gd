@@ -33,8 +33,9 @@ func apply_effects() -> void:
 	
 	
 func attack(position : Vector2, direction : Vector2, horizontal_direction : Vector2, inventory : Inventory) -> void:
-	var weapon_atk : WeaponBehavior = item.create_attack(player_stats, level, inventory, position, direction, horizontal_direction)
-	if not weapon_atk:
-		return
-		
-	weapon_atk.initialize_weapon(self, inventory, player_stats)
+	var weapons_atk : Array = item.create_attack(player_stats, level, inventory, position, direction, horizontal_direction)
+	
+	for weapon_atk : WeaponBehavior in weapons_atk:
+		if not weapon_atk:
+			return
+		weapon_atk.initialize_weapon(self, inventory, player_stats)

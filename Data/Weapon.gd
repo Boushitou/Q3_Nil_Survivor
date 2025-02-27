@@ -23,5 +23,5 @@ func get_push_back_force() -> float:
 
 
 func create_attack(_player_stats: PlayerStats, _level: int, _inventory : Inventory,
-_position : Vector2 = Vector2.ZERO, _direction : Vector2 = Vector2.ZERO, _horizontal_direction : Vector2 = Vector2.ZERO) -> Node:
-	return null
+_position : Vector2 = Vector2.ZERO, _direction : Vector2 = Vector2.ZERO, _horizontal_direction : Vector2 = Vector2.ZERO) -> Array:
+	return []
