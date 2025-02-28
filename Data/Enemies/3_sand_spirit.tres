@@ -9,6 +9,6 @@ ID = 3
 name = "Sand Spirit"
 max_health = 20
 power = 6
-speed = 80.0
+speed = 90.0
 sprite = ExtResource("2_ms6m0")
 tint = Color(1, 1, 1, 1)

@@ -205,7 +205,7 @@ health = NodePath("../Health")
 [node name="Health" type="Node" parent="."]
 process_mode = 1
 script = ExtResource("6_lf85x")
-total_health = 120
+total_health = 9999999
 health_regeneration = 1
 
 [node name="Inventory" type="Node" parent="."]

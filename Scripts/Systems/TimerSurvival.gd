@@ -1,7 +1,7 @@
 extends Node
 class_name TimerSurvival
 
-var max_time : float = 300.0 #30 minutes 1800.0
+var max_time : float = 360.0 #30 minutes 1800.0
 var elapsed_time : float = 0.0 #To check every minutes
 var current_time : float = 0.0 #total time elapsed
 var time_is_over : bool = false

@@ -76,20 +76,22 @@ func get_available_items() -> Array[Item]:
 	var player_weapons : Array[Items] = inventory.weapons
 	
 	var available_items : Array[Item] = []
-
-	if inventory.passives_slots_full():
+	
+	if not inventory.passives_slots_full():
+		for passive in passive_items:
+			available_items.append(passive)
+	else:
 		for passive in player_passives:
 			if not inventory.item_is_level_max(passive):
 				available_items.append(passive.item)
-	else:
-		available_items.append_array(total_items)
 	
-	if inventory.weapons_slots_full():
+	if not inventory.weapons_slots_full():
+		for weapon in weapons:
+			available_items.append(weapon)
+	else:
 		for weapon in player_weapons:
 			if not inventory.item_is_level_max(weapon):
 				available_items.append(weapon.item)
-	else:
-		available_items.append_array(total_items)
 	
 	return available_items
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d0jg0mtojp1l8"]
+[gd_scene load_steps=30 format=3 uid="uid://d0jg0mtojp1l8"]
 
 [ext_resource type="Script" path="res://Scripts/Systems/GameManager.gd" id="1_grhj2"]
 [ext_resource type="PackedScene" uid="uid://ddcgvg5rx8u17" path="res://Scenes/Player.tscn" id="1_o57fh"]
@@ -12,10 +12,11 @@
 [ext_resource type="Resource" uid="uid://dhtrl42tt5ogm" path="res://Data/Enemies/0_beetle.tres" id="9_bhl7t"]
 [ext_resource type="Resource" uid="uid://bsp7y18w33ux1" path="res://Data/Waves/wave3.tres" id="9_wf2w0"]
 [ext_resource type="Resource" uid="uid://cm3hry1mlptl6" path="res://Data/Enemies/1_mummy.tres" id="10_hrgb2"]
-[ext_resource type="Resource" uid="uid://drg6opjk1y3we" path="res://Data/Waves/wave5.tres" id="10_pex3v"]
-[ext_resource type="Resource" uid="uid://bmm04nhehaoa2" path="res://Data/Waves/wave4.tres" id="10_rkblb"]
+[ext_resource type="Resource" uid="uid://drg6opjk1y3we" path="res://Data/Waves/wave6.tres" id="10_pex3v"]
+[ext_resource type="Resource" uid="uid://bf0aaxs4e0l0y" path="res://Data/Waves/wave4.tres" id="10_rkblb"]
 [ext_resource type="Script" path="res://Scripts/Items/XpOrbManager.gd" id="13_ij7ea"]
 [ext_resource type="Resource" uid="uid://cjy1han4o5m57" path="res://Data/Enemies/2_skeleton.tres" id="13_y3egy"]
+[ext_resource type="Resource" uid="uid://bmm04nhehaoa2" path="res://Data/Waves/wave5.tres" id="14_4xx41"]
 [ext_resource type="Resource" uid="uid://b0khdkysugn2s" path="res://Data/Enemies/3_sand_spirit.tres" id="14_qs507"]
 [ext_resource type="Resource" uid="uid://c584eclw4prq4" path="res://Data/Enemies/4_stone_golem.tres" id="15_2ams7"]
 [ext_resource type="Resource" uid="uid://bgsp18tb7ypjk" path="res://Data/Enemies/5_seth_avatar.tres" id="15_yfbps"]
@@ -74,7 +75,7 @@ script = ExtResource("6_ql5bx")
 
 [node name="EnemySpawner" type="Node" parent="EnemiesManager"]
 script = ExtResource("7_dhjye")
-waves = Array[Resource("res://Data/WaveData.gd")]([ExtResource("6_rb6wg"), ExtResource("7_mered"), ExtResource("9_wf2w0"), ExtResource("10_rkblb"), ExtResource("10_pex3v"), ExtResource("8_bi73m")])
+waves = Array[Resource("res://Data/WaveData.gd")]([ExtResource("6_rb6wg"), ExtResource("7_mered"), ExtResource("9_wf2w0"), ExtResource("10_rkblb"), ExtResource("14_4xx41"), ExtResource("10_pex3v"), ExtResource("8_bi73m")])
 enemies_data = Array[Resource("res://Data/EnemyData.gd")]([ExtResource("9_bhl7t"), ExtResource("10_hrgb2"), ExtResource("13_y3egy"), ExtResource("14_qs507"), ExtResource("15_2ams7"), ExtResource("15_yfbps")])
 
 [node name="XpOrbManager" type="Node" parent="EnemiesManager"]
