@@ -78,6 +78,7 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
 texture = SubResource("CanvasTexture_uty8b")
+draw_center = false
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemSelector" type="HBoxContainer" parent="Control/Background"]

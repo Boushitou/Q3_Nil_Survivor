@@ -42,8 +42,9 @@ func generate_new_chunk(chunk_pos: Vector2) -> void:
 			var tile_x = chunk_pos.x * chunk_size + x
 			var tile_y = chunk_pos.y * chunk_size + y
 			
-			#var rand_tile = randi_range(6, 7)
-			set_cell(0, Vector2i(tile_x, tile_y), 1, Vector2i(0, 0))
+			var rand_tile_x = randi_range(0, 1)
+			var rand_tile_y = randi_range(0, 1)
+			set_cell(0, Vector2i(tile_x, tile_y), 0, Vector2i(rand_tile_x, rand_tile_y))
 
 
 func cleanup_chunks(player_chunk: Vector2) -> void:
@@ -62,6 +63,6 @@ func remove_chunk(chunk_pos : Vector2) -> void:
 		for y in range(chunk_size):
 			var tile_x = chunk_pos.x * chunk_size + x
 			var tile_y = chunk_pos.y * chunk_size + y
-			set_cell(0, Vector2i(tile_x, tile_y), -1)
+			set_cell(0, Vector2i(tile_x, tile_y), 0)
 			
 	loaded_chunks.erase(chunk_pos)

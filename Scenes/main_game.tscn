@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d0jg0mtojp1l8"]
+[gd_scene load_steps=29 format=3 uid="uid://d0jg0mtojp1l8"]
 
 [ext_resource type="Script" path="res://Scripts/Systems/GameManager.gd" id="1_grhj2"]
 [ext_resource type="PackedScene" uid="uid://ddcgvg5rx8u17" path="res://Scenes/Player.tscn" id="1_o57fh"]
@@ -23,6 +23,26 @@
 [ext_resource type="PackedScene" uid="uid://lunrw4fa2uku" path="res://Scenes/UIs/game_over_screen.tscn" id="20_ivujt"]
 [ext_resource type="PackedScene" uid="uid://b087swcxdrgpx" path="res://Scenes/terrain_gen.tscn" id="22_b6tan"]
 [ext_resource type="PackedScene" uid="uid://8oqdi8ytofae" path="res://Scenes/UIs/inventory_display.tscn" id="22_kpyo5"]
+[ext_resource type="Texture2D" uid="uid://bm714qenho5" path="res://Assets/Tilemap/SandTilesFull.png" id="24_a5285"]
+[ext_resource type="Texture2D" uid="uid://cgpoidnuv1bxq" path="res://Assets/Tilemap/SandTiles.png" id="25_2tqse"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6vxcm"]
+texture = ExtResource("24_a5285")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aq82u"]
+texture = ExtResource("25_2tqse")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_l3ag0"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_6vxcm")
+sources/1 = SubResource("TileSetAtlasSource_aq82u")
 
 [node name="MainGame" type="Node2D" node_paths=PackedStringArray("player", "game_over_menu")]
 script = ExtResource("1_grhj2")
@@ -61,5 +81,7 @@ enemies_data = Array[Resource("res://Data/EnemyData.gd")]([ExtResource("9_bhl7t"
 script = ExtResource("13_ij7ea")
 
 [node name="TileMap" parent="." node_paths=PackedStringArray("player") instance=ExtResource("22_b6tan")]
+tile_set = SubResource("TileSet_l3ag0")
+layer_0/tile_data = PackedInt32Array()
 player = NodePath("../Player")
 render_distance = 10
