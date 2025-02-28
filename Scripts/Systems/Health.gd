@@ -6,7 +6,7 @@ class_name Health
 var current_health : int
 var is_dead : bool = false
 
-var regeneration_time : float = 5.0
+var regeneration_time : float = 3.0
 var regeneration_timer : float = 0.0
 
 signal has_died

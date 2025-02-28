@@ -51,11 +51,11 @@ func calculate_xp(current_level : int) -> int:
 	if current_level == 1:
 		return BASE_XP
 	elif current_level <= 20:
-		return BASE_XP + (level - 1) * 10
+		return BASE_XP + (level - 1) * 5
 	elif current_level <= 40:
-		return calculate_xp(20) + 200 + (current_level - 20) * 13
+		return calculate_xp(20) + 200 + (current_level - 20) * 5
 	else:
-		return calculate_xp(40) + 800 + (current_level - 40) * 16
+		return calculate_xp(40) + 800 + (current_level - 40) * 6
 
 
 func increase_stat(stat_name : String, value) -> void:
