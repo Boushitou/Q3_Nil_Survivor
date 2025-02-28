@@ -1,25 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://8oqdi8ytofae"]
+[gd_scene load_steps=4 format=3 uid="uid://8oqdi8ytofae"]
 
 [ext_resource type="Script" path="res://Scripts/UIs/InventoryDisplay.gd" id="1_0io6r"]
-[ext_resource type="Script" path="res://Scripts/UIs/InventoryItemDisplay.gd" id="1_f6ved"]
-[ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="1_sv6ot"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gnd1"]
-bg_color = Color(0.202539, 0.580725, 0.485253, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.894118, 0, 0.0627451, 1)
-border_blend = true
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-
-[sub_resource type="LabelSettings" id="LabelSettings_b3lwe"]
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="PackedScene" uid="uid://crplb77pbmrx3" path="res://Scenes/UIs/item_panel.tscn" id="2_tf1ma"]
+[ext_resource type="Texture2D" uid="uid://4w2q6o6uesye" path="res://Assets/UI/CadreUI1.png" id="2_xjahx"]
 
 [node name="InventoryDisplay" type="Control" node_paths=PackedStringArray("weapons_display", "passives_display")]
 layout_mode = 3
@@ -32,13 +15,19 @@ script = ExtResource("1_0io6r")
 weapons_display = NodePath("Panel/MarginContainer/VBoxContainer2/WeaponsContainer")
 passives_display = NodePath("Panel/MarginContainer/VBoxContainer2/PassivesContainer")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.110417
 anchor_bottom = 0.133333
 offset_right = -1.0
 offset_bottom = -2.0
+texture = ExtResource("2_xjahx")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
@@ -48,10 +37,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -97.0
-offset_top = -64.0
-offset_right = 97.0
-offset_bottom = 64.0
+offset_left = -79.5
+offset_top = -54.0
+offset_right = 85.5
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -61,210 +50,20 @@ layout_mode = 2
 [node name="WeaponsContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="ItemPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer2/WeaponsContainer" node_paths=PackedStringArray("item_level_label", "item_icon")]
-custom_minimum_size = Vector2(62, 62)
+[node name="ItemPanel" parent="Panel/MarginContainer/VBoxContainer2/WeaponsContainer" instance=ExtResource("2_tf1ma")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3gnd1")
-script = ExtResource("1_f6ved")
-item_level_label = NodePath("ItemLevel")
-item_icon = NodePath("ItemIcon")
 
-[node name="ItemIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer2/WeaponsContainer/ItemPanel"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_sv6ot")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="ItemLevel" type="Label" parent="Panel/MarginContainer/VBoxContainer2/WeaponsContainer/ItemPanel"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -12.5
-offset_top = -18.0
-offset_right = 1.5
-offset_bottom = 5.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "3
-"
-label_settings = SubResource("LabelSettings_b3lwe")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ItemPanel2" type="Panel" parent="Panel/MarginContainer/VBoxContainer2/WeaponsContainer" node_paths=PackedStringArray("item_level_label", "item_icon")]
-custom_minimum_size = Vector2(62, 62)
+[node name="ItemPanel2" parent="Panel/MarginContainer/VBoxContainer2/WeaponsContainer" instance=ExtResource("2_tf1ma")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3gnd1")
-script = ExtResource("1_f6ved")
-item_level_label = NodePath("ItemLevel")
-item_icon = NodePath("ItemIcon")
-
-[node name="ItemIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer2/WeaponsContainer/ItemPanel2"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_sv6ot")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="ItemLevel" type="Label" parent="Panel/MarginContainer/VBoxContainer2/WeaponsContainer/ItemPanel2"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -12.5
-offset_top = -18.0
-offset_right = 1.5
-offset_bottom = 5.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "3
-"
-label_settings = SubResource("LabelSettings_b3lwe")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="PassivesContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="ItemPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer" node_paths=PackedStringArray("item_level_label", "item_icon")]
-custom_minimum_size = Vector2(62, 62)
+[node name="ItemPanel" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer" instance=ExtResource("2_tf1ma")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3gnd1")
-script = ExtResource("1_f6ved")
-item_level_label = NodePath("ItemLevel")
-item_icon = NodePath("ItemIcon")
 
-[node name="ItemIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_sv6ot")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="ItemLevel" type="Label" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -12.5
-offset_top = -18.0
-offset_right = 1.5
-offset_bottom = 5.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "3
-"
-label_settings = SubResource("LabelSettings_b3lwe")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ItemPanel2" type="Panel" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer" node_paths=PackedStringArray("item_level_label", "item_icon")]
-custom_minimum_size = Vector2(62, 62)
+[node name="ItemPanel2" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer" instance=ExtResource("2_tf1ma")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3gnd1")
-script = ExtResource("1_f6ved")
-item_level_label = NodePath("ItemLevel")
-item_icon = NodePath("ItemIcon")
 
-[node name="ItemIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel2"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_sv6ot")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="ItemLevel" type="Label" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel2"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -12.5
-offset_top = -18.0
-offset_right = 1.5
-offset_bottom = 5.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "3
-"
-label_settings = SubResource("LabelSettings_b3lwe")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ItemPanel3" type="Panel" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer" node_paths=PackedStringArray("item_level_label", "item_icon")]
-custom_minimum_size = Vector2(62, 62)
+[node name="ItemPanel3" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer" instance=ExtResource("2_tf1ma")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3gnd1")
-script = ExtResource("1_f6ved")
-item_level_label = NodePath("ItemLevel")
-item_icon = NodePath("ItemIcon")
-
-[node name="ItemIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel3"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_sv6ot")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="ItemLevel" type="Label" parent="Panel/MarginContainer/VBoxContainer2/PassivesContainer/ItemPanel3"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -12.5
-offset_top = -18.0
-offset_right = 1.5
-offset_bottom = 5.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "3
-"
-label_settings = SubResource("LabelSettings_b3lwe")
-horizontal_alignment = 1
-vertical_alignment = 1

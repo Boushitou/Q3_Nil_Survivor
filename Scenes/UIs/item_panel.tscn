@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://crplb77pbmrx3"]
+
+[ext_resource type="Script" path="res://Scripts/UIs/InventoryItemDisplay.gd" id="1_1lloj"]
+[ext_resource type="Texture2D" uid="uid://d8e700gakajd" path="res://Assets/UI/CadreUI3.png" id="1_a2r3l"]
+[ext_resource type="Texture2D" uid="uid://dsy5yqymj4lbq" path="res://icon.svg" id="2_6wikf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b3lwe"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ItemPanel" type="NinePatchRect" node_paths=PackedStringArray("item_level_label", "item_icon")]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 54.0
+offset_bottom = 54.0
+texture = ExtResource("1_a2r3l")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+script = ExtResource("1_1lloj")
+item_level_label = NodePath("ItemLevel")
+item_icon = NodePath("ItemIcon")
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6wikf")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ItemLevel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.5
+offset_top = -18.0
+offset_right = 1.5
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "3
+"
+label_settings = SubResource("LabelSettings_b3lwe")
+horizontal_alignment = 1
+vertical_alignment = 1

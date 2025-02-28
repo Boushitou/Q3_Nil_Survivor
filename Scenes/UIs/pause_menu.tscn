@@ -1,23 +1,20 @@
 [gd_scene load_steps=11 format=3 uid="uid://blevg44ichqh8"]
 
-[ext_resource type="Texture2D" uid="uid://cwok782vrw060" path="res://Assets/Shapes/Square.png" id="1_cg81r"]
 [ext_resource type="Script" path="res://Scripts/UIs/PauseMenu.gd" id="1_fitf7"]
+[ext_resource type="Texture2D" uid="uid://4w2q6o6uesye" path="res://Assets/UI/CadreUI1.png" id="2_tapqd"]
 [ext_resource type="LabelSettings" uid="uid://dstfcyh1anmeg" path="res://LabelSettings/title.tres" id="3_c80rv"]
 [ext_resource type="FontFile" uid="uid://c74f8yr85l71q" path="res://Assets/Fonts/DIOGENES.ttf" id="3_tj4ic"]
-[ext_resource type="Theme" uid="uid://b1vamqc7drh4i" path="res://LabelSettings/buttons.tres" id="4_gshti"]
 [ext_resource type="Script" path="res://Scripts/UIs/StatsDisplayer.gd" id="5_ni3cb"]
+[ext_resource type="Theme" uid="uid://typdjdvo3yn6" path="res://LabelSettings/Buttons2.tres" id="6_5idqe"]
+[ext_resource type="Texture2D" uid="uid://d2doampm8ohis" path="res://Assets/UI/CadreUI2.png" id="6_ii61a"]
 [ext_resource type="LabelSettings" uid="uid://dullqg7ao61aw" path="res://LabelSettings/stats_settings.tres" id="6_n73uo"]
 
-[sub_resource type="Theme" id="Theme_k8hxx"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cb6fo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m2b7x"]
 font = ExtResource("3_tj4ic")
 font_size = 92
 font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_os8vj"]
-bg_color = Color(0.347042, 0.595237, 0.984075, 1)
-anti_aliasing = false
 
 [node name="pause_menu" type="Control" node_paths=PackedStringArray("resume_button")]
 layout_mode = 3
@@ -27,104 +24,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fitf7")
-resume_button = NodePath("Background/MarginContainer/PauseContainer/ResumeButton")
-
-[node name="Background" type="NinePatchRect" parent="."]
-modulate = Color(0.687215, 0.687215, 0.687215, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.366667
-anchor_top = 0.296296
-anchor_right = 0.633333
-anchor_bottom = 0.77037
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(250, 300)
-theme = SubResource("Theme_k8hxx")
-texture = ExtResource("1_cg81r")
-metadata/_edit_use_anchors_ = true
-
-[node name="MarginContainer" type="MarginContainer" parent="Background"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -98.0
-offset_top = -138.0
-offset_right = 99.0
-offset_bottom = 216.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PauseContainer" type="VBoxContainer" parent="Background/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 72
-alignment = 1
-
-[node name="ResumeButton" type="Button" parent="Background/MarginContainer/PauseContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../QuitButton")
-focus_neighbor_bottom = NodePath("../FpsCheck")
-theme = ExtResource("4_gshti")
-text = "RESUME"
-
-[node name="FpsCheck" type="CheckButton" parent="Background/MarginContainer/PauseContainer"]
-modulate = Color(0.347541, 0.356499, 0.855297, 1)
-layout_mode = 2
-size_flags_horizontal = 4
-focus_neighbor_top = NodePath("../ResumeButton")
-focus_neighbor_bottom = NodePath("../QuitButton")
-theme = ExtResource("4_gshti")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-button_pressed = true
-text = "Display Fps"
-
-[node name="QuitButton" type="Button" parent="Background/MarginContainer/PauseContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../FpsCheck")
-focus_neighbor_bottom = NodePath("../ResumeButton")
-theme = ExtResource("4_gshti")
-text = "QUIT"
-
-[node name="PauseLabel" type="Label" parent="Background"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -114.0
-offset_right = 114.0
-offset_bottom = 145.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "PAUSE"
-label_settings = SubResource("LabelSettings_m2b7x")
+resume_button = NodePath("MarginContainer/PauseContainer/NinePatchRect/ResumeButton")
+metadata/_edit_lock_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-self_modulate = Color(1, 1, 1, 0.156863)
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.177778
 anchor_right = 0.24375
 anchor_bottom = 0.948148
 grow_vertical = 2
-texture = ExtResource("1_cg81r")
+texture = ExtResource("2_tapqd")
+region_rect = Rect2(2, 4, 60, 56)
 metadata/_edit_use_anchors_ = true
 
 [node name="StatsContainer" type="VBoxContainer" parent="NinePatchRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0320285
-anchor_top = 0.0818814
-anchor_right = 0.967972
-anchor_bottom = 0.972222
+anchor_left = 0.239316
+anchor_top = 0.152644
+anchor_right = 0.752137
+anchor_bottom = 0.848558
 offset_bottom = -6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 85
+theme_override_constants/separation = 35
 alignment = 1
 script = ExtResource("5_ni3cb")
 stat_labels = {
@@ -140,16 +64,101 @@ metadata/_edit_use_anchors_ = true
 
 [node name="StatsLabel" type="Label" parent="NinePatchRect"]
 layout_mode = 2
-anchor_right = 0.999
-anchor_bottom = 0.059
+anchor_left = 0.136752
+anchor_top = 0.0192308
+anchor_right = 0.854412
+anchor_bottom = 0.133692
 offset_right = 0.134979
 offset_bottom = -0.23167
-theme_override_styles/normal = SubResource("StyleBoxFlat_os8vj")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cb6fo")
 text = "STATS"
 label_settings = ExtResource("3_c80rv")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="Background/MarginContainer/PauseContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="toggled" from="Background/MarginContainer/PauseContainer/FpsCheck" to="." method="_on_fps_check_toggled"]
-[connection signal="pressed" from="Background/MarginContainer/PauseContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -250.0
+offset_right = 100.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -3
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/PauseContainer"]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 2
+texture = ExtResource("6_ii61a")
+
+[node name="ResumeButton" type="Button" parent="MarginContainer/PauseContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.5
+offset_top = -25.5
+offset_right = 98.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../NinePatchRect2/QuitButton")
+theme = ExtResource("6_5idqe")
+theme_override_fonts/font = ExtResource("3_tj4ic")
+theme_override_font_sizes/font_size = 32
+text = "RESUME"
+flat = true
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="MarginContainer/PauseContainer"]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 2
+texture = ExtResource("6_ii61a")
+
+[node name="QuitButton" type="Button" parent="MarginContainer/PauseContainer/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.5
+offset_top = -25.5
+offset_right = 98.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("../../NinePatchRect/ResumeButton")
+theme = ExtResource("6_5idqe")
+theme_override_fonts/font = ExtResource("3_tj4ic")
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
+flat = true
+
+[node name="PauseLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_top = 176.0
+offset_right = 116.0
+offset_bottom = 321.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_m2b7x")
+
+[connection signal="pressed" from="MarginContainer/PauseContainer/NinePatchRect/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PauseContainer/NinePatchRect2/QuitButton" to="." method="_on_quit_button_pressed"]

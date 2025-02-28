@@ -32,8 +32,8 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_n6dh4"]
 font = ExtResource("1_q4niy")
 font_size = 22
-font_color = Color(0, 0, 0, 1)
 outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 3
@@ -123,7 +123,7 @@ horizontal_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.416667
+anchor_bottom = 0.333333
 grow_horizontal = 2
 grow_vertical = 2
 step = 0.0
@@ -131,7 +131,7 @@ value = 20.0
 nine_patch_stretch = true
 texture_under = ExtResource("12_l6qja")
 texture_progress = ExtResource("12_l6qja")
-tint_under = Color(0.996078, 0.8, 0.4, 1)
+tint_under = Color(0.306923, 0.306923, 0.306923, 1)
 tint_progress = Color(0.2, 0.6, 0.4, 1)
 script = ExtResource("13_nsfak")
 level_label = NodePath("../LevelLabel")
@@ -140,9 +140,9 @@ metadata/_edit_use_anchors_ = true
 [node name="LevelLabel" type="Label" parent="Control/CharacterInformations"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.902778
-anchor_right = 0.993924
-anchor_bottom = 0.416667
+anchor_left = 0.902604
+anchor_right = 0.99375
+anchor_bottom = 0.375
 grow_horizontal = 0
 text = "Lv. 9999"
 label_settings = SubResource("LabelSettings_n6dh4")
