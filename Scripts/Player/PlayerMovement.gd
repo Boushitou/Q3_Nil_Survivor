@@ -27,9 +27,9 @@ func initiate_move(direction : Vector2) -> void:
 	else:
 		if direction.x != 0:
 			last_horizontal_direction = Vector2(sign(direction.x), 0)
-		current_attack_direction = direction
 			
 		state = Movement_State.MOVING
+		current_attack_direction = direction
 		
 
 func move(delta : float) -> void:

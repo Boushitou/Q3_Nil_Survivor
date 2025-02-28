@@ -21,6 +21,7 @@ animations = [{
 }]
 
 [node name="Javelin" type="Node2D" node_paths=PackedStringArray("sprite", "collider", "weapon_area")]
+z_index = 2
 script = ExtResource("1_w3pjc")
 sprite = NodePath("Area2D/Sprite2D")
 collider = NodePath("Area2D/CollisionShape2D")

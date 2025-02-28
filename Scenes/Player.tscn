@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dhv3xev5fcmee" path="res://Assets/Player/Walk/PlayerWalk8.png" id="13_6cxx3"]
 [ext_resource type="PackedScene" uid="uid://dxadrq7dwh8ov" path="res://Scenes/blood_spash.tscn" id="15_32fum"]
 [ext_resource type="Texture2D" uid="uid://clcwb2jfkfg6g" path="res://Assets/Shapes/Circle.png" id="16_20rlm"]
-[ext_resource type="Resource" uid="uid://dm2ehuoje28em" path="res://Data/Items/Weapons/9_javelin.tres" id="24_bn0p3"]
+[ext_resource type="Resource" uid="uid://c7p64if204yio" path="res://Data/Items/Weapons/8_kopesh.tres" id="24_6xmoh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rexpl"]
 size = Vector2(29, 64)
@@ -211,7 +211,7 @@ health_regeneration = 1
 process_mode = 1
 process_priority = -1
 script = ExtResource("7_mn01f")
-starting_weapon_data = ExtResource("24_bn0p3")
+starting_weapon_data = ExtResource("24_6xmoh")
 
 [connection signal="area_entered" from="Body" to="Body/BodyCollision" method="_on_body_area_entered"]
 [connection signal="area_exited" from="Body" to="Body/BodyCollision" method="_on_body_area_exited"]

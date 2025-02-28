@@ -8,14 +8,16 @@ position : Vector2 = Vector2.ZERO, direction : Vector2 = Vector2.ZERO, _horizont
 	var weapons = []
 	var total_area_x = base_area.x * bonus_area[level - 1] * inventory.get_total_passive_items_bonuses("atk_range")
 	
-	direction.normalized()	
+	direction = direction.normalized()	
 
 	var angle = direction.angle()	
 	var num_javelins = clamp(amount[level - 1], 1, max_amount)
-	var spread_angle = 0.2
+	var spread_angle = deg_to_rad(10)
+	
+	var middle_index = (num_javelins - 1) * 0.5
 	
 	for i in range(num_javelins):
-		var angle_offset = (i - (num_javelins - 1) * 0.5) * spread_angle
+		var angle_offset = (i - middle_index) * spread_angle
 		var javelin_direction = direction.rotated(angle_offset)
 		
 		var offset_distance = total_area_x * 0.5
